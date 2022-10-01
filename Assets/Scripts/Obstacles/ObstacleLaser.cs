@@ -3,17 +3,17 @@ using UnityEngine;
 public class ObstacleLaser : MonoBehaviour, IObstacle
 {
     [Header("Laser")]
-    public GameObject laser = null;
-    public float timePerLaser = 0;
-    public bool firstLaserWithoutTimer = false;
-    public float maximumSize = 0;
-    public float growSpeed = 0;
-    public float laserDuration = 0;
+    [SerializeField] private GameObject laser = null;
+    [SerializeField] private float timePerLaser = 0;
+    [SerializeField] private bool firstLaserWithoutTimer = false;
+    [SerializeField] private float maximumSize = 0;
+    [SerializeField] private float growSpeed = 0;
+    [SerializeField] private float laserDuration = 0;
 
     [Header("Twinkles")]
-    public float maximumTwinkles = 0;
-    public float twinklesDuration = 0;
-    public float timePerTwinkle = 0;
+    [SerializeField] private float maximumTwinkles = 0;
+    [SerializeField] private float twinklesDuration = 0;
+    [SerializeField] private float timePerTwinkle = 0;
 
     /// Laser private parameter
     private const float initialSize = 0.05f; /// --> cuando este el modelo de arte esto tendria que ser 1

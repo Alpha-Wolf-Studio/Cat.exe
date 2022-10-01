@@ -5,9 +5,9 @@ using UnityEngine;
 public class ObstacleDisappearAppearPlatform : MonoBehaviour
 {
     [Header("Disappear platform")]
-    public bool startDisappear = false;
-    public float timePerDisappear = 0;
-    public float disappearDuration = 0;
+    [SerializeField] private bool startDisappear = false;
+    [SerializeField] private float timePerDisappear = 0;
+    [SerializeField] private float disappearDuration = 0;
 
     private MeshRenderer meshRenderer = null;
     private BoxCollider boxCollider = null;

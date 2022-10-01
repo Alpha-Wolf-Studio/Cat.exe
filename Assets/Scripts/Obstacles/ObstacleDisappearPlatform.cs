@@ -18,6 +18,7 @@ public class ObstacleDisappearPlatform : MonoBehaviour
 
     private void Awake()
     {
+        dissolve.SetFloat("_Cutoff", 0);
         meshRenderer = GetComponent<MeshRenderer>();
         boxCollider = GetComponent<BoxCollider>();
         disolveLerper.SetLerperValues(0, 1, timeForEffect, Lerper<float>.LERPER_TYPE.STEP_SMOOTH);

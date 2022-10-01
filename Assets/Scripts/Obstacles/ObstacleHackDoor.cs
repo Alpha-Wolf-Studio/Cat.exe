@@ -5,9 +5,9 @@ using UnityEngine;
 public class ObstacleHackDoor : MonoBehaviour
 {
     [Header("Hack door")]
-    public bool startOpen = false;
-    public float timePerOpenDoor = 0;
-    public float openDoorDuration = 0;
+    [SerializeField] private bool startOpen = false;
+    [SerializeField] private float timePerOpenDoor = 0;
+    [SerializeField] private float openDoorDuration = 0;
 
     private Animator animator = null;
     private Timer timePerOpenDoorTimer = null;

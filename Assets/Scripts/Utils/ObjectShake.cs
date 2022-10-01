@@ -6,13 +6,13 @@ using UnityEngine.Events;
 public class ObjectShake : MonoBehaviour
 {
     [Header("Shake data")]
-    public bool startRightDireccion = true;
-    public float timePerShake = 0;
-    public float duration = 0;
-    public float rangeX = 0;
+    [SerializeField] private bool startRightDireccion = true;
+    [SerializeField] private float timePerShake = 0;
+    [SerializeField] private float duration = 0;
+    [SerializeField] private float rangeX = 0;
 
     [Header("Events")]
-    public UnityEvent OnFinishShake = null;
+    [SerializeField] private UnityEvent OnFinishShake = null;
 
     private Vector3 originalPosition = Vector3.zero;
     private bool rightXShake = false;

@@ -5,10 +5,10 @@ using UnityEngine;
 public class ObstacleMovePlatform : MonoBehaviour
 {
     [Header("Move platform")]
-    public bool rightDirection = false;
-    public float speed = 0;
-    public int rightBound = 0;
-    public int leftBound = 0;
+    [SerializeField] private bool rightDirection = false;
+    [SerializeField] private float speed = 0;
+    [SerializeField] private int rightBound = 0;
+    [SerializeField] private int leftBound = 0;
 
     private float initialXPosition = 0;
 

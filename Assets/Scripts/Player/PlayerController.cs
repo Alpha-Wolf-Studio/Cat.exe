@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamageable
 {
     [SerializeField] private float speed = 0f;
     [SerializeField] private float jumpForce = 0f;
@@ -69,5 +69,15 @@ public class PlayerController : MonoBehaviour
     private void AddMovement(Vector3 direction)
     {
         rigid.AddForce(direction * speed * Time.fixedDeltaTime, ForceMode.Acceleration);
+    }
+
+    public void Kill ()
+    {
+        dead = true;
+    }
+
+    public void Respawn ()
+    {
+        dead = false;
     }
 }

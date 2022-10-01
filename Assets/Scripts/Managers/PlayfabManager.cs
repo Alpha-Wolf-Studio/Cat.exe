@@ -1,9 +1,13 @@
+
+//#define DEBUGLOGS
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
+
 
 public class PlayfabManager : MonoBehaviourSingleton<PlayfabManager>
 {
@@ -46,21 +50,27 @@ public class PlayfabManager : MonoBehaviourSingleton<PlayfabManager>
             CustomId = GetCustomGUI(),
             CreateAccount = true
         };
+#if DEBUGLOGS
         Debug.Log("Logging into playfab...");
+#endif
         PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccessful, OnLoginFailed);
     }
 
     private void OnLoginSuccessful(LoginResult loginResult)
     {
+#if DEBUGLOGS
         Debug.Log("Log into playfab successful with ID: " + loginResult.PlayFabId);
+#endif
         Connected = true;
         UpdateLeaderboard();
     }
 
     private void OnLoginFailed(PlayFabError error)
     {
+#if DEBUGLOGS
         Debug.Log("Error while logging into playfab.");
         Debug.Log(error.GenerateErrorReport());
+#endif
     }
 
     private string GetCustomGUI()
@@ -70,13 +80,24 @@ public class PlayfabManager : MonoBehaviourSingleton<PlayfabManager>
 
     public void SubmitTimeScore(int time, string nickname)
     {
+        StartCoroutine((SubmitScoreCoroutine(time, nickname)));
+    }
 
+    private IEnumerator SubmitScoreCoroutine(int time, string nickname)
+    {
+        requestLocked = true;
+        
         var userDataRequest = new UpdateUserTitleDisplayNameRequest()
         {
             DisplayName = nickname
         };
         
         PlayFabClientAPI.UpdateUserTitleDisplayName(userDataRequest, OnUserDisplayNameUpdateSuccessful, OnUserDisplayNameUpdateFailed);
+        
+        while (requestLocked)
+        {
+            yield return null;
+        }
         
         var sendScoreRequest = new UpdatePlayerStatisticsRequest
         {
@@ -101,28 +122,41 @@ public class PlayfabManager : MonoBehaviourSingleton<PlayfabManager>
             }
         };
         PlayFabClientAPI.UpdatePlayerStatistics(sendScoreRequest, OnStatisticsSaveSuccessful, OnStatisticsSaveFailed);
+        
     }
-    
+
     private void OnStatisticsSaveSuccessful(UpdatePlayerStatisticsResult statisticsUpdateResult)
     {
+#if DEBUGLOGS
         Debug.Log("Statistics send successful");
+#endif
+        requestLocked = false;
     }
 
     private void OnStatisticsSaveFailed(PlayFabError error)
     {
+#if DEBUGLOGS
         Debug.Log("Error while logging into playfab.");
         Debug.Log(error.GenerateErrorReport());
+#endif
+        requestLocked = false;
     }
 
     private void OnUserDisplayNameUpdateSuccessful(UpdateUserTitleDisplayNameResult userUpdateResult)
     {
-        Debug.Log("User display name update send successful");
+#if DEBUGLOGS
+        Debug.Log("User display name update send successful to: " + userUpdateResult.DisplayName);
+#endif
+        requestLocked = false;
     }
 
     private void OnUserDisplayNameUpdateFailed(PlayFabError error)
     {
+#if DEBUGLOGS
         Debug.Log("User display name update failed.");
         Debug.Log(error.GenerateErrorReport());
+#endif
+        requestLocked = false;
     }
     
     public void UpdateLeaderboard()

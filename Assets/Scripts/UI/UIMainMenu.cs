@@ -72,6 +72,8 @@ public class UIMainMenu : MonoBehaviour
 
         off.blocksRaycasts = false;
         off.interactable = false;
+        
+        on.gameObject.SetActive(true);
 
         while (onTime < maxTime)
         {
@@ -87,6 +89,8 @@ public class UIMainMenu : MonoBehaviour
         onTime = 0;
 
         menu = (Menu) onMenu;
+        
+        off.gameObject.SetActive(false);
     }
 }
 

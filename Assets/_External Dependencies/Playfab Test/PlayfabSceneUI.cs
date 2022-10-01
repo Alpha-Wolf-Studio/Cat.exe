@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,15 +11,21 @@ public class PlayfabSceneUI : MonoBehaviour
     [SerializeField] private Button sendScoreButton = default;
 
     [Header("Leaderboard")] 
-    [SerializeField] private float leaderboardUpdateTime = 2f;
+    [SerializeField] private float leaderboardUpdateTime = 5f;
     [SerializeField] private LeaderboardPanelUI leaderboardDaily = default;
     [SerializeField] private LeaderboardPanelUI leaderboardWeekly = default;
-    [SerializeField] private LeaderboardPanelUI leaderboardAllTime = default; 
+    [SerializeField] private LeaderboardPanelUI leaderboardAllTime = default;
+
+    private void OnEnable()
+    {
+        sendScoreButton.gameObject.SetActive(true);
+        PlayfabManager.Get().Login();
+        PlayfabManager.Get().OnLeaderboardUpdated += UpdateLeaderBoard;
+        StartCoroutine(UpdateLeaderboardCoroutine());
+    }
 
     private void Start()
     {
-        PlayfabManager.Get().Login();
-        
         sendScoreButton.onClick.AddListener(delegate
         {
             if (int.TryParse(inputField.text, out var score))
@@ -27,15 +34,14 @@ public class PlayfabSceneUI : MonoBehaviour
                 PlayfabManager.Get().UpdateLeaderboard();
             }
         });
-
-        StartCoroutine(UpdateLeaderboardCoroutine());
         
-        PlayfabManager.Get().OnLeaderboardUpdated += UpdateLeaderBoard;
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
+        StopCoroutine(UpdateLeaderboardCoroutine());
         PlayfabManager.Get().OnLeaderboardUpdated -= UpdateLeaderBoard;
+        sendScoreButton.gameObject.SetActive(false);
     }
 
     private IEnumerator UpdateLeaderboardCoroutine()

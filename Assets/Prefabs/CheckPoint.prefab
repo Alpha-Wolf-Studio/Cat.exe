@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d23f0f7357cebd4fa06c9662e3252c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colliderTrigger: {fileID: 0}
+  colliderTrigger: {fileID: 2068408093126626512}
   wall: {fileID: 7512783409292249592}
   spawnPoint: {fileID: 1282261108811338213}
   playerMask:

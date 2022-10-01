@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class GameplayManager : MonoBehaviourSingleton<GameplayManager>
@@ -8,7 +9,7 @@ public class GameplayManager : MonoBehaviourSingleton<GameplayManager>
     [SerializeField] private UIGameplay uiGameplay;
 
     private readonly float timerDelay = 10f;
-
+    private readonly float timeToRespawn = 2;
     private Timer timer;
 
     private void Start()
@@ -41,9 +42,31 @@ public class GameplayManager : MonoBehaviourSingleton<GameplayManager>
 
     private void EndTimer()
     {
+        KillPlayer();
+    }
+
+    public void KillPlayer ()
+    {
         playerController.Kill();
         timer.ToggleTimer(false);
+        CheckPointManager.lastCheckPoint.ResetCheckPoint();
+        StartCoroutine(ReSpawningPlayer());
+    }
 
-        //añadir un delay para respawnear al jugar y volver a iniciar el timer
+    private IEnumerator ReSpawningPlayer ()
+    {
+        float time = 0;
+        while (time < timeToRespawn)
+        {
+            time += Time.deltaTime;
+
+            if (Input.GetKeyDown(KeyCode.R))
+                break;
+
+            yield return null;
+        }
+
+        timer.Reset();
+        playerController.transform.position = CheckPointManager.lastCheckPoint.GetPositionSpawn();
     }
 }

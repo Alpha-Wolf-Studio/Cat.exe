@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
-    public event Action OnEnterCheckPoint = null;
-    public event Action<Vector3, Vector3> OnSaveCheckPoint = null;
-    public event Action OnExitCheckPoint = null;
+    public event Action OnEnterCheckPoint;
+    public event Action<CheckPoint> OnSaveCheckPoint;
+    public event Action OnExitCheckPoint;
 
-    [SerializeField] private Collider colliderTrigger = null;
-    [SerializeField] private Collider wall = null;
-    [SerializeField] private Transform spawnPoint = null;
-    [SerializeField] private LayerMask playerMask = default;
+    [SerializeField] private Collider colliderTrigger;
+    [SerializeField] private Collider wall;
+    [SerializeField] private Transform spawnPoint;
+    [SerializeField] private LayerMask playerMask;
 
     public bool wasActivated = false;
 
@@ -25,17 +25,25 @@ public class CheckPoint : MonoBehaviour
         {
             wasActivated = true;
             wall.enabled = true;
-            OnSaveCheckPoint?.Invoke(spawnPoint.position, spawnPoint.rotation.eulerAngles);
+            OnSaveCheckPoint?.Invoke(this);
             OnEnterCheckPoint?.Invoke();
         }
     }
 
     private void OnTriggerExit (Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (Utils.CheckLayerInMask(playerMask, other.gameObject.layer))
         {
             colliderTrigger.enabled = false;
             OnExitCheckPoint?.Invoke();
         }
     }
+
+    public void ResetCheckPoint ()
+    {
+        colliderTrigger.enabled = true;
+    }
+
+    public Vector3 GetPositionSpawn () => spawnPoint.position;
+    public Vector3 GetRotationSpawn () => spawnPoint.rotation.eulerAngles;
 }

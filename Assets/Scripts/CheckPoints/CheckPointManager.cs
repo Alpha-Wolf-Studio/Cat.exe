@@ -6,8 +6,7 @@ public class CheckPointManager : MonoBehaviour
 {
     [SerializeField] private List<CheckPoint> checkPoints = new List<CheckPoint>();
 
-    private static Vector3 lastSpawnPoint;
-    private static Vector3 lastSpawnOrientation;
+    public static CheckPoint lastCheckPoint;
 
     private void Awake ()
     {
@@ -18,7 +17,7 @@ public class CheckPointManager : MonoBehaviour
         }
     }
 
-    public void SetEnterCheckPointCallback(Action callback)
+    public void SetEnterCheckPointCallback (Action callback)
     {
         for (int i = 0; i < checkPoints.Count; i++)
         {
@@ -26,15 +25,14 @@ public class CheckPointManager : MonoBehaviour
         }
     }
 
-    private void SaveLastPosition (Vector3 position, Vector3 orientation)
+    private void SaveLastPosition (CheckPoint checkPoint)
     {
-        lastSpawnPoint = position;
-        lastSpawnOrientation = orientation;
+        lastCheckPoint = checkPoint;
     }
 
     public static void CurrentLastTransform (out Vector3 pos, out Vector3 orientation)
     {
-        pos = lastSpawnPoint;
-        orientation = lastSpawnOrientation;
+        pos = lastCheckPoint.GetPositionSpawn();
+        orientation = lastCheckPoint.GetRotationSpawn();
     }
 }

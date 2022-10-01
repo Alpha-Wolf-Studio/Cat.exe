@@ -2020,7 +2020,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 824a520561e901746a7e4705c59c40ca, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2163,6 +2163,21 @@ MonoBehaviour:
   timePerShake: 0
   duration: 0.5
   rangeX: 0.05
+  OnFinishShake:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6514786286993870937}
+        m_TargetAssemblyTypeName: ObstacleDisappearPlatform, Assembly-CSharp
+        m_MethodName: ActiveDisappearPlatform
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6514786286993870937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2175,6 +2190,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4850fcb8aae39064bae18effd3cfa541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dissolve: {fileID: 2100000, guid: 824a520561e901746a7e4705c59c40ca, type: 2}
+  timeForEffect: 2
 --- !u!1001 &7637984432834890117
 PrefabInstance:
   m_ObjectHideFlags: 0

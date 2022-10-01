@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ObjectShake : MonoBehaviour
 {
@@ -10,13 +11,14 @@ public class ObjectShake : MonoBehaviour
     public float duration = 0;
     public float rangeX = 0;
 
+    [Header("Events")]
+    public UnityEvent OnFinishShake = null;
+
     private Vector3 originalPosition = Vector3.zero;
     private bool rightXShake = false;
     private float timeForShake = 0;
     private float timeForDuration = 0;
     private ObstacleDisappearPlatform obstacleDisappearPlatform = null;
-
-    public Action OnFinishShake = null;
 
     /// <summary>
     /// Assign private parameters

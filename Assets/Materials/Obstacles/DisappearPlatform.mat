@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MyDiffuse
+  m_Name: DisappearPlatform
   m_Shader: {fileID: 4800000, guid: 59f91e112f0412142b9b6f274bcccba3, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -25,16 +25,16 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NoiseTex:
-        m_Texture: {fileID: 2800000, guid: 0bad956f01906854c8b1ebcf91216c1f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9b07f4304872e6241bf82d62f993051e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Cutoff: 0
+    - _Cutoff: 1
     - _EdgeWidth: 0.21
     - _Shininess: 10
     m_Colors:
-    - _Color: {r: 0, g: 0.054458007, b: 0.4339623, a: 1}
-    - _EdgeColor: {r: 2.8898668, g: 0.29150578, b: 12.359847, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EdgeColor: {r: 16.501368, g: 16.501368, b: 16.501368, a: 1}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

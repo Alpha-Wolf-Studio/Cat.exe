@@ -13,6 +13,11 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private bool dead = false;
 
+    private void Start()
+    {
+        dissolveEffect.SetDissolve(0);
+    } 
+
     private void Update()
     {
         if (dead) return;

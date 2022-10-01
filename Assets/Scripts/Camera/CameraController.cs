@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour
 
     private Vector3 velocity = Vector3.zero;
 
-    private void Awake ()
+    private void Start()
     {
         playerTransform = GameplayManager.Get().playerController.transform;
     }

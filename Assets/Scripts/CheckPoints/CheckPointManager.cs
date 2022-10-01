@@ -17,11 +17,12 @@ public class CheckPointManager : MonoBehaviour
         }
     }
 
-    public void SetEnterCheckPointCallback (Action callback)
+    public void SetCheckPointCallbacks(Action enterCallback, Action endCallback)
     {
         for (int i = 0; i < checkPoints.Count; i++)
         {
-            checkPoints[i].OnEnterCheckPoint += callback;
+            checkPoints[i].OnEnterCheckPoint += enterCallback;
+            checkPoints[i].OnExitCheckPoint += endCallback;
         }
     }
 

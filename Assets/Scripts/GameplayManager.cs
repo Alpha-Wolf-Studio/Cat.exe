@@ -19,7 +19,7 @@ public class GameplayManager : MonoBehaviourSingleton<GameplayManager>
         //Llamar esta funcion para empezar el timer
         timer.ToggleTimer(true);
 
-        checkPointManager.SetEnterCheckPointCallback(EnterCheckPoint);
+        checkPointManager.SetCheckPointCallbacks(EnterCheckPoint, () => timer.ToggleTimer(true));
     }
 
     private void Update()
@@ -30,7 +30,7 @@ public class GameplayManager : MonoBehaviourSingleton<GameplayManager>
     private void EnterCheckPoint()
     {
         //resetear el tiempo cuando llega al checkpoint o aumentarlo?
-        timer.SetTimer(timerDelay);
+        timer.SetTimer(timerDelay, false);
         SetCameraRotation(); //Rotar camara
     }
 

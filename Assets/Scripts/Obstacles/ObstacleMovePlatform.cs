@@ -5,23 +5,29 @@ using UnityEngine;
 public class ObstacleMovePlatform : MonoBehaviour, IObstacle
 {
     [Header("Move platform")]
-    public GameObject platform = null;
     public bool rightDirection = false;
     public float speed = 0;
     public int rightBound = 0;
     public int leftBound = 0;
 
+    private float initialXPosition = 0;
+
+    private void Start()
+    {
+        initialXPosition = transform.position.x;
+    }
+
     private void Update()
     {
         if (rightDirection)
         {
-            platform.transform.Translate(Vector2.right * speed * Time.deltaTime);
-            if (platform.transform.localPosition.x >= rightBound) rightDirection = false;
+            transform.Translate(Vector2.right * speed * Time.deltaTime);
+            if (transform.position.x >= (initialXPosition + rightBound)) rightDirection = false;
         }
         else
         {
-            platform.transform.Translate(Vector2.right * -speed * Time.deltaTime);
-            if (platform.transform.localPosition.x <= leftBound) rightDirection = true;
+            transform.Translate(Vector2.right * -speed * Time.deltaTime);
+            if (transform.position.x <= (initialXPosition + leftBound)) rightDirection = true;
         }
     }
 

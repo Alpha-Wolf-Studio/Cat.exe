@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleHackDoor : MonoBehaviour, IObstacle
+public class ObstacleHackDoor : MonoBehaviour
 {
     [Header("Hack door")]
     public bool startOpen = false;
@@ -39,26 +39,5 @@ public class ObstacleHackDoor : MonoBehaviour, IObstacle
         animator.Play("Close");
         timePerOpenDoorTimer.Reset();
         timePerOpenDoorTimer.ToggleTimer(true);
-    }
-
-
-    private void OnCollisionEnter(Collision other)
-    {
-        CheckIsPlayer(other.transform);
-    }
-
-    public void CheckIsPlayer(Transform other)
-    {
-        if (Utils.CheckLayerInMask(GameplayManager.Get().layerPlayer, other.gameObject.layer))
-        {
-            IDamageable damageable = other.transform.GetComponent<IDamageable>();
-            if (damageable != null)
-                Kill(damageable);
-        }
-    }
-
-    public void Kill(IDamageable damageable)
-    {
-        damageable.Kill();
     }
 }

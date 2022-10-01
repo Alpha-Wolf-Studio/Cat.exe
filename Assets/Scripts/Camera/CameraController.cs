@@ -19,7 +19,7 @@ public class CameraController : MonoBehaviour
         playerTransform = GameplayManager.Get().playerController.transform;
     }
 
-    private void LateUpdate ()
+    private void FixedUpdate ()
     {
         transform.position = Vector3.SmoothDamp(transform.position, playerTransform.position, ref velocity, smoothTime);
     }

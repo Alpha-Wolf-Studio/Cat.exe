@@ -3,9 +3,10 @@ using UnityEngine;
 public class GameplayManager : MonoBehaviour
 {
     [SerializeField] private PlayerController playerController = null;
-    [SerializeField] private float timerDelay = 0f;
-
+    [SerializeField] private CheckPointManager checkPointManager = null;
     [SerializeField] private UIGameplay uiGameplay = null;
+
+    [SerializeField] private float timerDelay = 0f;
 
     private Timer timer = null;
 
@@ -15,6 +16,8 @@ public class GameplayManager : MonoBehaviour
 
         //Llamar esta funcion para empezar el timer
         timer.ToggleTimer(true);
+
+        checkPointManager.SetEnterCheckPointCallback(EnterCheckPoint);
     }
 
     private void Update()
@@ -22,10 +25,12 @@ public class GameplayManager : MonoBehaviour
         timer.Update(Time.deltaTime);
     }
 
-    private void ResetTimer()
+    private void EnterCheckPoint()
     {
         //resetear el tiempo cuando llega al checkpoint o aumentarlo?
         timer.SetTimer(timerDelay);
+
+        //Rotar camara
     }
 
     private void EndTimer()

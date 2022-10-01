@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +15,14 @@ public class CheckPointManager : MonoBehaviour
         {
             checkPoints[i].ID = i;
             checkPoints[i].OnSaveCheckPoint += SaveLastPosition;
+        }
+    }
+
+    public void SetEnterCheckPointCallback(Action callback)
+    {
+        for (int i = 0; i < checkPoints.Count; i++)
+        {
+            checkPoints[i].OnEnterCheckPoint += callback;
         }
     }
 

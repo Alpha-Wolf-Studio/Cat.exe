@@ -3,25 +3,25 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
-    public event Action OnEnterCheckPoint;
-    public event Action<Vector3, Vector3> OnSaveCheckPoint;
-    public event Action OnExitCheckPoint;
+    public event Action OnEnterCheckPoint = null;
+    public event Action<Vector3, Vector3> OnSaveCheckPoint = null;
+    public event Action OnExitCheckPoint = null;
 
-    [SerializeField] private Collider colliderTrigger;
-    [SerializeField] private Collider wall;
-    [SerializeField] private Transform spawnPoint;
+    [SerializeField] private Collider colliderTrigger = null;
+    [SerializeField] private Collider wall = null;
+    [SerializeField] private Transform spawnPoint = null;
+    [SerializeField] private LayerMask playerMask = default;
 
-    public bool wasActivated;
+    public bool wasActivated = false;
 
     public int ID { get; set; } = 0;
-    
-    
+
     private void OnTriggerEnter (Collider other)
     {
         if (wasActivated)
             return;
 
-        if (other.CompareTag("Player"))
+        if (Utils.CheckLayerInMask(playerMask, other.gameObject.layer))
         {
             wasActivated = true;
             wall.enabled = true;

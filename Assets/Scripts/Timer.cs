@@ -59,7 +59,7 @@ public class Timer
     private void OnReachTarget()
     {
         on = false;
-        currValue = start;
+        currValue = 0;
 
         onReached?.Invoke();
 

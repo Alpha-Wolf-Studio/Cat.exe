@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class GameplayManager : MonoBehaviourSingleton<GameplayManager>
 {
+    public LayerMask layerPlayer;
     public PlayerController playerController;
     public CameraController cameraController;
     [SerializeField] private CheckPointManager checkPointManager;
@@ -11,23 +12,24 @@ public class GameplayManager : MonoBehaviourSingleton<GameplayManager>
     private readonly float timerDelay = 10f;
     private readonly float timeToRespawn = 2;
     private Timer timer;
-
-    private void Start()
+    
+    private void Start ()
     {
+        playerController.OnDeath += KillPlayer;
+
         timer = new Timer(timerDelay, Timer.MODE.ONCE, false, uiGameplay.UpdateTimerText, EndTimer);
 
-        //Llamar esta funcion para empezar el timer
-        timer.ToggleTimer(true);
+        timer.ToggleTimer(true);    //Llamar esta funcion para empezar el timer
 
         checkPointManager.SetCheckPointCallbacks(EnterCheckPoint, () => timer.ToggleTimer(true));
     }
 
-    private void Update()
+    private void Update ()
     {
         timer.Update(Time.deltaTime);
     }
 
-    private void EnterCheckPoint()
+    private void EnterCheckPoint ()
     {
         //resetear el tiempo cuando llega al checkpoint o aumentarlo?
         timer.SetTimer(timerDelay, false);
@@ -40,14 +42,13 @@ public class GameplayManager : MonoBehaviourSingleton<GameplayManager>
         cameraController.Rotate(rot);
     }
 
-    private void EndTimer()
+    private void EndTimer ()
     {
         KillPlayer();
     }
 
     public void KillPlayer ()
     {
-        playerController.Kill();
         timer.ToggleTimer(false);
         CheckPointManager.lastCheckPoint.ResetCheckPoint();
         StartCoroutine(ReSpawningPlayer());

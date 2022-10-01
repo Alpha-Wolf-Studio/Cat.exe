@@ -1,15 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IDamageable
 {
-    [SerializeField] private MovementController movementController = null;
-    [SerializeField] private Transform cameraTransform = null;
+    public event Action OnDeath;
+    [SerializeField] private MovementController movementController;
+    [SerializeField] private Transform cameraTransform;
 
     [Header("Visual Effects")]
-    [SerializeField] private DissolveEffect dissolveEffect = null;
+    [SerializeField] private DissolveEffect dissolveEffect;
 
     private bool dead = false;
 
@@ -63,12 +62,10 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public void Kill()
     {
+        OnDeath?.Invoke();
         dead = true;
-
-        //Timer se para
         //Animacion de muerte
-        dissolveEffect.SetDissolve(1);
-        //Desaparece el modelo
+        dissolveEffect.SetDissolve(1); //Desaparece el modelo
     }
 
     public void Respawn()

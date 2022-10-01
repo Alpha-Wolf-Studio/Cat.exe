@@ -27,7 +27,7 @@ public class ObstacleDisappearPlatform : MonoBehaviour
     private void Update()
     {
         UpdateDisappearPlatform();
-        if (Input.GetKeyDown(KeyCode.M)) shaking = true;
+        //if (Input.GetKeyDown(KeyCode.M)) shaking = true;
     }
 
     public void ActiveDisappearPlatform()

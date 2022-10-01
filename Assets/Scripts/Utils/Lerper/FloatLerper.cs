@@ -37,26 +37,3 @@ public class FloatLerper : Lerper<float>
         else return false;
     }
 }
-
-/* Testo float lerper:
-public class test : MonoBehaviour
-{
-    public float time = 0;
-    private FloatLerper floatLerper = new FloatLerper();
-
-    private void Awake()
-    {
-        floatLerper.SetLerperValues(5, 1, time, Lerper<float>.LERPER_TYPE.STEP_SMOOTH, true);
-    }
-
-    private void Update()
-    {
-        if (floatLerper.Active) floatLerper.UpdateLerper();
-
-        if (Input.GetKeyDown(KeyCode.M)) floatLerper.ActiveLerper();
-        if (Input.GetKeyDown(KeyCode.N)) floatLerper.DesactiveLerper();
-
-        Debug.Log(floatLerper.GetValue());
-    }
-}
-*/

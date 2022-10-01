@@ -50,6 +50,7 @@ MonoBehaviour:
   initialSize: 0.05
   maximumSize: 1
   growSpeed: 1
+  duration: 1
 --- !u!1 &7637984433162237391
 GameObject:
   m_ObjectHideFlags: 0

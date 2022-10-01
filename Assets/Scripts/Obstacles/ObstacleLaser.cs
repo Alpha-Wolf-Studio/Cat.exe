@@ -9,28 +9,33 @@ public class ObstacleLaser : MonoBehaviour, IObstacle
     public float initialSize = 0;
     public float maximumSize = 0;
     public float growSpeed = 0;
+    public float duration = 0;
 
-    private bool growing = false;
     private FloatLerper growLerper = new FloatLerper();
+    private Timer timer = null;
+
+    private void Start()
+    {
+        timer = new Timer(duration, default, false, null, TurnOffLaser);
+    }
 
     private void Update()
     {
         UpdateGrowLerper();
+        UpdateDurationTimer();
 
         if (Input.GetKeyDown(KeyCode.N)) TurnOnLaser();
-        if (Input.GetKeyDown(KeyCode.M)) TurnOffLaser();
     }
 
     private void TurnOnLaser()
     {
         growLerper.SetLerperValues(initialSize, maximumSize, growSpeed, Lerper<float>.LERPER_TYPE.STEP_SMOOTH, true);
-        growing = true;
+        timer.ToggleTimer(true);
     }
 
     private void TurnOffLaser()
     {
         growLerper.SetLerperValues(maximumSize, initialSize, growSpeed, Lerper<float>.LERPER_TYPE.STEP_SMOOTH, true);
-        growing = false;
     }
 
     private void UpdateGrowLerper()
@@ -47,6 +52,11 @@ public class ObstacleLaser : MonoBehaviour, IObstacle
             Vector3 updatePosition = new Vector3(growLerper.GetValue() - initialSize, laser.transform.localPosition.y, laser.transform.localPosition.z);
             laser.transform.localPosition = updatePosition;
         }
+    }
+
+    private void UpdateDurationTimer()
+    {
+        timer.Update(Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision other)

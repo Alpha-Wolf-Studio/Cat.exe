@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: edef5ff59cec6ae4fa9ee1cd8b845bc0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 932142354524613362}
   - component: {fileID: 1438383329080479937}
   - component: {fileID: 5505715868130213007}
+  - component: {fileID: 1778527789}
   - component: {fileID: 8954998276261022242}
   - component: {fileID: 974678238743685534}
   - component: {fileID: 7175117302880479311}
@@ -149,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementController: {fileID: 5505715868130213007}
   cameraTransform: {fileID: 0}
+  dissolveEffect: {fileID: 1778527789}
 --- !u!114 &5505715868130213007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,6 +171,20 @@ MonoBehaviour:
     m_Bits: 1
   dashForce: 15
   dashCooldown: 0.5
+--- !u!114 &1778527789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7030836187651882958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c3c769126ca0f64fb7c8ee6eb6289c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dissolve: {fileID: 2100000, guid: edef5ff59cec6ae4fa9ee1cd8b845bc0, type: 2}
+  timeForEffect: 1
 --- !u!33 &8954998276261022242
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -197,7 +213,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5c235f6e8ffdc5541b30c59f98635e0b, type: 2}
+  - {fileID: 2100000, guid: edef5ff59cec6ae4fa9ee1cd8b845bc0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

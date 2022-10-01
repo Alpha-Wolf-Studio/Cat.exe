@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] private MovementController movementController = null;
     [SerializeField] private Transform cameraTransform = null;
 
+    [Header("Visual Effects")]
+    [SerializeField] private DissolveEffect dissolveEffect = null;
+
     private bool dead = false;
 
     private void Update()
@@ -56,8 +59,10 @@ public class PlayerController : MonoBehaviour, IDamageable
     public void Kill()
     {
         dead = true;
+
         //Timer se para
         //Animacion de muerte
+        dissolveEffect.SetDissolve(1);
         //Desaparece el modelo
     }
 
@@ -70,6 +75,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         transform.Translate(newPos);
         transform.Rotate(newRot);
         //Animacion de Respawn
+        dissolveEffect.SetDissolve(0);
         //Se resetea el Timer
         dead = false;
     }

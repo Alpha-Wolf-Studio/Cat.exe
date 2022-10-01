@@ -4,45 +4,26 @@ using UnityEngine;
 
 public class ObstacleDisappearPlatform : MonoBehaviour
 {
-    [Header("Disappear platform")]
-    public bool startDisappear = false;
-    public float timePerDisappear = 0;
-    public float disappearDuration = 0;
+    private bool shaking = false;
 
-    private MeshRenderer meshRenderer = null;
-    private BoxCollider boxCollider = null;
-    private Timer timePerDisappearTimer = null;
-    private Timer disappearTimer = null;
-
-    private void Awake()
-    {
-        meshRenderer = GetComponent<MeshRenderer>();    
-        boxCollider = GetComponent<BoxCollider>();
-
-        timePerDisappearTimer = new Timer(timePerDisappear, default, true, null, DisappearPlatform);
-        disappearTimer = new Timer(disappearDuration, default, false, null, AppearPlatform);
-        if (startDisappear) DisappearPlatform();
-    }
+    public bool Shaking { get => shaking; set => shaking = value; }
 
     private void Update()
     {
-        timePerDisappearTimer.Update(Time.deltaTime);
-        disappearTimer.Update(Time.deltaTime);
+        if (Input.GetKeyDown(KeyCode.M)) shaking = true;
     }
 
-    private void DisappearPlatform()
+
+    private void OnCollisionEnter(Collision other)
     {
-        meshRenderer.enabled = false;
-        boxCollider.enabled = false;
-        disappearTimer.Reset();
-        disappearTimer.ToggleTimer(true);
+        CheckIsPlayer(other.transform);
     }
 
-    private void AppearPlatform()
+    public void CheckIsPlayer(Transform other)
     {
-        meshRenderer.enabled = true;
-        boxCollider.enabled = true;
-        timePerDisappearTimer.Reset();
-        timePerDisappearTimer.ToggleTimer(true);
+        if (Utils.CheckLayerInMask(GameplayManager.Get().layerPlayer, other.gameObject.layer))
+        {
+            shaking = true;
+        }
     }
 }

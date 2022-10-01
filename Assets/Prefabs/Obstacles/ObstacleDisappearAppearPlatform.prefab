@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3087694410010427683}
   - component: {fileID: 5359750752115662161}
   m_Layer: 0
-  m_Name: ObstacleDisappearPlatform
+  m_Name: ObstacleDisappearAppearPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

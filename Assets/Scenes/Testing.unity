@@ -1888,7 +1888,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6688796922885932391, guid: 4ec33f5f996aa194ab6927b9316eba37, type: 3}
       propertyPath: m_Name
-      value: ObstacleDisappearPlatform
+      value: ObstacleDisappearAppearPlatform
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ec33f5f996aa194ab6927b9316eba37, type: 3}
@@ -1919,8 +1919,10 @@ GameObject:
   - component: {fileID: 6514786286993870935}
   - component: {fileID: 3565756011831728616}
   - component: {fileID: 5891840185920685467}
+  - component: {fileID: 6514786286993870937}
+  - component: {fileID: 6514786286993870936}
   m_Layer: 0
-  m_Name: ObstacleFallPlatform
+  m_Name: ObstacleDisappearPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2145,6 +2147,34 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2868464788409319903}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &6514786286993870936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2868464788409319903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed35d7639fa1e714b937b4dc65da9511, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startRightDireccion: 1
+  timePerShake: 0
+  duration: 0.5
+  rangeX: 0.05
+--- !u!114 &6514786286993870937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2868464788409319903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4850fcb8aae39064bae18effd3cfa541, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7637984432834890117
 PrefabInstance:
   m_ObjectHideFlags: 0

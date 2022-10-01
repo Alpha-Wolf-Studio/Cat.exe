@@ -1,14 +1,15 @@
 using UnityEngine;
 
-public class GameplayManager : MonoBehaviour
+public class GameplayManager : MonoBehaviourSingleton<GameplayManager>
 {
-    [SerializeField] private PlayerController playerController = null;
-    [SerializeField] private CheckPointManager checkPointManager = null;
-    [SerializeField] private UIGameplay uiGameplay = null;
+    public PlayerController playerController;
+    public CameraController cameraController;
+    [SerializeField] private CheckPointManager checkPointManager;
+    [SerializeField] private UIGameplay uiGameplay;
 
-    [SerializeField] private float timerDelay = 0f;
+    private readonly float timerDelay = 10f;
 
-    private Timer timer = null;
+    private Timer timer;
 
     private void Start()
     {
@@ -29,8 +30,13 @@ public class GameplayManager : MonoBehaviour
     {
         //resetear el tiempo cuando llega al checkpoint o aumentarlo?
         timer.SetTimer(timerDelay);
+        SetCameraRotation(); //Rotar camara
+    }
 
-        //Rotar camara
+    private void SetCameraRotation ()
+    {
+        CheckPointManager.CurrentLastTransform(out var pos, out var rot);
+        cameraController.Rotate(rot);
     }
 
     private void EndTimer()

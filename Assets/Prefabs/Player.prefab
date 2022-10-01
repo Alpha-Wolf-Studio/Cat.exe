@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementController: {fileID: 5505715868130213007}
+  cameraTransform: {fileID: 0}
 --- !u!114 &5505715868130213007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1000
-  rotationSpeed: 0
+  rotationSpeed: 300
   jumpForce: 5
   jumpeableMask:
     serializedVersion: 2

@@ -1,34 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IDamageable
 {
-    [SerializeField] private float speed = 0f;
-    [SerializeField] private float jumpForce = 0f;
-    [SerializeField] private LayerMask jumpeableMask = default;
-    [SerializeField] private float dashForce = 0f;
-    [SerializeField] private float dashCooldown = 0.2f;
+    [SerializeField] private MovementController movementController = null;
 
-    private Rigidbody rigid = null;
-    private float halfHeight = 0f;
     private bool dead = false;
-    private bool canDash = true;
-
-    private void Start()
-    {
-        rigid = GetComponent<Rigidbody>();
-
-        CapsuleCollider capsuleCollider = GetComponent<CapsuleCollider>();
-        halfHeight = capsuleCollider.height / 2 + 0.05f;
-    }
 
     private void Update()
     {
         if (dead) return;
 
-        Jump();
-        Dash();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            movementController.Jump();
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            movementController.Dash();
+        }
     }
 
     private void FixedUpdate()
@@ -42,56 +35,21 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         if (Input.GetKey(KeyCode.W))
         {
-            AddMovement(transform.forward);
+            movementController.AddMovement(transform.forward);
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            AddMovement(-transform.forward);
+            movementController.AddMovement(-transform.forward);
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            AddMovement(transform.right);
+            movementController.AddMovement(transform.right);
         }
         else if (Input.GetKey(KeyCode.A))
         {
-            AddMovement(-transform.right);
+            movementController.AddMovement(-transform.right);
         }
-    }
-
-    private void Jump()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (Physics.Raycast(transform.position, Vector3.down, halfHeight, jumpeableMask))
-            {
-                rigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            }
-        }
-    }
-
-    private void Dash()
-    {
-        IEnumerator SetDashCoolDown()
-        {
-            yield return new WaitForSeconds(dashCooldown);
-            canDash = true;
-        }
-
-        if (!canDash) return;
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            rigid.AddForce(transform.forward * dashForce, ForceMode.Impulse);
-            canDash = false;
-
-            StartCoroutine(SetDashCoolDown());
-        }
-    }
-
-    private void AddMovement(Vector3 direction)
-    {
-        rigid.AddForce(direction * speed * Time.fixedDeltaTime, ForceMode.Acceleration);
     }
 
     public void Kill ()

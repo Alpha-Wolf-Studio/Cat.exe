@@ -17,6 +17,8 @@ public class PlayfabSceneUI : MonoBehaviour
 
     private void Start()
     {
+        PlayfabManager.Get().Login();
+        
         sendScoreButton.onClick.AddListener(delegate
         {
             if (int.TryParse(inputField.text, out var score))

@@ -37,14 +37,10 @@ public class PlayfabManager : MonoBehaviourSingleton<PlayfabManager>
     }
     
     public bool Connected { get; private set; }
-    
-    private void Start()
-    {
-        Login();
-    }
 
-    private void Login()
+    public void Login()
     {
+        Connected = false;
         var request = new LoginWithCustomIDRequest
         {
             CustomId = GetCustomGUI(),
@@ -74,6 +70,7 @@ public class PlayfabManager : MonoBehaviourSingleton<PlayfabManager>
 
     public void SubmitTimeScore(int time, string nickname)
     {
+
         var userDataRequest = new UpdateUserTitleDisplayNameRequest()
         {
             DisplayName = nickname

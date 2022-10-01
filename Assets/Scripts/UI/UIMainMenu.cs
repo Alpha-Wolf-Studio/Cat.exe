@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UiMainMenu : MonoBehaviour
+public class UIMainMenu : MonoBehaviour
 {
 
     [SerializeField] private Button btnPlay;

@@ -3,9 +3,10 @@ using System;
 public class Timer
 {
     private bool on = false;
-    private float target = 0f;
+    private float start = 0f;
     private float currValue = 0f;
     private MODE mode = default;
+    private Action<float> onUpdate = null;
     private Action onReached = null;
 
     public enum MODE { ONCE, REPEAT }
@@ -13,17 +14,18 @@ public class Timer
     public float CurrValue => currValue;
     public bool On => on;
 
-    public Timer(float target, MODE mode = default, bool autostart = false, Action onReached = null)
+    public Timer(float start, MODE mode = default, bool autostart = false, Action<float> onUpdate = null, Action onReached = null)
     {
         this.mode = mode;
+        this.onUpdate = onUpdate;
         this.onReached = onReached;
 
-        SetTimer(target, autostart);
+        SetTimer(start, autostart);
     }
 
-    public void SetTimer(float target, bool autostart = true)
+    public void SetTimer(float start, bool autostart = true)
     {
-        this.target = target;
+        this.start = start;
 
         Reset();
         ToggleTimer(autostart);
@@ -36,30 +38,34 @@ public class Timer
 
     public void Reset()
     {
-        currValue = 0;
+        currValue = start;
+
+        onUpdate?.Invoke(currValue);
     }
 
     public void Update(float deltaTime)
     {
         if (!on) return;
 
-        currValue += deltaTime;
-        if (currValue >= target)
+        currValue -= deltaTime;
+        if (currValue <= 0)
         {
             OnReachTarget();
         }
+
+        onUpdate?.Invoke(currValue);
     }
 
     private void OnReachTarget()
     {
         on = false;
-        currValue = target;
+        currValue = start;
 
         onReached?.Invoke();
 
         if (mode == MODE.REPEAT)
         {
-            SetTimer(target);
+            SetTimer(start);
         }
     }
 }

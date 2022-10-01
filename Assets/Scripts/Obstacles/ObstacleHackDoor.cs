@@ -42,7 +42,6 @@ public class ObstacleHackDoor : MonoBehaviour, IObstacle
     }
 
 
-
     private void OnCollisionEnter(Collision other)
     {
         CheckIsPlayer(other.transform);

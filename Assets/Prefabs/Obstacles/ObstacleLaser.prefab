@@ -47,10 +47,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laser: {fileID: 7637984433162237391}
-  initialSize: 0.05
+  timePerLaser: 5
+  firstLaserWithoutTimer: 1
   maximumSize: 1
   growSpeed: 1
-  duration: 1
+  laserDuration: 2
+  maximumTwinkles: 3
+  twinklesDuration: 0.2
+  timePerTwinkle: 0.2
 --- !u!1 &7637984433162237391
 GameObject:
   m_ObjectHideFlags: 0

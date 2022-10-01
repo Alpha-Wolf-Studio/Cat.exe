@@ -4,38 +4,64 @@ using UnityEngine;
 
 public class ObstacleLaser : MonoBehaviour, IObstacle
 {
-    [Header("Laser data")]
+    [Header("Laser")]
     public GameObject laser = null;
-    public float initialSize = 0;
+    public float timePerLaser = 0;
+    public bool firstLaserWithoutTimer = false;
     public float maximumSize = 0;
     public float growSpeed = 0;
-    public float duration = 0;
+    public float laserDuration = 0;
 
+    [Header("Twinkles")]
+    public float maximumTwinkles = 0;
+    public float twinklesDuration = 0;
+    public float timePerTwinkle = 0;
+
+    /// Laser private parameter
+    private const float initialSize = 0.05f; /// --> cuando este el modelo de arte esto tendria que ser 1
     private FloatLerper growLerper = new FloatLerper();
-    private Timer timer = null;
+    private Timer timePerLaserTimer = null;
+    private Timer laserDurationTimer = null;
+
+    /// Twinkles private parameter
+    private bool turnOffLaser = false;
+    private MeshRenderer laserMeshRenderer = null;
+    private Timer twinkleDurationTimer = null;
+    private float timePerTwinkleTimer = 0;
+    private int actualTwinkles = 0;
 
     private void Start()
     {
-        timer = new Timer(duration, default, false, null, TurnOffLaser);
+        timePerLaserTimer = new Timer(timePerLaser, default, true, null, TurnOnLaser);
+        laserDurationTimer = new Timer(laserDuration, default, false, null, TurnOffLaser);
+        if (firstLaserWithoutTimer) TurnOnLaser();
+
+        laserMeshRenderer = laser.GetComponent<MeshRenderer>();
+        twinkleDurationTimer = new Timer(twinklesDuration, default, false, null, NextTwinkle);
     }
 
     private void Update()
     {
+        timePerLaserTimer.Update(Time.deltaTime);
         UpdateGrowLerper();
-        UpdateDurationTimer();
+        laserDurationTimer.Update(Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.N)) TurnOnLaser();
+        UpdateTurnOffSecuence();
+        twinkleDurationTimer.Update(Time.deltaTime);
     }
 
     private void TurnOnLaser()
     {
         growLerper.SetLerperValues(initialSize, maximumSize, growSpeed, Lerper<float>.LERPER_TYPE.STEP_SMOOTH, true);
-        timer.ToggleTimer(true);
+        laserDurationTimer.Reset();
+        laserDurationTimer.ToggleTimer(true);
     }
 
     private void TurnOffLaser()
     {
-        growLerper.SetLerperValues(maximumSize, initialSize, growSpeed, Lerper<float>.LERPER_TYPE.STEP_SMOOTH, true);
+        growLerper.SetLerperValues(maximumSize, initialSize, growSpeed, Lerper<float>.LERPER_TYPE.STEP_SMOOTH);
+        turnOffLaser = true;
+        actualTwinkles = 0;
     }
 
     private void UpdateGrowLerper()
@@ -43,7 +69,7 @@ public class ObstacleLaser : MonoBehaviour, IObstacle
         if (growLerper.Active)
         {
             growLerper.UpdateLerper();
-            
+
             /// Laser scale
             Vector3 newScale = new Vector3(laser.transform.localScale.x, growLerper.GetValue(), laser.transform.localScale.z);
             laser.transform.localScale = newScale;
@@ -54,10 +80,39 @@ public class ObstacleLaser : MonoBehaviour, IObstacle
         }
     }
 
-    private void UpdateDurationTimer()
+    private void UpdateTurnOffSecuence()
     {
-        timer.Update(Time.deltaTime);
+        if (turnOffLaser)
+        {
+            if (actualTwinkles < maximumTwinkles)
+            {
+                timePerTwinkleTimer += Time.deltaTime;
+
+                if (timePerTwinkleTimer >= timePerTwinkle)
+                {
+                    laserMeshRenderer.enabled = false;
+                    twinkleDurationTimer.ToggleTimer(true);
+                }
+            }
+            else
+            {
+                turnOffLaser = false;
+                growLerper.ActiveLerper();
+                timePerLaserTimer.Reset();
+                timePerLaserTimer.ToggleTimer(true);
+            }
+        }
     }
+
+    private void NextTwinkle()
+    {
+        laserMeshRenderer.enabled = true;
+        twinkleDurationTimer.Reset();
+        actualTwinkles++;
+
+        if (actualTwinkles < maximumTwinkles) timePerTwinkleTimer = 0;
+    }
+
 
     private void OnCollisionEnter(Collision other)
     {

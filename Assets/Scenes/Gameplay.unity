@@ -302,6 +302,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1438383329080479937, guid: aef195ca200ef1e43a4e4876676d43a5, type: 3}
+      propertyPath: dashForce
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7030836187651882958, guid: aef195ca200ef1e43a4e4876676d43a5, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1929,7 +1933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 1778527788}
   cameraTransform: {fileID: 197921347233935466}
-  cameraOffset: {x: 0, y: 3, z: -5}
+  cameraOffset: {x: 0, y: 7, z: -8}
   smoothTime: 0.3
   rotateCurve:
     serializedVersion: 2

@@ -7,10 +7,13 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] private float speed = 0f;
     [SerializeField] private float jumpForce = 0f;
     [SerializeField] private LayerMask jumpeableMask = default;
+    [SerializeField] private float dashForce = 0f;
+    [SerializeField] private float dashCooldown = 0.2f;
 
     private Rigidbody rigid = null;
     private float halfHeight = 0f;
     private bool dead = false;
+    private bool canDash = true;
 
     private void Start()
     {
@@ -25,6 +28,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (dead) return;
 
         Jump();
+        Dash();
     }
 
     private void FixedUpdate()
@@ -63,6 +67,25 @@ public class PlayerController : MonoBehaviour, IDamageable
             {
                 rigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
+        }
+    }
+
+    private void Dash()
+    {
+        IEnumerator SetDashCoolDown()
+        {
+            yield return new WaitForSeconds(dashCooldown);
+            canDash = true;
+        }
+
+        if (!canDash) return;
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            rigid.AddForce(transform.forward * dashForce, ForceMode.Impulse);
+            canDash = false;
+
+            StartCoroutine(SetDashCoolDown());
         }
     }
 

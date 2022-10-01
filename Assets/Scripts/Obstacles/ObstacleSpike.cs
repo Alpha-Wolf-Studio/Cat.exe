@@ -2,21 +2,25 @@ using UnityEngine;
 
 public class ObstacleSpike : MonoBehaviour, IObstacle
 {
+    private ChildrenCollision[] childrenCollision;
 
-
-    void Start()
+    private void Start ()
     {
-        
-    }
-
-    void Update()
-    {
-        
+        childrenCollision = GetComponentsInChildren<ChildrenCollision>();
+        for (int i = 0; i < childrenCollision.Length; i++)
+        {
+            childrenCollision[i].OnHit += CheckIsPlayer;
+        }
     }
 
     private void OnCollisionEnter (Collision other)
     {
-        if (other.transform.CompareTag("Player"))
+        CheckIsPlayer(other.transform);
+    }
+
+    public void CheckIsPlayer (Transform other)
+    {
+        if (Utils.CheckLayerInMask(GameplayManager.Get().layerPlayer, other.gameObject.layer))
         {
             IDamageable damageable = other.transform.GetComponent<IDamageable>();
             if (damageable != null)

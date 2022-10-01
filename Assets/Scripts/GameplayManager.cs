@@ -19,7 +19,7 @@ public class GameplayManager : MonoBehaviourSingleton<GameplayManager>
 
         timer = new Timer(timerDelay, Timer.MODE.ONCE, false, uiGameplay.UpdateTimerText, EndTimer);
 
-        timer.ToggleTimer(true);    //Llamar esta funcion para empezar el timer
+        timer.ToggleTimer(true); //Llamar esta funcion para empezar el timer
 
         checkPointManager.SetCheckPointCallbacks(EnterCheckPoint, () => timer.ToggleTimer(true));
     }
@@ -68,6 +68,6 @@ public class GameplayManager : MonoBehaviourSingleton<GameplayManager>
         }
 
         timer.Reset();
-        playerController.transform.position = CheckPointManager.lastCheckPoint.GetPositionSpawn();
+        playerController.Respawn();
     }
 }

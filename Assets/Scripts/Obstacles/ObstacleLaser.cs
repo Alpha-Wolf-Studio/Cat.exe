@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstacleLaser : MonoBehaviour, IObstacle
@@ -70,11 +68,11 @@ public class ObstacleLaser : MonoBehaviour, IObstacle
         {
             growLerper.UpdateLerper();
 
-            /// Laser scale
+            // Laser scale
             Vector3 newScale = new Vector3(laser.transform.localScale.x, growLerper.GetValue(), laser.transform.localScale.z);
             laser.transform.localScale = newScale;
 
-            /// Laser position
+            // Laser position
             Vector3 updatePosition = new Vector3(growLerper.GetValue() - initialSize, laser.transform.localPosition.y, laser.transform.localPosition.z);
             laser.transform.localPosition = updatePosition;
         }
@@ -116,10 +114,16 @@ public class ObstacleLaser : MonoBehaviour, IObstacle
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.transform.CompareTag("Player"))
+        CheckIsPlayer(other.transform);
+    }
+
+    public void CheckIsPlayer(Transform other)
+    {
+        if (Utils.CheckLayerInMask(GameplayManager.Get().layerPlayer, other.gameObject.layer))
         {
             IDamageable damageable = other.transform.GetComponent<IDamageable>();
-            if (damageable != null) Kill(damageable);
+            if (damageable != null)
+                Kill(damageable);
         }
     }
 

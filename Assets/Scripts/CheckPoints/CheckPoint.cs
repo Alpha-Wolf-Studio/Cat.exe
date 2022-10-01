@@ -10,9 +10,8 @@ public class CheckPoint : MonoBehaviour
     [SerializeField] private Collider colliderTrigger;
     [SerializeField] private Collider wall;
     [SerializeField] private Transform spawnPoint;
-    [SerializeField] private LayerMask playerMask;
 
-    public bool wasActivated = false;
+    public bool wasActivated;
 
     public int ID { get; set; } = 0;
 
@@ -21,7 +20,7 @@ public class CheckPoint : MonoBehaviour
         if (wasActivated)
             return;
 
-        if (Utils.CheckLayerInMask(playerMask, other.gameObject.layer))
+        if (Utils.CheckLayerInMask(GameplayManager.Get().layerPlayer, other.gameObject.layer))
         {
             wasActivated = true;
             wall.enabled = true;
@@ -32,7 +31,7 @@ public class CheckPoint : MonoBehaviour
 
     private void OnTriggerExit (Collider other)
     {
-        if (Utils.CheckLayerInMask(playerMask, other.gameObject.layer))
+        if (Utils.CheckLayerInMask(GameplayManager.Get().layerPlayer, other.gameObject.layer))
         {
             colliderTrigger.enabled = false;
             OnExitCheckPoint?.Invoke();

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 701766843152094531}
   - component: {fileID: 952730927620479730}
   m_Layer: 0
-  m_Name: Pf_ObstacleSpike
+  m_Name: ObstacleSpike
   m_TagString: InstaKiller
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

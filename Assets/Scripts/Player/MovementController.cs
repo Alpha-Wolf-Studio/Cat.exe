@@ -14,45 +14,45 @@ public class MovementController : MonoBehaviour
     private bool canDash = true;
     private float halfHeight = 0f;
 
-    private void Start()
+    private void Start ()
     {
         rigid = GetComponent<Rigidbody>();
         CapsuleCollider capsuleCollider = GetComponent<CapsuleCollider>();
         halfHeight = capsuleCollider.height / 2 + 0.05f;
     }
 
-    public void AddMovement(Vector3 direction)
+    public void AddMovement (Vector3 direction)
     {
         rigid.AddForce(direction * speed * Time.fixedDeltaTime, ForceMode.Acceleration);
 
         ProcessRotation(direction);
     }
 
-    public void Dash()
+    public void Dash ()
     {
-        IEnumerator SetDashCoolDown()
+        IEnumerator SetDashCoolDown ()
         {
             yield return new WaitForSeconds(dashCooldown);
             canDash = true;
         }
 
         if (!canDash) return;
-        
+
         rigid.AddForce(transform.forward * dashForce, ForceMode.Impulse);
         canDash = false;
 
         StartCoroutine(SetDashCoolDown());
     }
 
-    public void Jump()
-    {        
+    public void Jump ()
+    {
         if (Physics.Raycast(transform.position, Vector3.down, halfHeight, jumpeableMask))
         {
             rigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
 
-    private void ProcessRotation(Vector3 direction)
+    private void ProcessRotation (Vector3 direction)
     {
         Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
 

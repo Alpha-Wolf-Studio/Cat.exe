@@ -74,10 +74,21 @@ public class PlayerController : MonoBehaviour, IDamageable
     public void Kill ()
     {
         dead = true;
+        //Timer se para
+        //Animacion de muerte
+        //Desaparece el modelo
     }
 
     public void Respawn ()
     {
+        //Se usa el ultimo checkpoint del CheckPointManager para volver a posicionar al player
+        Vector3 newPos = default;
+        Vector3 newRot = default;
+        CheckPointManager.CurrentLastTransform(out newPos, out newRot);
+        transform.Translate(newPos);
+        transform.Rotate(newRot);
+        //Animacion de Respawn
+        //Se resetea el Timer
         dead = false;
     }
 }

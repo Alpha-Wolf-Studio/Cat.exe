@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleMovePlatform : MonoBehaviour, IObstacle
+public class ObstacleMovePlatform : MonoBehaviour
 {
     [Header("Move platform")]
     public bool rightDirection = false;
@@ -29,26 +29,5 @@ public class ObstacleMovePlatform : MonoBehaviour, IObstacle
             transform.Translate(Vector2.right * -speed * Time.deltaTime);
             if (transform.position.x <= (initialXPosition + leftBound)) rightDirection = true;
         }
-    }
-
-
-    private void OnCollisionEnter(Collision other)
-    {
-        CheckIsPlayer(other.transform);
-    }
-
-    public void CheckIsPlayer(Transform other)
-    {
-        if (Utils.CheckLayerInMask(GameplayManager.Get().layerPlayer, other.gameObject.layer))
-        {
-            IDamageable damageable = other.transform.GetComponent<IDamageable>();
-            if (damageable != null)
-                Kill(damageable);
-        }
-    }
-
-    public void Kill(IDamageable damageable)
-    {
-        damageable.Kill();
     }
 }

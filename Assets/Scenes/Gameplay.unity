@@ -306,6 +306,14 @@ PrefabInstance:
       propertyPath: dashForce
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 1438383329080479937, guid: aef195ca200ef1e43a4e4876676d43a5, type: 3}
+      propertyPath: cameraTransform
+      value: 
+      objectReference: {fileID: 2006784501}
+    - target: {fileID: 5505715868130213007, guid: aef195ca200ef1e43a4e4876676d43a5, type: 3}
+      propertyPath: rotationSpeed
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 7030836187651882958, guid: aef195ca200ef1e43a4e4876676d43a5, type: 3}
       propertyPath: m_Name
       value: Player

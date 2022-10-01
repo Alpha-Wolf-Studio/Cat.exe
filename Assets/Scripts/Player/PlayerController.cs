@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour, IDamageable
 {
     [SerializeField] private MovementController movementController = null;
+    [SerializeField] private Transform cameraTransform = null;
 
     private bool dead = false;
 
@@ -35,24 +36,24 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         if (Input.GetKey(KeyCode.W))
         {
-            movementController.AddMovement(transform.forward);
+            movementController.AddMovement(cameraTransform.forward);
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            movementController.AddMovement(-transform.forward);
+            movementController.AddMovement(-cameraTransform.forward);
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            movementController.AddMovement(transform.right);
+            movementController.AddMovement(cameraTransform.right);
         }
         else if (Input.GetKey(KeyCode.A))
         {
-            movementController.AddMovement(-transform.right);
+            movementController.AddMovement(-cameraTransform.right);
         }
     }
 
-    public void Kill ()
+    public void Kill()
     {
         dead = true;
         //Timer se para
@@ -60,7 +61,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         //Desaparece el modelo
     }
 
-    public void Respawn ()
+    public void Respawn()
     {
         //Se usa el ultimo checkpoint del CheckPointManager para volver a posicionar al player
         Vector3 newPos = default;

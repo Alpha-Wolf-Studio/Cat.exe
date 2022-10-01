@@ -1,10 +1,10 @@
 using System.Collections;
-
 using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
     [SerializeField] private float speed = 0f;
+    [SerializeField] private float rotationSpeed = 0f;
     [SerializeField] private float jumpForce = 0f;
     [SerializeField] private LayerMask jumpeableMask = default;
     [SerializeField] private float dashForce = 0f;
@@ -24,6 +24,8 @@ public class MovementController : MonoBehaviour
     public void AddMovement(Vector3 direction)
     {
         rigid.AddForce(direction * speed * Time.fixedDeltaTime, ForceMode.Acceleration);
+
+        ProcessRotation(direction);
     }
 
     public void Dash()
@@ -48,5 +50,12 @@ public class MovementController : MonoBehaviour
         {
             rigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
+    }
+
+    private void ProcessRotation(Vector3 direction)
+    {
+        Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
+
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
     }
 }

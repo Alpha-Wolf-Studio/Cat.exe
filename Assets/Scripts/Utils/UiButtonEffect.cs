@@ -42,6 +42,7 @@ public class UiButtonEffect : MonoBehaviour,
     [SerializeField] private GameObject objectToEnable;
 
     [Header("Effect Drag Icon:")]
+    [SerializeField] private bool isTrash = false;
     [SerializeField] private bool isTrasheable = true;
     [SerializeField] private GameObject dragIconPrefab = null;
     private RectTransform holder = null;
@@ -245,12 +246,14 @@ public class UiButtonEffect : MonoBehaviour,
     }
     public void OnDrop(PointerEventData eventData)
     {
+        if (!isTrash) return;
+
         if (eventData.pointerDrag != null)
         {
             UiButtonEffect uiButtonDrag = eventData.pointerDrag.GetComponent<UiButtonEffect>();
             if (uiButtonDrag != null && uiButtonDrag.isTrasheable)
             {
-                Destroy(eventData.pointerDrag.gameObject);
+                eventData.pointerDrag.gameObject.SetActive(false);
             }
         }
     }

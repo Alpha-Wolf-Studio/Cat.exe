@@ -242,6 +242,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Asset_PlataformaDesapareceAlPisar
       objectReference: {fileID: 0}
+    - target: {fileID: 4552266590746149632, guid: f9993c9afe45846429158de48f6caa50, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 363b76323e7ea5a41b547bbb882e7bc9, type: 2}
+    - target: {fileID: 7114000193851509461, guid: f9993c9afe45846429158de48f6caa50, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e473cc9d2d46011469cbcf6170876701, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9993c9afe45846429158de48f6caa50, type: 3}
 --- !u!1 &2474236759610814649 stripped

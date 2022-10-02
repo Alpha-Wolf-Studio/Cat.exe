@@ -11,6 +11,7 @@ public class UIMainMenu : MonoBehaviour
     [SerializeField] private UiButtonEffect btnBackOfCredits;
     [SerializeField] private UiButtonEffect btnLeadBoard;
     [SerializeField] private UiButtonEffect btnBackOfLeadBoard;
+    [SerializeField] private UiButtonEffect btnAlphaWolf;
 
     [SerializeField] private float transitionTime;
     [SerializeField] private CanvasGroup[] menues;
@@ -48,6 +49,7 @@ public class UIMainMenu : MonoBehaviour
         btnSettings.AddBehaviours(ButtonSetting);
         btnCredits.AddBehaviours(ButtonCredits);
         btnLeadBoard.AddBehaviours(ButtonLeadBoard);
+        btnAlphaWolf.AddBehaviours(ButtonAlphaWolf);
 
         btnBackOfCredits.AddBehaviours(ButtonBackCredits);
         btnBackOfLeadBoard.AddBehaviours(ButtonBackLeadBoard);
@@ -66,6 +68,7 @@ public class UIMainMenu : MonoBehaviour
     public void ButtonSetting () => StartCoroutine(SwitchPanel(transitionTime, (int) Menu.Settings, (int) Menu.Main));
     public void ButtonCredits () => StartCoroutine(SwitchPanel(transitionTime, (int) Menu.Credits, (int) Menu.Main));
     public void ButtonLeadBoard () => StartCoroutine(SwitchPanel(transitionTime, (int) Menu.LeadBoard, (int) Menu.Main));
+    public void ButtonAlphaWolf() => Application.OpenURL("https://alphawolfstudiogam.wixsite.com/home");
 
     public void ButtonBackSettings () => StartCoroutine(SwitchPanel(transitionTime, (int) Menu.Main, (int) Menu.Settings));
     public void ButtonBackCredits () => StartCoroutine(SwitchPanel(transitionTime, (int) Menu.Main, (int) Menu.Credits));

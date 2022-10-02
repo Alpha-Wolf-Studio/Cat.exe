@@ -4137,17 +4137,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stepsConfigurations:
-    audioClips: []
-    ConfigType: 0
+    audioClips:
+    - {fileID: 8300000, guid: aa37ae4daee323847ae25da8fd98fc0a, type: 3}
+    - {fileID: 8300000, guid: 94b2ddc9d972e7046b9fd61fe3c1dda6, type: 3}
+    - {fileID: 8300000, guid: 2efc5d3e72d4b2c41b898359c749e462, type: 3}
+    - {fileID: 8300000, guid: 2da9b1b216ab5674485ab8600609c90b, type: 3}
+    - {fileID: 8300000, guid: c8da78aa5a8fbf04ea726b7ba0eedbf6, type: 3}
+    - {fileID: 8300000, guid: eedaf8d7f4910324aaac9c83bdc4efe8, type: 3}
+    - {fileID: 8300000, guid: 1745600575a631a4db40f413128cf3ae, type: 3}
+    - {fileID: 8300000, guid: 0a8919230b5ebdc4382061db1e4da880, type: 3}
+    - {fileID: 8300000, guid: 8e7c44c919d54d24eb194230f4aae493, type: 3}
+    - {fileID: 8300000, guid: 310de5b5830fec94ca91237c1e5ba6b6, type: 3}
+    - {fileID: 8300000, guid: cda7c830c61d59f41a83becf0a81aff6, type: 3}
+    - {fileID: 8300000, guid: faa9338dc86f352468ef51a14f336e72, type: 3}
+    - {fileID: 8300000, guid: 294ad40b7b6a05843a6335323dda802b, type: 3}
+    - {fileID: 8300000, guid: 6ece18f75e0edb545aacacc72737b627, type: 3}
+    - {fileID: 8300000, guid: 0a44081594392b14eb22838da734ff2b, type: 3}
+    ConfigType: 2
   dieConfigurations:
-    audioClips: []
-    ConfigType: 0
+    audioClips:
+    - {fileID: 8300000, guid: 22699e917f221514b90e13b501940cb1, type: 3}
+    - {fileID: 8300000, guid: 252bc9dee02a5a14196f36a11bc209c1, type: 3}
+    - {fileID: 8300000, guid: c4303ddb2226cb3438d3e0d25335e4f7, type: 3}
+    - {fileID: 8300000, guid: 087eb9c9fbfb92f4d8b0d16dc37a39ab, type: 3}
+    - {fileID: 8300000, guid: 1809f8c3276cf754e80534e1b851d527, type: 3}
+    ConfigType: 2
   dashConfigurations:
     audioClips: []
     ConfigType: 0
   jumpConfigurations:
-    audioClips: []
-    ConfigType: 0
+    audioClips:
+    - {fileID: 8300000, guid: b65ffa3bb5e62d340aab9f60a44944d9, type: 3}
+    - {fileID: 8300000, guid: ef74a256c444d3a468e6c11a3f4d5ed4, type: 3}
+    - {fileID: 8300000, guid: b044153e58f9c4c44af66b85ab2f20c5, type: 3}
+    ConfigType: 2
   audioSource: {fileID: 5886786374237173018}
   playerController: {fileID: 1438383329080479937}
 --- !u!1 &7195604315926150415

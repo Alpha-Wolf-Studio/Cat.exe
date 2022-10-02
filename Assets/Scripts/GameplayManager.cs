@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameplayManager : MonoBehaviourSingleton<GameplayManager>
 {
 
+    public Action OnPlayerStart = default;
+    public Action OnPlayerReachedCheckPoint = default;
     public Action OnPlayerTimeAlmostEnd = default;
     public Action OnPlayerRespawn = default;
     public Action OnPlayerWon = default;
@@ -36,6 +38,8 @@ public class GameplayManager : MonoBehaviourSingleton<GameplayManager>
         timer = new Timer(timerDelay, Timer.MODE.ONCE, false, uiGameplay.UpdateTimerText, EndTimer);
         timerAlmost = new Timer(timerAlmostDelay, Timer.MODE.ONCE, false, null, AlmostEndTimer);
         StartTime();
+        
+        OnPlayerStart?.Invoke();
     }
 
     private void OnDestroy()
@@ -57,6 +61,8 @@ public class GameplayManager : MonoBehaviourSingleton<GameplayManager>
         StopTime();
         ResetTime();
         SetCameraRotation(); //Rotar camara
+        
+        OnPlayerReachedCheckPoint?.Invoke();
     }
 
     private void SetCameraRotation ()

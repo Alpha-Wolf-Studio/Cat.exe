@@ -44,4 +44,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c88ef387606e6e4d8edd58778a3bb44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerRunningOutClip: {fileID: 0}
+  respawnAudioClip: {fileID: 0}
+  playerStartClips:
+  - {fileID: 8300000, guid: 37bc01fa06ff866408eec2db862530aa, type: 3}
+  - {fileID: 8300000, guid: b995a9d2cb2cba3438cb575e4bd9782c, type: 3}
+  - {fileID: 8300000, guid: ae82a4756b84518469a2d09c5236f3a3, type: 3}
+  playerReachCheckPointClips:
+  - {fileID: 8300000, guid: 8f771e10dc821384db4a5ae6a7f95a39, type: 3}
+  - {fileID: 8300000, guid: 7631c5bb7e22dd2498a255dc26452394, type: 3}
+  - {fileID: 8300000, guid: 6708fabe886c5c8419af6d054f11643b, type: 3}
+  gameplayMusic: {fileID: 0}
+  gameplayEndMusic: {fileID: 0}
   gameplayManager: {fileID: 0}

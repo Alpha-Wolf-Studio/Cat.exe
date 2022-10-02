@@ -31,6 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4993652460651142967}
+  - {fileID: 7027563081859876099}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -49,7 +50,7 @@ MonoBehaviour:
   OnOpenDoor:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4601819327128529634}
+      - m_Target: {fileID: 7447323772632115019}
         m_TargetAssemblyTypeName: ObstacleAudio, Assembly-CSharp
         m_MethodName: PlayOneShot
         m_Mode: 3
@@ -64,7 +65,7 @@ MonoBehaviour:
   OnCloseDoor:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4601819327128529634}
+      - m_Target: {fileID: 7447323772632115019}
         m_TargetAssemblyTypeName: ObstacleAudio, Assembly-CSharp
         m_MethodName: PlayOneShot
         m_Mode: 3
@@ -209,3 +210,76 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a29b3ae1959d1b94d8e32270666cdae5, type: 3}
   m_PrefabInstance: {fileID: 4812022577086118108}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7861956232147185141
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8432834220162542222}
+    m_Modifications:
+    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510233590481939665, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+      propertyPath: m_Name
+      value: Obstacle Audio
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+--- !u!4 &7027563081859876099 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+  m_PrefabInstance: {fileID: 7861956232147185141}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7447323772632115019 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 738997203619678910, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+  m_PrefabInstance: {fileID: 7861956232147185141}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dc9e45091620044490477b75500fa21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

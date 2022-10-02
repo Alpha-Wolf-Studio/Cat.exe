@@ -16,7 +16,7 @@ public class ObstacleLaser : MonoBehaviour, IObstacle
     [SerializeField] private float timePerTwinkle = 0;
 
     /// Laser private parameter
-    private const float initialSize = 0.05f; /// --> cuando este el modelo de arte esto tendria que ser 1
+    private const float initialSize = 1;
     private FloatLerper growLerper = new FloatLerper();
     private Timer timePerLaserTimer = null;
     private Timer laserDurationTimer = null;
@@ -76,14 +76,8 @@ public class ObstacleLaser : MonoBehaviour, IObstacle
         if (growLerper.Active)
         {
             growLerper.UpdateLerper();
-
-            // Laser scale
-            Vector3 newScale = new Vector3(laser.transform.localScale.x, growLerper.GetValue(), laser.transform.localScale.z);
+            Vector3 newScale = new Vector3(growLerper.GetValue(), laser.transform.localScale.y, laser.transform.localScale.z);
             laser.transform.localScale = newScale;
-
-            // Laser position
-            Vector3 updatePosition = new Vector3(growLerper.GetValue() - initialSize, laser.transform.localPosition.y, laser.transform.localPosition.z);
-            laser.transform.localPosition = updatePosition;
         }
     }
 

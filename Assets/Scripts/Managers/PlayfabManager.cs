@@ -32,7 +32,7 @@ public class PlayfabManager : MonoBehaviourSingleton<PlayfabManager>
     public class LeaderBoardResult
     {
         public string nickname;
-        public int scoreValue;
+        public float timeValue;
     }
     
     public enum LeaderBoardType
@@ -84,7 +84,7 @@ public class PlayfabManager : MonoBehaviourSingleton<PlayfabManager>
 
     public void SubmitTimeScore(float time, string nickname)
     {
-        int newTime = timeParserForPlayfab.ParseTime(time);
+        int newTime = timeParserForPlayfab.ParseGameTimeToDatabaseTime(time);
         StartCoroutine((SubmitScoreCoroutine(newTime, nickname)));
     }
 
@@ -191,7 +191,7 @@ public class PlayfabManager : MonoBehaviourSingleton<PlayfabManager>
         {
             LeaderBoardResult newLeaderboardResult = new LeaderBoardResult();
             newLeaderboardResult.nickname = result.DisplayName;
-            newLeaderboardResult.scoreValue = -result.StatValue;
+            newLeaderboardResult.timeValue = timeParserForPlayfab.ParseDatabaseTimeToGameTime(result.StatValue);
             leaderBoardUpdate.LeaderBoard.Add(newLeaderboardResult);
         }
         requestLocked = false;
@@ -211,7 +211,7 @@ public class PlayfabManager : MonoBehaviourSingleton<PlayfabManager>
         {
             LeaderBoardResult newLeaderboardResult = new LeaderBoardResult();
             newLeaderboardResult.nickname = result.DisplayName;
-            newLeaderboardResult.scoreValue = -result.StatValue;
+            newLeaderboardResult.timeValue = timeParserForPlayfab.ParseDatabaseTimeToGameTime(result.StatValue);
             leaderBoardUpdate.LeaderBoard.Add(newLeaderboardResult);
         }
         requestLocked = false;
@@ -231,7 +231,7 @@ public class PlayfabManager : MonoBehaviourSingleton<PlayfabManager>
         {
             LeaderBoardResult newLeaderboardResult = new LeaderBoardResult();
             newLeaderboardResult.nickname = result.DisplayName;
-            newLeaderboardResult.scoreValue = -result.StatValue;
+            newLeaderboardResult.timeValue =  timeParserForPlayfab.ParseDatabaseTimeToGameTime(result.StatValue);
             leaderBoardUpdate.LeaderBoard.Add(newLeaderboardResult);
         }
         requestLocked = false;

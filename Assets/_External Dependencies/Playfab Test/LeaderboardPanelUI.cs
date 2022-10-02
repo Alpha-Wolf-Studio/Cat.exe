@@ -12,7 +12,8 @@ public class LeaderboardPanelUI : MonoBehaviour
         int resultsAmount = leaderBoard.Count;
         for (int i = 0; i < resultsAmount; i++)
         {
-            positionsText[i].text = leaderBoard[i].nickname + " - " + " Time: " + leaderBoard[i].scoreValue;
+            string timeValueString = leaderBoard[i].timeValue.ToString().Replace(',', '.');
+            positionsText[i].text = leaderBoard[i].nickname + " - " + " Time: " + timeValueString;
         }
 
         for (int i = resultsAmount; i < positionsText.Count; i++)

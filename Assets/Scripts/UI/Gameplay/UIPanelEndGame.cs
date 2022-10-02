@@ -53,7 +53,7 @@ public class UIPanelEndGame : MonoBehaviour
             timePanel.SetActive(true);
             submitTimeButton.onClick.AddListener(delegate
             {
-                string initials = nameInputField.text;
+                string initials = nameInputField.text.ToUpper();
                 PlayfabManager.Get().SubmitTimeScore(timeOnEnd, initials);
                 OnPanelExit?.Invoke();
             });

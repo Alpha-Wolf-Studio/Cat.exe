@@ -3,7 +3,7 @@ using UnityEngine;
 public class TimeParserForPlayfab
 {
 
-    public int ParseTime(float time)
+    public int ParseGameTimeToDatabaseTime(float time)
     {
         int timeModified = 0;
 
@@ -13,4 +13,11 @@ public class TimeParserForPlayfab
         return timeModified;
     }
 
+    public float ParseDatabaseTimeToGameTime(int time)
+    {
+        float timeModified = (float)(-time);
+        timeModified /= 1000;
+        return timeModified;
+    }
+    
 }

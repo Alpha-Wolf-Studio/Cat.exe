@@ -49,7 +49,13 @@ public class UiPanelOptions : MonoBehaviour
     }
 
     private void Restart() => restartPlayableDirector.Play();
-    private void ChangeVolumeEffect (float newValue) => AudioManager.Get().SetSFXVolume(newValue);
+
+    private void ChangeVolumeEffect (float newValue)
+    {
+        AudioManager.Get().SetSFXVolume(newValue);
+        AudioManager.Get().PlaySoundSfxDefault();
+    }
+
     private void ChangeVolumeMusic (float newValue) => AudioManager.Get().SetMusicVolume(newValue);
 
     private void OpenPanelSoundMusic () => panelSoundMusic.gameObject.SetActive(true);

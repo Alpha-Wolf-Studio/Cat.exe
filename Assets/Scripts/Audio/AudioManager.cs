@@ -4,14 +4,19 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviourSingleton<AudioManager>
 {
-    [Header("Audio data")]
-    [SerializeField] private AudioSource[] audioSources;
+    [Header("Audio data")] [SerializeField]
+    private AudioSource[] audioSources;
+
     [SerializeField] private AudioMixer[] audioMixers;
 
     private const string VolumeKeyName = "Volume";
     private const float LinearToDecibelCoefficient = 20f;
     private const float MinLinearValue = 0.00001f;
     private const float MaxLinearValue = 1f;
+
+    [SerializeField] private AudioClip sfxDefault;
+    [SerializeField] private AudioClip musicMainMenu;
+    [SerializeField] private AudioClip musicGameplay;
 
     private AudioSource SfxSource => audioSources[(int)MixerType.Sfx];
     private AudioSource MusicSource => audioSources[(int)MixerType.Music];
@@ -62,4 +67,8 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
 
         audioMixers[(int)mixerType].SetFloat(VolumeKeyName, desiredMixerDecibels);
     }
+
+    public void PlayMusicMainMenu () => PlayMusic(musicMainMenu);
+    public void PlayMusicGameplay () => PlayMusic(musicGameplay);
+    public void PlaySoundSfxDefault () => PlaySfx(sfxDefault);
 }

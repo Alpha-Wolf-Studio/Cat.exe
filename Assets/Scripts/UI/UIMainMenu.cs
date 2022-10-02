@@ -36,6 +36,7 @@ public class UIMainMenu : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.Get().PlayMusicMainMenu();
         Time.timeScale = 1;
         AddAllListeners();
     }

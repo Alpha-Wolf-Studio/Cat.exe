@@ -6,7 +6,7 @@ public class ObstacleDeathZone : MonoBehaviour, IObstacle
 
     [SerializeField] private UnityEvent OnSpawn = default;
     
-    [SerializeField] private ChildrenCollision[] childrenCollision;
+    private ChildrenCollision[] childrenCollision;
     private void Start ()
     {
         childrenCollision = GetComponentsInChildren<ChildrenCollision>();

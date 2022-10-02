@@ -45,6 +45,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a35f79161144d42b2121deb76e0c8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnLaserOn:
+    m_PersistentCalls:
+      m_Calls: []
+  OnLaserOff:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTwinkle:
+    m_PersistentCalls:
+      m_Calls: []
   laser: {fileID: 0}
   timePerLaser: 5
   firstLaserWithoutTimer: 1
@@ -167,64 +176,8 @@ GameObject:
 --- !u!64 &2645488366402897648
 MeshCollider:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 9182700095456045392}
-    m_Modifications:
-    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4510233590481939665, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
-      propertyPath: m_Name
-      value: Obstacle Audio
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
---- !u!4 &7015403045953716529 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
-  m_PrefabInstance: {fileID: 7910039537842563527}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9219650651712407921}
   m_Material: {fileID: 0}

@@ -76,7 +76,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  animatorSpike: {fileID: 0}
+  animatorSpike: {fileID: 8099390890257293849}
   startTime: 0
   timeToUp: 1
   curveUp:
@@ -331,6 +331,11 @@ MonoBehaviour:
 --- !u!4 &7873300005915295707 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 136621c523358af4ab33bc4d4e91bf3d, type: 3}
+  m_PrefabInstance: {fileID: 7694731850250721328}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8099390890257293849 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1923033481949362729, guid: 136621c523358af4ab33bc4d4e91bf3d, type: 3}
   m_PrefabInstance: {fileID: 7694731850250721328}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8913594523267915872

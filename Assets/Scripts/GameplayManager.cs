@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -20,11 +21,17 @@ public class GameplayManager : MonoBehaviourSingleton<GameplayManager>
     private void Start ()
     {
         playerController.OnDeath += KillPlayer;
-        endPoint.OnPlayerReachedTheEnd += OnPlayerWon;
+        if(endPoint) endPoint.OnPlayerReachedTheEnd += OnPlayerWon;
         checkPointManager.SetCheckPointCallbacks(EnterCheckPoint, StartTime);
         
         timer = new Timer(timerDelay, Timer.MODE.ONCE, false, uiGameplay.UpdateTimerText, EndTimer);
         StartTime();
+    }
+
+    private void OnDestroy()
+    {
+        playerController.OnDeath -= KillPlayer;
+        if(endPoint) endPoint.OnPlayerReachedTheEnd -= OnPlayerWon;
     }
 
     private void Update()

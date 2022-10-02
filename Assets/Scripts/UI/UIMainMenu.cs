@@ -54,7 +54,7 @@ public class UIMainMenu : MonoBehaviour
         btnPlay.onClick.RemoveAllListeners();
     }
 
-    public void ButtonPlay () => SceneManagerSingleton.Get().LoadScene(SceneManagerSingleton.SceneIndex.GAMEPLAY);
+    public void ButtonPlay () => SceneManagerSingleton.Get().LoadScene(SceneManagerSingleton.SceneIndex.GAMEPLAY, true);
     public void ButtonSetting () => StartCoroutine(SwitchPanel(transitionTime, (int) Menu.Settings, (int) Menu.Main));
     public void ButtonCredits () => StartCoroutine(SwitchPanel(transitionTime, (int) Menu.Credits, (int) Menu.Main));
     public void ButtonLeadBoard () => StartCoroutine(SwitchPanel(transitionTime, (int) Menu.LeadBoard, (int) Menu.Main));

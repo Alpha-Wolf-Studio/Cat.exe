@@ -617,6 +617,10 @@ PrefabInstance:
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 2006784501}
+    - target: {fileID: 5505715868130213007, guid: aef195ca200ef1e43a4e4876676d43a5, type: 3}
+      propertyPath: minAmountOfMovementToRun
+      value: 0.001
+      objectReference: {fileID: 0}
     - target: {fileID: 7030836187651882958, guid: aef195ca200ef1e43a4e4876676d43a5, type: 3}
       propertyPath: m_Name
       value: Player
@@ -3288,34 +3292,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3953192548886058148, guid: 89e59b236eb08ec48893956e2f339fa2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4237147688601835573, guid: 89e59b236eb08ec48893956e2f339fa2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 4237147688601835573, guid: 89e59b236eb08ec48893956e2f339fa2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.16
-      objectReference: {fileID: 0}
-    - target: {fileID: 4237147688601835573, guid: 89e59b236eb08ec48893956e2f339fa2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4237147688601835573, guid: 89e59b236eb08ec48893956e2f339fa2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4237147688601835573, guid: 89e59b236eb08ec48893956e2f339fa2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4237147688601835573, guid: 89e59b236eb08ec48893956e2f339fa2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4237147688601835573, guid: 89e59b236eb08ec48893956e2f339fa2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}

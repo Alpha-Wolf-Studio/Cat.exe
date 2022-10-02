@@ -24,9 +24,16 @@ public class MovementController : MonoBehaviour
 
     public void AddMovement (Vector3 direction)
     {
+        animator.SetBool("run", true);
+
         rigid.AddForce(direction * speed * Time.fixedDeltaTime, ForceMode.Acceleration);
 
         ProcessRotation(direction);
+    }
+
+    public void StopRunningAnimation()
+    {
+        animator.SetBool("run", false);
     }
 
     public void Dash ()
@@ -54,6 +61,7 @@ public class MovementController : MonoBehaviour
     {
         if (Physics.Raycast(transform.position, Vector3.down, halfHeight, jumpeableMask))
         {
+            animator.SetTrigger("jump");
             rigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }

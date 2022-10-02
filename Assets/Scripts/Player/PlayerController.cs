@@ -15,11 +15,11 @@ public class PlayerController : MonoBehaviour, IDamageable
     private void Awake ()
     {
         movementController = GetComponent<MovementController>();
-        cameraTransform = GameplayManager.Get().cameraController.transform;
     }
 
     private void Start()
     {
+        cameraTransform = GameplayManager.Get().cameraController.transform;
         dissolveEffect.SetDissolve(0);
     } 
 

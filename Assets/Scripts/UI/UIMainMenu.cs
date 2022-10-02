@@ -7,6 +7,7 @@ public class UIMainMenu : MonoBehaviour
     [SerializeField] private UiButtonEffect btnBackground;
     [SerializeField] private UiButtonEffect btnPlay;
     [SerializeField] private UiButtonEffect btnSettings;
+    private UiPanelOptions panelSettings;
     [SerializeField] private UiButtonEffect btnCredits;
     [SerializeField] private UiButtonEffect btnBackOfCredits;
     [SerializeField] private UiButtonEffect btnLeadBoard;
@@ -20,6 +21,7 @@ public class UIMainMenu : MonoBehaviour
 
     private void Awake ()
     {
+        panelSettings = menues[(int) Menu.Settings].GetComponent<UiPanelOptions>();
         foreach (CanvasGroup menu in menues)
         {
             menu.blocksRaycasts = false;
@@ -45,7 +47,7 @@ public class UIMainMenu : MonoBehaviour
 
     void AddAllListeners ()
     {
-        btnBackground.AddBehaviours(OffSettings);
+        btnBackground.AddBehaviours(OffSettings, OffPanelsSounds);
 
         btnPlay.AddBehaviours(ButtonPlay);
         btnSettings.AddBehaviours(ButtonSetting);
@@ -77,6 +79,7 @@ public class UIMainMenu : MonoBehaviour
     public void ButtonBackLeadBoard () => StartCoroutine(SwitchPanel(transitionTime, (int) Menu.Main, (int) Menu.LeadBoard));
     public void OffSettings() => StartCoroutine(OffPanel(transitionTime, (int)Menu.Settings));
 
+    public void OffPanelsSounds () => panelSettings.CloseBothSoundPanel();
     IEnumerator OffPanel (float maxTime, int offMenu)
     {
         float onTime = 0;

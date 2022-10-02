@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Playables;
@@ -17,13 +18,23 @@ public class UiPanelOptions : MonoBehaviour
 
     private void Start ()
     {
-        btnReset.AddBehaviours(Restart);
-        btnShutDown.AddBehaviours();
+        btnReset.AddBehaviours(Restart, CloseBothSoundPanel);
+        btnShutDown.AddBehaviours(null, CloseBothSoundPanel);
+
         btnSoundMusic.AddBehaviours(null, OpenPanelSoundMusic);
+        btnSoundMusic.AddBehaviours(null, ClosePanelSoundSfx);
+
         btnSoundSfx.AddBehaviours(null, OpenPanelSoundSfx);
+        btnSoundSfx.AddBehaviours(null, ClosePanelSoundMusic);
 
         sliderSoundMusic.onValueChanged.AddListener(ChangeVolumeMusic);
         sliderSoundSfx.onValueChanged.AddListener(ChangeVolumeEffect);
+    }
+
+    private void OnEnable ()
+    {
+        ClosePanelSoundMusic();
+        ClosePanelSoundSfx();
     }
 
     private void OnDestroy ()
@@ -47,5 +58,10 @@ public class UiPanelOptions : MonoBehaviour
     private void ClosePanelSoundMusic() => panelSoundMusic.gameObject.SetActive(false);
     private void ClosePanelSoundSfx() => panelSoundSfx.gameObject.SetActive(false);
 
+    public void CloseBothSoundPanel ()
+    {
+        ClosePanelSoundMusic();
+        ClosePanelSoundSfx();
+    }
 
 }

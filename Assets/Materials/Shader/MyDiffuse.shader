@@ -6,6 +6,8 @@ Shader "Custom/MyDiffuse"
         _MainTex("Albedo (RGB)", 2D) = "white" {}
         _NoiseTex("Noise", 2D) = "white" {}
         _Cutoff("Cut off", Range(0, 1)) = 0.25
+        [HDR] _EmissionColor("Emmision Color", Color) = (0,0,0)
+        _EmitTex("Emission Texture", 2D) = "white" {}
         _EdgeWidth("Edge Width", Range(0, 1)) = 0.05
         [HDR] _EdgeColor("Edge Color", Color) = (1,1,1,1)
         _SpecColor("Specular Color", Color) = (1,1,1,1)
@@ -25,10 +27,14 @@ Shader "Custom/MyDiffuse"
     
             //user defined variables
             fixed4 _Color;
-            fixed4 _EdgeColor;
-            
+            fixed4 _EdgeColor;     
+            fixed4 _EmissionColor;
+
             sampler2D _MainTex;
             float4 _MainTex_ST;
+
+            sampler2D _EmitTex;
+            float4 _EmitTex_ST;
             
             sampler2D _NoiseTex;
             float4 _NoiseTex_ST;
@@ -47,15 +53,17 @@ Shader "Custom/MyDiffuse"
                 float4 vertex : POSITION;
                 float3 normal : NORMAL;
                 float4 texcoord : TEXCOORD0;
-                float4 noisecoord : TEXCOORD0;
+                float4 noisecoord : TEXCOORD1;
+                float4 emissioncoord : TEXCOORD2;
             };
     
             struct vertexOutput {
                 float4 pos : SV_POSITION;
                 float4 tex : TEXCOORD0;
                 float4 noise : TEXCOORD1;
-                float4 posWorld : TEXCOORD2;
-                float3 normalDir : TEXCOORD3;
+                float4 emission: TEXCOORD2;
+                float4 posWorld : TEXCOORD3;
+                float3 normalDir : TEXCOORD4;
             };
     
             //vertex function
@@ -68,6 +76,7 @@ Shader "Custom/MyDiffuse"
                 o.pos = UnityObjectToClipPos(v.vertex);
                 o.tex = v.texcoord;
                 o.noise = v.noisecoord;
+                o.emission = v.emissioncoord;
     
                 return o;
             }
@@ -101,6 +110,7 @@ Shader "Custom/MyDiffuse"
     
                 //TextureMaps
                 float4 tex = tex2D(_MainTex, i.tex.xy * _MainTex_ST.xy + _MainTex_ST.zw);
+                float4 emmision = tex2D(_EmitTex, i.emission.xy * _EmitTex_ST.xy + _EmitTex_ST.zw);
 
                 //Dissolve
                 float4 noise = tex2D(_NoiseTex, i.noise.xy * _NoiseTex_ST.xy + _NoiseTex_ST.zw);
@@ -108,7 +118,14 @@ Shader "Custom/MyDiffuse"
 
                 if (noise.r >= (_Cutoff * (_EdgeWidth + 1.0)))
                 {
-                    return float4(tex.xyz * lightFinal * _Color.rgb, noise.r);
+                    if (emmision.r > 0.5f)
+                    {
+                        return float4(tex.xyz * _EmissionColor.rgb, emmision.r);
+                    }
+                    else
+                    {
+                        return float4(tex.xyz * lightFinal * _Color.rgb, noise.r);
+                    }
                 }
                 else
                 {

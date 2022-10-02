@@ -41,6 +41,14 @@ Material:
         m_Texture: {fileID: 2800000, guid: d6f96a7e24fd7f74cb338133b9c7e589, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _EmitMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmitTex:
+        m_Texture: {fileID: 2800000, guid: d6f96a7e24fd7f74cb338133b9c7e589, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: d6f96a7e24fd7f74cb338133b9c7e589, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -67,7 +75,7 @@ Material:
     - _Cutoff: 0
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _EdgeWidth: 0.05
+    - _EdgeWidth: 0.105
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -82,8 +90,8 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1.7616467, g: 0.32407656, b: 1.7084036, a: 1}
+    - _Color: {r: 2.3994496, g: 0.93940717, b: 0.93940717, a: 1}
     - _EdgeColor: {r: 0.32355502, g: 68.5935, b: 47.275124, a: 1}
-    - _EmissionColor: {r: 0.99895525, g: 0, b: 1, a: 1}
+    - _EmissionColor: {r: 2.685341, g: 0, b: 4, a: 1}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

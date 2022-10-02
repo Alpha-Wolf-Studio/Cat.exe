@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ObstacleWallHack : MonoBehaviour, IObstacle
 {
-
     [SerializeField] private WallType wallType = default;
     [SerializeField] private float wallForwardSpeed = 5f;
     [SerializeField] private float wallBackwardSpeed = 1f;

@@ -1,9 +1,13 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
+using UnityEngine.Events;
 
 public class ObstacleSpikeHack : MonoBehaviour, IObstacle
 {
+    
+    [SerializeField] private UnityEvent OnSpikeStartMoving;
+    [SerializeField] private UnityEvent OnSpikeUp;
+    
     [SerializeField] private Transform animatorSpike;
     [SerializeField] private float startTime;
 
@@ -50,6 +54,9 @@ public class ObstacleSpikeHack : MonoBehaviour, IObstacle
     {
         while (true) // AnimateAlways
         {
+            
+            OnSpikeStartMoving?.Invoke();
+            
             while (deltaTime < timeToUp)
             {
                 SetPositionByCurve(curveUp);
@@ -64,6 +71,8 @@ public class ObstacleSpikeHack : MonoBehaviour, IObstacle
             }
             deltaTime -= timeToStayUp;
 
+            OnSpikeUp?.Invoke();
+            
             while (deltaTime < timeToDown)
             {
                 SetPositionByCurve(curveDown);

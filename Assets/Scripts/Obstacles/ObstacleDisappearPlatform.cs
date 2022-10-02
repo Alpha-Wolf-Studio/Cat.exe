@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ObstacleDisappearPlatform : MonoBehaviour
 {
+
+    [SerializeField] private UnityEvent OnStartShake = null;
+    
     [Header("Platform material")]
     [SerializeField] private Material dissolve = null;
     [SerializeField] private float timeForEffect = 1;
@@ -64,6 +68,7 @@ public class ObstacleDisappearPlatform : MonoBehaviour
         if (Utils.CheckLayerInMask(GameplayManager.Get().layerPlayer, other.gameObject.layer))
         {
             shaking = true;
+            OnStartShake?.Invoke();
         }
     }
 }

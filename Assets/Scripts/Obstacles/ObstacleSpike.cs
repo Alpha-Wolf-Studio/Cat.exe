@@ -1,7 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ObstacleSpike : MonoBehaviour, IObstacle
 {
+
+    [SerializeField] private UnityEvent OnSpawn;
+    
     [Header("Spike")]
     [SerializeField] private float timeActive = 0f;
 
@@ -17,6 +21,8 @@ public class ObstacleSpike : MonoBehaviour, IObstacle
         {
             childrenCollision[i].OnHit += CheckIsPlayer;
         }
+        
+        OnSpawn?.Invoke();
     }
 
     private void Update()

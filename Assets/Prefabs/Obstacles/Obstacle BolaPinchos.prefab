@@ -31,6 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6001972299126204557}
+  - {fileID: 5792841716782159464}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -46,6 +47,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 327793dad9eb0b84d88fe02d85574a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnSpawn:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6248903058826867744}
+        m_TargetAssemblyTypeName: ObstacleAudio, Assembly-CSharp
+        m_MethodName: PlayLoop
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   timeActive: 1
 --- !u!54 &2514462683838282821
 Rigidbody:
@@ -164,3 +180,76 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cd090eefd95e741499797c393780c54e, type: 3}
   m_PrefabInstance: {fileID: 6107430287478329190}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6699634632632581790
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6757764616833676157}
+    m_Modifications:
+    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510233590481939665, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+      propertyPath: m_Name
+      value: Obstacle Audio
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+--- !u!4 &5792841716782159464 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 909072821930780918, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+  m_PrefabInstance: {fileID: 6699634632632581790}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6248903058826867744 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 738997203619678910, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+  m_PrefabInstance: {fileID: 6699634632632581790}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dc9e45091620044490477b75500fa21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

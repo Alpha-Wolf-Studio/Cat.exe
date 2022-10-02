@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class GameplayManager : MonoBehaviourSingleton<GameplayManager>
 {
+
+    public Action OnPlayerTimeAlmostEnd = default;
+    public Action OnPlayerRespawn = default;
+    public Action OnPlayerWon = default;
+
     [Header("Gameplay")]
     public LayerMask layerPlayer;
     public PlayerController playerController;
@@ -14,19 +19,22 @@ public class GameplayManager : MonoBehaviourSingleton<GameplayManager>
     [SerializeField] private UIGameplay uiGameplay;
     
     private readonly float timerDelay = 10f;
+    private readonly float timerAlmostDelay = 8f;
     private readonly float timeToRespawn = 2;
     private bool isTimeStoped = false;
     private Timer timer;
+    private Timer timerAlmost;
     private float globalTime = 0;
     private void Start ()
     {
         AudioManager.Get().PlayMusicGameplay();
 
         playerController.OnDeath += KillPlayer;
-        if(endPoint) endPoint.OnPlayerReachedTheEnd += OnPlayerWon;
+        if(endPoint) endPoint.OnPlayerReachedTheEnd += PlayerWon;
         checkPointManager.SetCheckPointCallbacks(EnterCheckPoint, StartTime);
         
         timer = new Timer(timerDelay, Timer.MODE.ONCE, false, uiGameplay.UpdateTimerText, EndTimer);
+        timerAlmost = new Timer(timerAlmostDelay, Timer.MODE.ONCE, false, null, AlmostEndTimer);
         StartTime();
     }
 
@@ -40,6 +48,7 @@ public class GameplayManager : MonoBehaviourSingleton<GameplayManager>
     {
         if (isTimeStoped) return;
         timer.Update(Time.deltaTime);
+        timerAlmost.Update(Time.deltaTime);
         globalTime += Time.deltaTime;
     }
 
@@ -56,10 +65,9 @@ public class GameplayManager : MonoBehaviourSingleton<GameplayManager>
         cameraController.Rotate(rot);
     }
 
-    private void EndTimer ()
-    {
-        KillPlayer();
-    }
+    private void EndTimer () => KillPlayer();
+
+    private void AlmostEndTimer() => OnPlayerTimeAlmostEnd?.Invoke();
 
     public void KillPlayer ()
     {
@@ -81,18 +89,22 @@ public class GameplayManager : MonoBehaviourSingleton<GameplayManager>
         }
 
         timer.Reset();
+        timerAlmost.Reset();
         playerController.Respawn();
+        OnPlayerRespawn?.Invoke();
     }
 
     private void StartTime()
     {
         timer.ToggleTimer(true);
+        timerAlmost.ToggleTimer(true);
         isTimeStoped = false;
     }
 
     private void StopTime()
     {
         timer.ToggleTimer(false);
+        timerAlmost.ToggleTimer(false);
         isTimeStoped = true;
         CheckPointManager.lastCheckPoint.ResetCheckPoint();
     }
@@ -100,13 +112,15 @@ public class GameplayManager : MonoBehaviourSingleton<GameplayManager>
     private void ResetTime()
     {
         timer.SetTimer(timerDelay, false);
+        timerAlmost.SetTimer(timerAlmostDelay, false);
     }
     
-    private void OnPlayerWon()
+    private void PlayerWon()
     {
         playerController.enabled = false;
         StopTime();
         uiGameplay.PlayerFinished(globalTime);
+        OnPlayerWon?.Invoke();
     }
     
 }

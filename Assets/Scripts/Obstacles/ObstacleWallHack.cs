@@ -1,9 +1,13 @@
-using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ObstacleWallHack : MonoBehaviour, IObstacle
 {
+
+    [SerializeField] private UnityEvent OnWallStartMoving;
+    [SerializeField] private UnityEvent OnWallReachEnd;
+    
     [SerializeField] private WallType wallType = default;
     [SerializeField] private float wallForwardSpeed = 5f;
     [SerializeField] private float wallBackwardSpeed = 1f;
@@ -70,6 +74,9 @@ public class ObstacleWallHack : MonoBehaviour, IObstacle
             yield return null;
             if (Physics.Raycast(transform.position, transform.right, wallFrontRaycastDistance, playerLayerMask))
             {
+                
+                OnWallStartMoving?.Invoke();
+                
                 float t = 0;
                 while (t < 1)
                 {
@@ -79,6 +86,8 @@ public class ObstacleWallHack : MonoBehaviour, IObstacle
                 }
 
                 transform.position = wallEndTransform.position;
+                
+                OnWallReachEnd?.Invoke();
             
                 while (t > 0)
                 {
@@ -97,6 +106,9 @@ public class ObstacleWallHack : MonoBehaviour, IObstacle
         while (enabled)
         {
             yield return new WaitForSeconds(wallWaitTime);
+            
+            OnWallStartMoving?.Invoke();
+            
             float t = 0;
             while (t < 1)
             {
@@ -106,6 +118,8 @@ public class ObstacleWallHack : MonoBehaviour, IObstacle
             }
 
             transform.position = wallEndTransform.position;
+            
+            OnWallReachEnd?.Invoke();
             
             while (t > 0)
             {

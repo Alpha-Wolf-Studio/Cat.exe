@@ -1,7 +1,12 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ObstacleHackDoor : MonoBehaviour
 {
+
+    [SerializeField] private UnityEvent OnOpenDoor = default;
+    [SerializeField] private UnityEvent OnCloseDoor = default;
+    
     [Header("Hack door")]
     [SerializeField] private bool startOpen = false;
     [SerializeField] private float timePerOpenDoor = 0;
@@ -29,6 +34,7 @@ public class ObstacleHackDoor : MonoBehaviour
         animator.Play("Open");
         openDoorTimer.Reset();
         openDoorTimer.ToggleTimer(true);
+        OnOpenDoor?.Invoke();
     }
 
     private void CloseDoor()
@@ -36,5 +42,6 @@ public class ObstacleHackDoor : MonoBehaviour
         animator.Play("Close");
         timePerOpenDoorTimer.Reset();
         timePerOpenDoorTimer.ToggleTimer(true);
+        OnCloseDoor?.Invoke();
     }
 }

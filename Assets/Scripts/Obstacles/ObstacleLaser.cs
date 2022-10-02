@@ -1,7 +1,13 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ObstacleLaser : MonoBehaviour, IObstacle
 {
+    
+    [SerializeField] private UnityEvent OnLaserOn;
+    [SerializeField] private UnityEvent OnLaserOff;
+    [SerializeField] private UnityEvent OnTwinkle;
+    
     [Header("Laser")]
     [SerializeField] private GameObject laser = null;
     [SerializeField] private float timePerLaser = 0;
@@ -62,6 +68,7 @@ public class ObstacleLaser : MonoBehaviour, IObstacle
         growLerper.SetLerperValues(initialSize, maximumSize, growSpeed, Lerper<float>.LERPER_TYPE.STEP_SMOOTH, true);
         laserDurationTimer.Reset();
         laserDurationTimer.ToggleTimer(true);
+        OnLaserOn?.Invoke();
     }
 
     private void TurnOffLaser()
@@ -69,6 +76,7 @@ public class ObstacleLaser : MonoBehaviour, IObstacle
         growLerper.SetLerperValues(maximumSize, initialSize, growSpeed, Lerper<float>.LERPER_TYPE.STEP_SMOOTH);
         turnOffLaser = true;
         actualTwinkles = 0;
+        OnLaserOff?.Invoke();
     }
 
     private void UpdateGrowLerper()
@@ -93,6 +101,7 @@ public class ObstacleLaser : MonoBehaviour, IObstacle
                 {
                     laserMeshRenderer.enabled = false;
                     twinkleDurationTimer.ToggleTimer(true);
+                    OnTwinkle?.Invoke();
                 }
             }
             else

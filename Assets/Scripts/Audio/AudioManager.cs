@@ -4,9 +4,8 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviourSingleton<AudioManager>
 {
-    [Header("Audio data")] [SerializeField]
-    private AudioSource[] audioSources;
-
+    [Header("Audio data")]
+    [SerializeField] private AudioSource[] audioSources;
     [SerializeField] private AudioMixer[] audioMixers;
 
     private const string VolumeKeyName = "Volume";
@@ -26,11 +25,13 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
 
     public void PlaySfx(AudioClip clip)
     {
-        SfxSource.PlayOneShot(clip);
+        if(clip) SfxSource.PlayOneShot(clip);
     }
 
     public void PlayMusic(AudioClip clip)
     {
+        if (!clip) return;
+
         MusicSource.clip = clip;
         MusicSource.Play();
     }

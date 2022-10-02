@@ -1,9 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ObstacleSpitterVirus : MonoBehaviour
 {
+
+    [SerializeField] private UnityEvent OnSpit = default;
+
     [Header("Ball spawn")]
     [SerializeField] private float timePerBall = 0f;
     [SerializeField] private bool firstBallWithoutTimer = default;
@@ -33,5 +35,6 @@ public class ObstacleSpitterVirus : MonoBehaviour
 
         ballTimer.Reset();
         ballTimer.ToggleTimer(true);
+        OnSpit?.Invoke();
     }
 }

@@ -1,7 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ObstacleDeathZone : MonoBehaviour, IObstacle
 {
+
+    [SerializeField] private UnityEvent OnSpawn = default;
+    
     [SerializeField] private ChildrenCollision[] childrenCollision;
     private void Start ()
     {
@@ -10,6 +14,8 @@ public class ObstacleDeathZone : MonoBehaviour, IObstacle
         {
             childrenCollision[i].OnHit += CheckIsPlayer;
         }
+        
+        OnSpawn?.Invoke();
     }
 
     private void OnCollisionEnter (Collision other)

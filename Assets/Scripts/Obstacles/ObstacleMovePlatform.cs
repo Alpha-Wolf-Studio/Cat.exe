@@ -1,9 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ObstacleMovePlatform : MonoBehaviour
 {
+
+    [SerializeField] private UnityEvent OnSpawn = default;
+    
     [Header("Move platform")]
     [SerializeField] private bool rightDirection = false;
     [SerializeField] private float speed = 0;
@@ -15,6 +17,7 @@ public class ObstacleMovePlatform : MonoBehaviour
     private void Start()
     {
         initialXPosition = transform.position.x;
+        OnSpawn?.Invoke();
     }
 
     private void Update()

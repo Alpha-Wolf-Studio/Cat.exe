@@ -46,6 +46,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2abd00c6ed6e3cb4d8b1f64e954afce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnOpenDoor:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4601819327128529634}
+        m_TargetAssemblyTypeName: ObstacleAudio, Assembly-CSharp
+        m_MethodName: PlayOneShot
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnCloseDoor:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4601819327128529634}
+        m_TargetAssemblyTypeName: ObstacleAudio, Assembly-CSharp
+        m_MethodName: PlayOneShot
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   startOpen: 1
   timePerOpenDoor: 5
   openDoorDuration: 2

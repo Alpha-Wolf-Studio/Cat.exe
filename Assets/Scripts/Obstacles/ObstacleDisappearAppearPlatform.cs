@@ -9,16 +9,16 @@ public class ObstacleDisappearAppearPlatform : MonoBehaviour
     [SerializeField] private float timePerDisappear = 0;
     [SerializeField] private float disappearDuration = 0;
 
-    private MeshRenderer meshRenderer = null;
-    private BoxCollider boxCollider = null;
+    [Header("Models")]
+    [SerializeField] private int totalModels = 0;
+    [SerializeField] private MeshRenderer[] meshRenderers = null;
+    [SerializeField] private Collider[] colliders = null;
+
     private Timer timePerDisappearTimer = null;
     private Timer disappearTimer = null;
 
     private void Awake()
     {
-        meshRenderer = GetComponent<MeshRenderer>();    
-        boxCollider = GetComponent<BoxCollider>();
-
         timePerDisappearTimer = new Timer(timePerDisappear, default, true, null, DisappearPlatform);
         disappearTimer = new Timer(disappearDuration, default, false, null, AppearPlatform);
         if (startDisappear) DisappearPlatform();
@@ -32,16 +32,24 @@ public class ObstacleDisappearAppearPlatform : MonoBehaviour
 
     private void DisappearPlatform()
     {
-        meshRenderer.enabled = false;
-        boxCollider.enabled = false;
+        for (int i = 0; i < totalModels; i++)
+        {
+            meshRenderers[i].enabled = false;
+            colliders[i].enabled = false;
+        }
+
         disappearTimer.Reset();
         disappearTimer.ToggleTimer(true);
     }
 
     private void AppearPlatform()
     {
-        meshRenderer.enabled = true;
-        boxCollider.enabled = true;
+        for (int i = 0; i < totalModels; i++)
+        {
+            meshRenderers[i].enabled = true;
+            colliders[i].enabled = true;
+        }
+
         timePerDisappearTimer.Reset();
         timePerDisappearTimer.ToggleTimer(true);
     }

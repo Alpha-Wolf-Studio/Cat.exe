@@ -14,7 +14,7 @@ public class PlayfabManager : MonoBehaviourSingleton<PlayfabManager>
     public Action<LeaderBoardUpdate> OnLeaderboardUpdated;
     public Action OnLeaderboardUpdatedFailed;
 
-    private readonly string PLAYER_PREF_ID = "playerPrefID";
+    //private readonly string PLAYER_PREF_ID = "playerPrefID";
     private readonly string TIME_SCORE_LEADERBOARD_ALLTIME = "TimeScoreComplete";
     private readonly string TIME_SCORE_LEADERBOARD_WEEKLY = "TimeScoreWeekly";
     private readonly string TIME_SCORE_LEADERBOARD_DAILY = "TimeScoreDaily";

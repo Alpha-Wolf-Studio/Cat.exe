@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -36,6 +37,12 @@ public class UiButtonEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     [Header("Other:")]
     [SerializeField] private bool enableObject;
     [SerializeField] private GameObject objectToEnable;
+
+    /// Double click
+    private const float timeBetweenClick = 0.5f;
+    private bool isTimeCheckAllowed = true;
+    private float firstClickTime;
+    private int totalClicks;
 
     private void Awake()
     {
@@ -165,9 +172,37 @@ public class UiButtonEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         OnMouseExitButton();
     }
+
     public void OnPointerClick(PointerEventData eventData)
     {
-        OnMouseClick?.Invoke();
         //AkSoundEngine.PostEvent(AK.EVENTS.UICLICKBUTTON, gameObject);
+
+        if (totalClicks == 0)
+        {
+            totalClicks++;
+        }
+        else if (totalClicks == 1 && isTimeCheckAllowed)
+        {
+            totalClicks++;
+            firstClickTime = Time.time;
+            StartCoroutine(CheckDoubleClick());
+        }
+    }
+
+    IEnumerator CheckDoubleClick()
+    {
+        isTimeCheckAllowed = false;
+        while (Time.time < firstClickTime + timeBetweenClick)
+        {
+            if (totalClicks == 2)
+            {
+                /// Double click
+                OnMouseClick?.Invoke();
+                break;
+            }
+            yield return new WaitForEndOfFrame();
+        }
+        totalClicks = 0;
+        isTimeCheckAllowed = true;
     }
 }

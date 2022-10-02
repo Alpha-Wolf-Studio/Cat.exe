@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         OnDeath?.Invoke();
         dead = true;
-        //Animacion de muerte
+        movementController.TriggerDeathAnimation();
         dissolveEffect.SetDissolve(1); //Desaparece el modelo
     }
 
@@ -93,8 +93,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         CheckPointManager.CurrentLastTransform(out newPos, out newRot);
         transform.position = newPos;
         transform.rotation = Quaternion.Euler(newRot);
-        //Animacion de Respawn
-        dissolveEffect.SetDissolve(0);
+        dissolveEffect.SetDissolve(0);//Reaparece el modelo
         //Se resetea el Timer
         dead = false;
     }

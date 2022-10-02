@@ -57,6 +57,11 @@ public class MovementController : MonoBehaviour
         rigid.AddForce(transform.forward * dashForce, ForceMode.Impulse);
     }
 
+    public void TriggerDeathAnimation()
+    {
+        animator.SetTrigger("death");
+    }
+
     public void Jump ()
     {
         if (Physics.Raycast(transform.position, Vector3.down, halfHeight, jumpeableMask))

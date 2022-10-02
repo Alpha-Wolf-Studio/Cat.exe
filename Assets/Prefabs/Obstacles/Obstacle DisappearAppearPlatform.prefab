@@ -83,6 +83,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5579244969797529201, guid: d6d7fe4c00500af4c83daa30d42f99ba, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 363b76323e7ea5a41b547bbb882e7bc9, type: 2}
+    - target: {fileID: -3375514371461744187, guid: d6d7fe4c00500af4c83daa30d42f99ba, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e473cc9d2d46011469cbcf6170876701, type: 2}
     - target: {fileID: 919132149155446097, guid: d6d7fe4c00500af4c83daa30d42f99ba, type: 3}
       propertyPath: m_Name
       value: Asset_PlataformaDesaparece

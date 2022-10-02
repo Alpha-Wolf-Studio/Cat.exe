@@ -28,6 +28,8 @@ public class ObstacleLaser : MonoBehaviour, IObstacle
     private float timePerTwinkleTimer = 0;
     private int actualTwinkles = 0;
 
+    private ChildrenCollision[] childrenCollision;
+    
     private void Start()
     {
         timePerLaserTimer = new Timer(timePerLaser, default, true, null, TurnOnLaser);
@@ -36,6 +38,13 @@ public class ObstacleLaser : MonoBehaviour, IObstacle
 
         laserMeshRenderer = laser.GetComponent<MeshRenderer>();
         twinkleDurationTimer = new Timer(twinklesDuration, default, false, null, NextTwinkle);
+        
+        childrenCollision = GetComponentsInChildren<ChildrenCollision>();
+        for (int i = 0; i < childrenCollision.Length; i++)
+        {
+            childrenCollision[i].OnHit += CheckIsPlayer;
+        }
+        
     }
 
     private void Update()
@@ -109,12 +118,6 @@ public class ObstacleLaser : MonoBehaviour, IObstacle
         actualTwinkles++;
 
         if (actualTwinkles < maximumTwinkles) timePerTwinkleTimer = 0;
-    }
-
-
-    private void OnCollisionEnter(Collision other)
-    {
-        CheckIsPlayer(other.transform);
     }
 
     public void CheckIsPlayer(Transform other)

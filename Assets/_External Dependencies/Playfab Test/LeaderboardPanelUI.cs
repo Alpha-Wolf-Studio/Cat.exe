@@ -12,7 +12,7 @@ public class LeaderboardPanelUI : MonoBehaviour
         int resultsAmount = leaderBoard.Count;
         for (int i = 0; i < resultsAmount; i++)
         {
-            positionsText[i].text = leaderBoard[i].nickname + " - " + " Score: " + leaderBoard[i].scoreValue;
+            positionsText[i].text = leaderBoard[i].nickname + " - " + " Time: " + leaderBoard[i].scoreValue;
         }
 
         for (int i = resultsAmount; i < positionsText.Count; i++)

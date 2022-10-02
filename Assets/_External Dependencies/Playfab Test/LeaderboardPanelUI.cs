@@ -8,7 +8,6 @@ public class LeaderboardPanelUI : MonoBehaviour
 
     public void SetLeaderboard(List<PlayfabManager.LeaderBoardResult> leaderBoard)
     {
-        Debug.Log("Update leaderBoard");
         int resultsAmount = leaderBoard.Count;
         for (int i = 0; i < resultsAmount; i++)
         {

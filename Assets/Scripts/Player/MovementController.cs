@@ -9,6 +9,7 @@ public class MovementController : MonoBehaviour
     [SerializeField] private LayerMask jumpeableMask = default;
     [SerializeField] private float dashForce = 0f;
     [SerializeField] private float dashCooldown = 0.2f;
+    [SerializeField] private Animator animator = null;
 
     private Rigidbody rigid = null;
     private bool canDash = true;
@@ -38,10 +39,15 @@ public class MovementController : MonoBehaviour
 
         if (!canDash) return;
 
-        rigid.AddForce(transform.forward * dashForce, ForceMode.Impulse);
+        animator.SetTrigger("dash");
         canDash = false;
 
         StartCoroutine(SetDashCoolDown());
+    }
+
+    public void MovementDash()
+    {
+        rigid.AddForce(transform.forward * dashForce, ForceMode.Impulse);
     }
 
     public void Jump ()

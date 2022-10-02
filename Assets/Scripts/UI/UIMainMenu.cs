@@ -5,13 +5,12 @@ using UnityEngine.UI;
 public class UIMainMenu : MonoBehaviour
 {
 
-    [SerializeField] private Button btnPlay;
-    [SerializeField] private Button btnSettings;
-    [SerializeField] private Button btnBackOfSettings;
-    [SerializeField] private Button btnCredits;
-    [SerializeField] private Button btnBackOfCredits;
-    [SerializeField] private Button btnLeadBoard;
-    [SerializeField] private Button btnBackOfLeadBoard;
+    [SerializeField] private UiButtonEffect btnPlay;
+    [SerializeField] private UiButtonEffect btnSettings;
+    [SerializeField] private UiButtonEffect btnCredits;
+    [SerializeField] private UiButtonEffect btnBackOfCredits;
+    [SerializeField] private UiButtonEffect btnLeadBoard;
+    [SerializeField] private UiButtonEffect btnBackOfLeadBoard;
 
     [SerializeField] private float transitionTime;
     [SerializeField] private CanvasGroup[] menues;
@@ -31,27 +30,31 @@ public class UIMainMenu : MonoBehaviour
         menues[(int) Menu.Main].alpha = 1;
     }
 
-    private void Start ()
+    private void Start()
     {
         Time.timeScale = 1;
         AddAllListeners();
     }
 
+    private void OnDestroy()
+    {
+        RemoveAllListeners();
+    }
+
     void AddAllListeners ()
     {
-        btnPlay.onClick.AddListener(ButtonPlay);
-        btnSettings.onClick.AddListener(ButtonSetting);
-        btnCredits.onClick.AddListener(ButtonCredits);
-        btnLeadBoard.onClick.AddListener(ButtonLeadBoard);
+        btnPlay.AddBehaviours(ButtonPlay);
+        btnSettings.AddBehaviours(ButtonSetting);
+        btnCredits.AddBehaviours(ButtonCredits);
+        btnLeadBoard.AddBehaviours(ButtonLeadBoard);
 
-        btnBackOfSettings.onClick.AddListener(ButtonBackSettings);
-        btnBackOfCredits.onClick.AddListener(ButtonBackCredits);
-        btnBackOfLeadBoard.onClick.AddListener(ButtonBackLeadBoard);
+        btnBackOfCredits.AddBehaviours(ButtonBackCredits);
+        btnBackOfLeadBoard.AddBehaviours(ButtonBackLeadBoard);
     }
 
     void RemoveAllListeners ()
     {
-        btnPlay.onClick.RemoveAllListeners();
+
     }
 
     public void ButtonPlay () => SceneManagerSingleton.Get().LoadScene(SceneManagerSingleton.SceneIndex.GAMEPLAY, true);

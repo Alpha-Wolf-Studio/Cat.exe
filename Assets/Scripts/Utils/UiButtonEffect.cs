@@ -5,8 +5,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class UiButtonEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    public Action onButtonEnter;
-    public Action onButtonExit;
+    public event Action OnMouseEnter;
+    public event Action OnMouseExit;
+    public event Action OnMouseClick;
 
     [Header("RayCast Collision:")]
     [Tooltip("Chequea Alphas en el raycast. Modificar el Read/Write Enabled en la imagen si éste es true.")]
@@ -76,9 +77,30 @@ public class UiButtonEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         ChangeScale();
     }
+    private void OnDestroy()
+    {
+        RemoveBehaviours();
+    }
+    public void AddBehaviours(Action onClick = null, Action onEnter = null, Action onExit = null)
+    {
+        if (onClick != null) 
+            OnMouseClick += onClick;
+        if (onEnter != null)
+            OnMouseEnter += onEnter;
+        if (onExit != null)
+            OnMouseExit += onExit; 
+    }
+
+    private void RemoveBehaviours()
+    {
+        OnMouseClick = null;
+        OnMouseEnter = null;
+        OnMouseExit = null;
+    }
+    
     public void OnMouseEnterButton()
     {
-        onButtonEnter?.Invoke();
+        OnMouseEnter?.Invoke();
         increment = true;
         //AkSoundEngine.PostEvent(AK.EVENTS.UIBUTTONENTER, gameObject);
 
@@ -93,7 +115,7 @@ public class UiButtonEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     }
     public void OnMouseExitButton()
     {
-        onButtonExit?.Invoke();
+        OnMouseExit?.Invoke();
         increment = false;
         //AkSoundEngine.PostEvent(AK.EVENTS.UIBUTTONEXIT, gameObject);
 
@@ -145,6 +167,7 @@ public class UiButtonEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     }
     public void OnPointerClick(PointerEventData eventData)
     {
+        OnMouseClick?.Invoke();
         //AkSoundEngine.PostEvent(AK.EVENTS.UICLICKBUTTON, gameObject);
     }
 }

@@ -4,7 +4,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using PlayFab;
 using PlayFab.ClientModels;
 
@@ -19,6 +18,7 @@ public class PlayfabManager : MonoBehaviourSingleton<PlayfabManager>
     private readonly string TIME_SCORE_LEADERBOARD_ALLTIME = "TimeScoreComplete";
     private readonly string TIME_SCORE_LEADERBOARD_WEEKLY = "TimeScoreWeekly";
     private readonly string TIME_SCORE_LEADERBOARD_DAILY = "TimeScoreDaily";
+    private TimeParserForPlayfab timeParserForPlayfab = new TimeParserForPlayfab();
     
     bool requestLocked = false;
 
@@ -78,9 +78,10 @@ public class PlayfabManager : MonoBehaviourSingleton<PlayfabManager>
         return Guid.NewGuid().ToString();
     }
 
-    public void SubmitTimeScore(int time, string nickname)
+    public void SubmitTimeScore(float time, string nickname)
     {
-        StartCoroutine((SubmitScoreCoroutine(time, nickname)));
+        int newTime = timeParserForPlayfab.ParseTime(time);
+        StartCoroutine((SubmitScoreCoroutine(newTime, nickname)));
     }
 
     private IEnumerator SubmitScoreCoroutine(int time, string nickname)

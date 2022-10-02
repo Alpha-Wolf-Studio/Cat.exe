@@ -25,5 +25,4 @@ public class DissolveEffect : MonoBehaviour
     {
         disolveLerper.SetLerperValues(dissolve.GetFloat("_Cutoff"), amountEffect, timeForEffect, Lerper<float>.LERPER_TYPE.STEP_SMOOTHER, true);
     }
-
 }

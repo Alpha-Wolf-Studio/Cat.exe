@@ -74,8 +74,8 @@ public class PlayerController : MonoBehaviour, IDamageable
         Vector3 newPos = default;
         Vector3 newRot = default;
         CheckPointManager.CurrentLastTransform(out newPos, out newRot);
-        transform.Translate(newPos);
-        transform.Rotate(newRot);
+        transform.position = newPos;
+        transform.rotation = Quaternion.Euler(newRot);
         //Animacion de Respawn
         dissolveEffect.SetDissolve(0);
         //Se resetea el Timer

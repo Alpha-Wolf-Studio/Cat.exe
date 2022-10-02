@@ -45,8 +45,9 @@ public class UiButtonEffect : MonoBehaviour,
     [SerializeField] private bool isTrash = false;
     [SerializeField] private bool isTrasheable = true;
     [SerializeField] private GameObject dragIconPrefab = null;
-    private RectTransform holder = null;
+    [SerializeField] private GameObject emptyPrefab = null;
     private Canvas canvas = null;
+    private RectTransform holder = null;
     private UIDragIcon iconDraggeable = null;
 
     /// Double click
@@ -118,7 +119,7 @@ public class UiButtonEffect : MonoBehaviour,
         OnMouseEnter = null;
         OnMouseExit = null;
     }
-    
+
     public void OnMouseEnterButton()
     {
         OnMouseEnter?.Invoke();
@@ -253,8 +254,12 @@ public class UiButtonEffect : MonoBehaviour,
             UiButtonEffect uiButtonDrag = eventData.pointerDrag.GetComponent<UiButtonEffect>();
             if (uiButtonDrag != null && uiButtonDrag.isTrasheable)
             {
-                eventData.pointerDrag.gameObject.SetActive(false);
+                int index = uiButtonDrag.transform.GetSiblingIndex();
+                uiButtonDrag.gameObject.SetActive(false);
+
+                GameObject emptyGO = Instantiate(emptyPrefab, holder.parent);
+                emptyGO.transform.SetSiblingIndex(index);
             }
         }
-    }
+    }   
 }

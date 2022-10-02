@@ -318,7 +318,7 @@ GameObject:
   - component: {fileID: 8829932646709250897}
   - component: {fileID: 8829932646709250902}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Slider SFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -410,6 +410,7 @@ GameObject:
   - component: {fileID: 8829932646736804973}
   - component: {fileID: 8829932646736804972}
   - component: {fileID: 8829932646736804978}
+  - component: {fileID: 364835744795230945}
   m_Layer: 5
   m_Name: Panel Options
   m_TagString: Untagged
@@ -424,7 +425,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8829932646736804968}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -490,6 +491,24 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &364835744795230945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8829932646736804968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1452dbf7d04a3d54a9a588cbc5a13e46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btnReset: {fileID: 8829932647819448076}
+  btnShutDown: {fileID: 8829932647230822640}
+  btnMusic: {fileID: 8829932648106812052}
+  btnSound: {fileID: 8829932647088389504}
+  sliderSoundMusic: {fileID: 8829932647902114132}
+  sliderSoundSfx: {fileID: 8829932646709250902}
 --- !u!1 &8829932646754603483
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,10 +1112,10 @@ RectTransform:
   m_Father: {fileID: 8829932646758274574}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 90.112, y: -76.6422}
-  m_SizeDelta: {x: 180.224, y: 51.094795}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8829932647088389507
 CanvasRenderer:
@@ -1377,10 +1396,10 @@ RectTransform:
   m_Father: {fileID: 8829932646758274574}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 90.112, y: -178.83179}
-  m_SizeDelta: {x: 180.224, y: 51.094795}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8829932647230822643
 CanvasRenderer:
@@ -1945,10 +1964,10 @@ RectTransform:
   m_Father: {fileID: 8829932646758274574}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 90.112, y: -127.736984}
-  m_SizeDelta: {x: 180.224, y: 51.094795}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8829932647819448079
 CanvasRenderer:
@@ -2143,7 +2162,7 @@ GameObject:
   - component: {fileID: 8829932647902114135}
   - component: {fileID: 8829932647902114132}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Slider Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2507,10 +2526,10 @@ RectTransform:
   m_Father: {fileID: 8829932646758274574}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 90.112, y: -25.547398}
-  m_SizeDelta: {x: 180.224, y: 51.094795}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8829932648106812055
 CanvasRenderer:

@@ -272,16 +272,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modifyHitBox: 0
   alphaRayCast: 0.1
-  scaleSpeed: 3
-  scaleLimit: 1.2
+  scaleSpeed: 0
+  scaleLimit: 1
   modifyImage: 0
+  currentImage: {fileID: 997723301}
   imageDefault: {fileID: 0}
   imageHighlighted: {fileID: 0}
   textHighlight: 0
-  textToHighlight: {fileID: 0}
+  textToHighlight: {fileID: 118084976}
   colorHighlight: {r: 0, g: 0, b: 0, a: 0}
   enableObject: 0
   objectToEnable: {fileID: 0}
+  isTrash: 0
+  isTrasheable: 1
+  dragIconPrefab: {fileID: 2448392000452104264, guid: 52a3f352624ea83439c508bdac943999, type: 3}
 --- !u!1 &7314676220466059524
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,16 +423,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modifyHitBox: 0
   alphaRayCast: 0.1
-  scaleSpeed: 3
-  scaleLimit: 1.2
+  scaleSpeed: 0
+  scaleLimit: 1
   modifyImage: 0
+  currentImage: {fileID: 7314676220466059521}
   imageDefault: {fileID: 0}
   imageHighlighted: {fileID: 0}
   textHighlight: 0
-  textToHighlight: {fileID: 0}
+  textToHighlight: {fileID: 7314676221532588856}
   colorHighlight: {r: 0, g: 0, b: 0, a: 0}
   enableObject: 0
   objectToEnable: {fileID: 0}
+  isTrash: 0
+  isTrasheable: 1
+  dragIconPrefab: {fileID: 2448392000452104264, guid: 52a3f352624ea83439c508bdac943999, type: 3}
 --- !u!1 &7314676220773800076
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,16 +574,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modifyHitBox: 0
   alphaRayCast: 0.1
-  scaleSpeed: 3
-  scaleLimit: 1.2
+  scaleSpeed: 0
+  scaleLimit: 1
   modifyImage: 0
+  currentImage: {fileID: 7314676220773800073}
   imageDefault: {fileID: 0}
   imageHighlighted: {fileID: 0}
   textHighlight: 0
-  textToHighlight: {fileID: 0}
+  textToHighlight: {fileID: 7314676222431048630}
   colorHighlight: {r: 0, g: 0, b: 0, a: 0}
   enableObject: 0
   objectToEnable: {fileID: 0}
+  isTrash: 0
+  isTrasheable: 1
+  dragIconPrefab: {fileID: 2448392000452104264, guid: 52a3f352624ea83439c508bdac943999, type: 3}
 --- !u!1 &7314676220882358374
 GameObject:
   m_ObjectHideFlags: 0
@@ -1023,16 +1035,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modifyHitBox: 0
   alphaRayCast: 0.1
-  scaleSpeed: 3
-  scaleLimit: 1.2
+  scaleSpeed: 0
+  scaleLimit: 1
   modifyImage: 0
+  currentImage: {fileID: 7314676221582503839}
   imageDefault: {fileID: 0}
   imageHighlighted: {fileID: 0}
   textHighlight: 0
-  textToHighlight: {fileID: 0}
+  textToHighlight: {fileID: 7314676221543064876}
   colorHighlight: {r: 0, g: 0, b: 0, a: 0}
   enableObject: 0
   objectToEnable: {fileID: 0}
+  isTrash: 1
+  isTrasheable: 0
+  dragIconPrefab: {fileID: 2448392000452104264, guid: 52a3f352624ea83439c508bdac943999, type: 3}
 --- !u!1 &7314676222431048632
 GameObject:
   m_ObjectHideFlags: 0

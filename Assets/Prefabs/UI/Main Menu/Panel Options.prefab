@@ -318,7 +318,7 @@ GameObject:
   - component: {fileID: 8829932646709250897}
   - component: {fileID: 8829932646709250902}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Slider SFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -410,13 +410,14 @@ GameObject:
   - component: {fileID: 8829932646736804973}
   - component: {fileID: 8829932646736804972}
   - component: {fileID: 8829932646736804978}
+  - component: {fileID: 364835744795230945}
   m_Layer: 5
   m_Name: Panel Options
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8829932646736804969
 RectTransform:
   m_ObjectHideFlags: 0
@@ -424,7 +425,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8829932646736804968}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -490,6 +491,27 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &364835744795230945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8829932646736804968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1452dbf7d04a3d54a9a588cbc5a13e46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btnReset: {fileID: 8829932647819448076}
+  btnShutDown: {fileID: 8829932647230822640}
+  btnSoundMusic: {fileID: 8829932648106812052}
+  btnSoundSfx: {fileID: 8829932647088389504}
+  panelSoundMusic: {fileID: 1961467317}
+  panelSoundSfx: {fileID: 1562670350}
+  sliderSoundMusic: {fileID: 8829932647902114132}
+  sliderSoundSfx: {fileID: 8829932646709250902}
+  restartPlayableDirector: {fileID: 0}
 --- !u!1 &8829932646754603483
 GameObject:
   m_ObjectHideFlags: 0
@@ -723,11 +745,11 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 4
+  m_ChildAlignment: 0
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 1
+  m_ChildControlWidth: 0
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
@@ -1015,7 +1037,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1071,7 +1093,7 @@ GameObject:
   - component: {fileID: 8829932647088389565}
   - component: {fileID: 8829932647088389504}
   m_Layer: 5
-  m_Name: Button Sound
+  m_Name: Button Sfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1093,10 +1115,10 @@ RectTransform:
   m_Father: {fileID: 8829932646758274574}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 90.112, y: -76.6422}
-  m_SizeDelta: {x: 180.224, y: 51.094795}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 180.224, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8829932647088389507
 CanvasRenderer:
@@ -1194,9 +1216,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modifyHitBox: 0
   alphaRayCast: 0.1
-  scaleSpeed: 3
-  scaleLimit: 1.2
+  scaleSpeed: 0
+  scaleLimit: 1
   modifyImage: 0
+  currentImage: {fileID: 0}
   imageDefault: {fileID: 0}
   imageHighlighted: {fileID: 0}
   textHighlight: 0
@@ -1204,6 +1227,9 @@ MonoBehaviour:
   colorHighlight: {r: 0, g: 0, b: 0, a: 0}
   enableObject: 0
   objectToEnable: {fileID: 0}
+  isTrash: 0
+  isTrasheable: 1
+  dragIconPrefab: {fileID: 0}
 --- !u!1 &8829932647173887152
 GameObject:
   m_ObjectHideFlags: 0
@@ -1377,10 +1403,10 @@ RectTransform:
   m_Father: {fileID: 8829932646758274574}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 90.112, y: -178.83179}
-  m_SizeDelta: {x: 180.224, y: 51.094795}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 180.224, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8829932647230822643
 CanvasRenderer:
@@ -1478,9 +1504,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modifyHitBox: 0
   alphaRayCast: 0.1
-  scaleSpeed: 3
-  scaleLimit: 1.2
+  scaleSpeed: 0
+  scaleLimit: 1
   modifyImage: 0
+  currentImage: {fileID: 0}
   imageDefault: {fileID: 0}
   imageHighlighted: {fileID: 0}
   textHighlight: 0
@@ -1488,6 +1515,9 @@ MonoBehaviour:
   colorHighlight: {r: 0, g: 0, b: 0, a: 0}
   enableObject: 0
   objectToEnable: {fileID: 0}
+  isTrash: 0
+  isTrasheable: 1
+  dragIconPrefab: {fileID: 0}
 --- !u!1 &8829932647239383293
 GameObject:
   m_ObjectHideFlags: 0
@@ -1499,13 +1529,14 @@ GameObject:
   - component: {fileID: 8829932647239383234}
   - component: {fileID: 8829932647239383232}
   - component: {fileID: 8829932647239383235}
+  - component: {fileID: 1562670350}
   m_Layer: 5
-  m_Name: Panel Sound
+  m_Name: Panel SFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8829932647239383234
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1525,8 +1556,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.375}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 11.6}
+  m_SizeDelta: {x: 0, y: -25.3899}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8829932647239383232
 CanvasRenderer:
@@ -1566,6 +1597,34 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1562670350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8829932647239383293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27a3cc33f737e6040b5f88db34f92c21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modifyHitBox: 0
+  alphaRayCast: 0.1
+  scaleSpeed: 0
+  scaleLimit: 1
+  modifyImage: 0
+  currentImage: {fileID: 0}
+  imageDefault: {fileID: 0}
+  imageHighlighted: {fileID: 0}
+  textHighlight: 0
+  textToHighlight: {fileID: 0}
+  colorHighlight: {r: 0, g: 0, b: 0, a: 0}
+  enableObject: 0
+  objectToEnable: {fileID: 0}
+  isTrash: 0
+  isTrasheable: 1
+  dragIconPrefab: {fileID: 0}
 --- !u!1 &8829932647393157650
 GameObject:
   m_ObjectHideFlags: 0
@@ -1712,8 +1771,8 @@ RectTransform:
   m_Father: {fileID: 8829932647444459772}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1789,7 +1848,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1842,13 +1901,14 @@ GameObject:
   - component: {fileID: 8829932647787953651}
   - component: {fileID: 8829932647787953649}
   - component: {fileID: 8829932647787953648}
+  - component: {fileID: 1961467317}
   m_Layer: 5
   m_Name: Panel Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8829932647787953651
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1866,10 +1926,10 @@ RectTransform:
   m_Father: {fileID: 8829932646736804969}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.675}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.375}
+  m_AnchorMax: {x: 1, y: 0.75}
+  m_AnchoredPosition: {x: 0, y: 63}
+  m_SizeDelta: {x: 0, y: -25.3899}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8829932647787953649
 CanvasRenderer:
@@ -1909,6 +1969,34 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1961467317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8829932647787953650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27a3cc33f737e6040b5f88db34f92c21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modifyHitBox: 0
+  alphaRayCast: 0.1
+  scaleSpeed: 0
+  scaleLimit: 1
+  modifyImage: 0
+  currentImage: {fileID: 0}
+  imageDefault: {fileID: 0}
+  imageHighlighted: {fileID: 0}
+  textHighlight: 0
+  textToHighlight: {fileID: 0}
+  colorHighlight: {r: 0, g: 0, b: 0, a: 0}
+  enableObject: 0
+  objectToEnable: {fileID: 0}
+  isTrash: 0
+  isTrasheable: 1
+  dragIconPrefab: {fileID: 0}
 --- !u!1 &8829932647819448075
 GameObject:
   m_ObjectHideFlags: 0
@@ -1945,10 +2033,10 @@ RectTransform:
   m_Father: {fileID: 8829932646758274574}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 90.112, y: -127.736984}
-  m_SizeDelta: {x: 180.224, y: 51.094795}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 180.224, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8829932647819448079
 CanvasRenderer:
@@ -2046,9 +2134,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modifyHitBox: 0
   alphaRayCast: 0.1
-  scaleSpeed: 3
-  scaleLimit: 1.2
+  scaleSpeed: 0
+  scaleLimit: 1
   modifyImage: 0
+  currentImage: {fileID: 0}
   imageDefault: {fileID: 0}
   imageHighlighted: {fileID: 0}
   textHighlight: 0
@@ -2056,6 +2145,9 @@ MonoBehaviour:
   colorHighlight: {r: 0, g: 0, b: 0, a: 0}
   enableObject: 0
   objectToEnable: {fileID: 0}
+  isTrash: 0
+  isTrasheable: 1
+  dragIconPrefab: {fileID: 0}
 --- !u!1 &8829932647854437365
 GameObject:
   m_ObjectHideFlags: 0
@@ -2089,8 +2181,8 @@ RectTransform:
   m_Father: {fileID: 8829932646946524432}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2143,7 +2235,7 @@ GameObject:
   - component: {fileID: 8829932647902114135}
   - component: {fileID: 8829932647902114132}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Slider Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2429,7 +2521,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20.55
+  m_fontSize: 18
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2507,10 +2599,10 @@ RectTransform:
   m_Father: {fileID: 8829932646758274574}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 90.112, y: -25.547398}
-  m_SizeDelta: {x: 180.224, y: 51.094795}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 180.224, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8829932648106812055
 CanvasRenderer:
@@ -2608,9 +2700,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modifyHitBox: 0
   alphaRayCast: 0.1
-  scaleSpeed: 3
-  scaleLimit: 1.2
+  scaleSpeed: 0
+  scaleLimit: 1
   modifyImage: 0
+  currentImage: {fileID: 0}
   imageDefault: {fileID: 0}
   imageHighlighted: {fileID: 0}
   textHighlight: 0
@@ -2618,3 +2711,6 @@ MonoBehaviour:
   colorHighlight: {r: 0, g: 0, b: 0, a: 0}
   enableObject: 0
   objectToEnable: {fileID: 0}
+  isTrash: 0
+  isTrasheable: 1
+  dragIconPrefab: {fileID: 0}

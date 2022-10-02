@@ -4,9 +4,10 @@ using UnityEngine.Playables;
 
 public class UIMainMenu : MonoBehaviour
 {
-
+    [SerializeField] private UiButtonEffect btnBackground;
     [SerializeField] private UiButtonEffect btnPlay;
     [SerializeField] private UiButtonEffect btnSettings;
+    private UiPanelOptions panelSettings;
     [SerializeField] private UiButtonEffect btnCredits;
     [SerializeField] private UiButtonEffect btnBackOfCredits;
     [SerializeField] private UiButtonEffect btnLeadBoard;
@@ -20,6 +21,7 @@ public class UIMainMenu : MonoBehaviour
 
     private void Awake ()
     {
+        panelSettings = menues[(int) Menu.Settings].GetComponent<UiPanelOptions>();
         foreach (CanvasGroup menu in menues)
         {
             menu.blocksRaycasts = false;
@@ -34,6 +36,7 @@ public class UIMainMenu : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.Get().PlayMusicMainMenu();
         Time.timeScale = 1;
         AddAllListeners();
     }
@@ -45,6 +48,8 @@ public class UIMainMenu : MonoBehaviour
 
     void AddAllListeners ()
     {
+        btnBackground.AddBehaviours(OffSettings, OffPanelsSounds);
+
         btnPlay.AddBehaviours(ButtonPlay);
         btnSettings.AddBehaviours(ButtonSetting);
         btnCredits.AddBehaviours(ButtonCredits);
@@ -73,7 +78,27 @@ public class UIMainMenu : MonoBehaviour
     public void ButtonBackSettings () => StartCoroutine(SwitchPanel(transitionTime, (int) Menu.Main, (int) Menu.Settings));
     public void ButtonBackCredits () => StartCoroutine(SwitchPanel(transitionTime, (int) Menu.Main, (int) Menu.Credits));
     public void ButtonBackLeadBoard () => StartCoroutine(SwitchPanel(transitionTime, (int) Menu.Main, (int) Menu.LeadBoard));
+    public void OffSettings() => StartCoroutine(OffPanel(transitionTime, (int)Menu.Settings));
 
+    public void OffPanelsSounds () => panelSettings.CloseBothSoundPanel();
+    IEnumerator OffPanel (float maxTime, int offMenu)
+    {
+        float onTime = 0;
+        CanvasGroup off = menues[offMenu];
+
+        off.blocksRaycasts = false;
+        off.interactable = false;
+
+        while (onTime < maxTime)
+        {
+            onTime += Time.deltaTime;
+            float fade = onTime / maxTime;
+            off.alpha = 1 - fade;
+            yield return null;
+        }
+
+        off.gameObject.SetActive(false);
+    }
 
     IEnumerator SwitchPanel (float maxTime, int onMenu, int offMenu)
     {

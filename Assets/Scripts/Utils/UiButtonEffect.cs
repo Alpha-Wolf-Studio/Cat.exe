@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-public class UiButtonEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+using TMPro;
+
+public class UiButtonEffect : MonoBehaviour, 
+    IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler,
+    IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
     public event Action OnMouseEnter;
     public event Action OnMouseExit;
@@ -24,9 +27,9 @@ public class UiButtonEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     [Header("Effect Image:")]
     [SerializeField] private bool modifyImage;
+    [SerializeField] private Image currentImage;
     [SerializeField] private Sprite imageDefault;
     [SerializeField] private Sprite imageHighlighted;
-    private Image currentImage;
 
     [Header("Effect Color Text:")] 
     [SerializeField] private bool textHighlight;
@@ -37,6 +40,14 @@ public class UiButtonEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     [Header("Other:")]
     [SerializeField] private bool enableObject;
     [SerializeField] private GameObject objectToEnable;
+
+    [Header("Effect Drag Icon:")]
+    [SerializeField] private bool isTrash = false;
+    [SerializeField] private bool isTrasheable = true;
+    [SerializeField] private GameObject dragIconPrefab = null;
+    private RectTransform holder = null;
+    private Canvas canvas = null;
+    private UIDragIcon iconDraggeable = null;
 
     /// Double click
     private const float timeBetweenClick = 0.5f;
@@ -74,6 +85,9 @@ public class UiButtonEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitH
             else
                 colorNormal = textToHighlight.color;
         }
+
+        canvas = FindObjectOfType<Canvas>();
+        holder = GetComponent<RectTransform>();
     }
     private void OnEnable()
     {
@@ -204,5 +218,43 @@ public class UiButtonEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         }
         totalClicks = 0;
         isTimeCheckAllowed = true;
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        if (dragIconPrefab != null)
+        {
+            iconDraggeable = Instantiate(dragIconPrefab, holder).GetComponent<UIDragIcon>();
+            iconDraggeable.rectTransform.anchoredPosition = eventData.delta;
+
+            iconDraggeable.Init(gameObject, currentImage?.sprite, textToHighlight?.text);
+        }
+    }
+    public void OnDrag(PointerEventData eventData)
+    {
+        if (iconDraggeable != null)
+        {
+            iconDraggeable.rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        }
+    }
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        if (iconDraggeable != null)
+        {
+            Destroy(iconDraggeable.gameObject);
+        }
+    }
+    public void OnDrop(PointerEventData eventData)
+    {
+        if (!isTrash) return;
+
+        if (eventData.pointerDrag != null)
+        {
+            UiButtonEffect uiButtonDrag = eventData.pointerDrag.GetComponent<UiButtonEffect>();
+            if (uiButtonDrag != null && uiButtonDrag.isTrasheable)
+            {
+                eventData.pointerDrag.gameObject.SetActive(false);
+            }
+        }
     }
 }

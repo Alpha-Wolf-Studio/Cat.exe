@@ -4,18 +4,19 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviourSingleton<AudioManager>
 {
-    [Header("Audio data")]
-    [SerializeField] private Slider sfxSlider = null;
-    [SerializeField] private Slider musicSlider = null;
-    [SerializeField] private AudioSource[] audioSources;
+    [Header("Audio data")] [SerializeField]
+    private AudioSource[] audioSources;
+
     [SerializeField] private AudioMixer[] audioMixers;
 
     private const string VolumeKeyName = "Volume";
     private const float LinearToDecibelCoefficient = 20f;
     private const float MinLinearValue = 0.00001f;
     private const float MaxLinearValue = 1f;
-    private float sfxVolume = 0;
-    private float musicVolume = 0;
+
+    [SerializeField] private AudioClip sfxDefault;
+    [SerializeField] private AudioClip musicMainMenu;
+    [SerializeField] private AudioClip musicGameplay;
 
     private AudioSource SfxSource => audioSources[(int)MixerType.Sfx];
     private AudioSource MusicSource => audioSources[(int)MixerType.Music];
@@ -50,12 +51,12 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
 
     public void SetSFXVolume(float volumeLevel)
     {
-        SetVolume(MixerType.Sfx, sfxSlider.value);
+        SetVolume(MixerType.Sfx, volumeLevel);
     }
 
     public void SetMusicVolume(float volumeLevel)
     {
-        SetVolume(MixerType.Music, musicSlider.value);
+        SetVolume(MixerType.Music, volumeLevel);
     }
 
     private void SetVolume(MixerType mixerType, float volumeLevel)
@@ -67,29 +68,7 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         audioMixers[(int)mixerType].SetFloat(VolumeKeyName, desiredMixerDecibels);
     }
 
-    public void MuteSFX()
-    {
-        sfxVolume = sfxSlider.value;
-        sfxSlider.value = MinLinearValue;
-        SetSFXVolume(MinLinearValue);
-    }
-
-    public void MuteMusic()
-    {
-        musicVolume = musicSlider.value;
-        musicSlider.value = MinLinearValue;
-        SetMusicVolume(MinLinearValue);
-    }
-
-    public void UnmuteSFX()
-    {
-        sfxSlider.value = sfxVolume;
-        SetSFXVolume(sfxVolume);
-    }
-
-    public void UnmuteMusic()
-    {
-        musicSlider.value = musicVolume;
-        SetMusicVolume(musicVolume);
-    }
+    public void PlayMusicMainMenu () => PlayMusic(musicMainMenu);
+    public void PlayMusicGameplay () => PlayMusic(musicGameplay);
+    public void PlaySoundSfxDefault () => PlaySfx(sfxDefault);
 }

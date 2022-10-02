@@ -20,6 +20,8 @@ public class GameplayManager : MonoBehaviourSingleton<GameplayManager>
     private float globalTime = 0;
     private void Start ()
     {
+        AudioManager.Get().PlayMusicGameplay();
+
         playerController.OnDeath += KillPlayer;
         if(endPoint) endPoint.OnPlayerReachedTheEnd += OnPlayerWon;
         checkPointManager.SetCheckPointCallbacks(EnterCheckPoint, StartTime);

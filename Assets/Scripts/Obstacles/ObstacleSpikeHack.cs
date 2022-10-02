@@ -1,57 +1,96 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class ObstacleSpikeHack : MonoBehaviour, IObstacle
 {
+    [SerializeField] private Transform animatorSpike;
+    [SerializeField] private float startTime;
 
-    [Header(("No Action Configuration"))]
-    [SerializeField] private float spikeNoActionTime = 5f;
-    [Header("Wobble Configuration")]
-    [SerializeField] private float spikeWobbleTime = 2f;
-    [SerializeField] private float spikeWobbleAnimationSpeed = 1f;
+    [Header("Movement Up")] 
+    [SerializeField] private float timeToUp = 1;
+    [SerializeField] private AnimationCurve curveUp;
+    private Vector3 maxPosition;
 
-    private readonly string WOBBLE_ANIMATION_SPEED = "WobbleSpeed";
-    private readonly string WOBBLE_ANIMATION_TRIGGER = "Wobble";
+    [Header("Stay Up")]
+    [SerializeField] private float timeToStayUp = 0.5f;
+    [SerializeField] private AnimationCurve curveStayUp;
     
-    [Header("Start Configuration")]
-    [SerializeField] private float spikeStartAnimationSpeed = 1f;
+    [Header("Movement Down")] 
+    [SerializeField] private float timeToDown = 1;
+    [SerializeField] private AnimationCurve curveDown;
+    private Vector3 minPosition;
+
+    [Header("Stay Down")] 
+    [SerializeField] private float timeToStayDown = 0.5f;
+    [SerializeField] private AnimationCurve curveStayDown;
     
-    private readonly string START_ANIMATION_SPEED = "StartSpeed";
-    private readonly string START_ANIMATION_TRIGGER = "Start";
-    
-    private Animator spikeAnimator;
     private ChildrenCollision[] childrenCollision;
+    float deltaTime;
+    float lerp;
+
     private void Start ()
     {
+        deltaTime = (startTime == 0) ? (Random.Range(0, timeToUp + timeToDown + timeToStayDown + timeToStayUp)) : startTime;
+
+        maxPosition = animatorSpike.transform.localPosition;
+        minPosition = maxPosition;
+        minPosition.y = 0;
+
         childrenCollision = GetComponentsInChildren<ChildrenCollision>();
         for (int i = 0; i < childrenCollision.Length; i++)
         {
             childrenCollision[i].OnHit += CheckIsPlayer;
         }
 
-        spikeAnimator = GetComponent<Animator>();
-        
-        spikeAnimator.SetFloat(WOBBLE_ANIMATION_SPEED, spikeWobbleAnimationSpeed);
-        spikeAnimator.SetFloat(START_ANIMATION_SPEED, spikeStartAnimationSpeed);
-
         StartCoroutine(SpikeMoveCoroutine());
     }
-    private void OnCollisionEnter (Collision other)
-    {
-        CheckIsPlayer(other.transform);
-    }
 
-    private IEnumerator SpikeMoveCoroutine()
+    private IEnumerator SpikeMoveCoroutine ()
     {
-        while (enabled)
+        while (true) // AnimateAlways
         {
-            yield return new WaitForSeconds(spikeNoActionTime);
-            spikeAnimator.SetTrigger(WOBBLE_ANIMATION_TRIGGER);
-            yield return new WaitForSeconds(spikeWobbleTime);
-            spikeAnimator.SetTrigger(START_ANIMATION_TRIGGER);
+            while (deltaTime < timeToUp)
+            {
+                SetPositionByCurve(curveUp);
+                yield return null;
+            }
+            deltaTime -= timeToUp;
+
+            while (deltaTime < timeToStayUp)
+            {
+                SetPositionByCurve(curveStayUp);
+                yield return null;
+            }
+            deltaTime -= timeToStayUp;
+
+            while (deltaTime < timeToDown)
+            {
+                SetPositionByCurve(curveDown);
+                yield return null;
+            }
+            deltaTime -= timeToDown;
+
+            while (deltaTime < timeToStayDown)
+            {
+                SetPositionByCurve(curveStayDown);
+                yield return null;
+            }
+            deltaTime -= timeToStayDown;
+
+            deltaTime = 0;
+            yield return null;
         }
     }
-    
+
+    void SetPositionByCurve (AnimationCurve curve)
+    {
+        deltaTime += Time.deltaTime;
+        lerp = deltaTime / timeToUp;
+        Vector3 pos = Vector3.Lerp(minPosition, maxPosition, curve.Evaluate(lerp));
+        animatorSpike.localPosition = pos;
+    }
+
     public void CheckIsPlayer (Transform other)
     {
         if (Utils.CheckLayerInMask(GameplayManager.Get().layerPlayer, other.gameObject.layer))

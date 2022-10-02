@@ -5,23 +5,24 @@ using UnityEngine;
 public class ObstacleDisappearAppearPlatform : MonoBehaviour
 {
     [Header("Disappear platform")]
-    [SerializeField] private bool startDisappear = false;
-    [SerializeField] private float timePerDisappear = 0;
-    [SerializeField] private float disappearDuration = 0;
+    [SerializeField] private bool startDisappear;
+    [SerializeField] private float timePerDisappear;
+    [SerializeField] private float disappearDuration;
 
     [Header("Models")]
-    [SerializeField] private int totalModels = 0;
-    [SerializeField] private MeshRenderer[] meshRenderers = null;
-    [SerializeField] private Collider[] colliders = null;
+    [SerializeField] private int totalModels;
+    [SerializeField] private MeshRenderer[] meshRenderers;
+    [SerializeField] private Collider[] colliders;
 
-    private Timer timePerDisappearTimer = null;
-    private Timer disappearTimer = null;
+    private Timer timePerDisappearTimer;
+    private Timer disappearTimer;
 
     private void Awake()
     {
         timePerDisappearTimer = new Timer(timePerDisappear, default, true, null, DisappearPlatform);
         disappearTimer = new Timer(disappearDuration, default, false, null, AppearPlatform);
-        if (startDisappear) DisappearPlatform();
+        if (startDisappear) 
+            DisappearPlatform();
     }
 
     private void Update()

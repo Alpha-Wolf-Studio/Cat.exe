@@ -4,13 +4,19 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour, IDamageable
 {
     public event Action OnDeath;
-    [SerializeField] private MovementController movementController;
-    [SerializeField] private Transform cameraTransform;
+    private MovementController movementController;
+    private Transform cameraTransform;
 
     [Header("Visual Effects")]
     [SerializeField] private DissolveEffect dissolveEffect;
 
     private bool dead = false;
+
+    private void Awake ()
+    {
+        movementController = GetComponent<MovementController>();
+        cameraTransform = GameplayManager.Get().cameraController.transform;
+    }
 
     private void Start()
     {

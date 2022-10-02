@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstacleHackDoor : MonoBehaviour
@@ -8,7 +6,6 @@ public class ObstacleHackDoor : MonoBehaviour
     [SerializeField] private bool startOpen = false;
     [SerializeField] private float timePerOpenDoor = 0;
     [SerializeField] private float openDoorDuration = 0;
-
     private Animator animator = null;
     private Timer timePerOpenDoorTimer = null;
     private Timer openDoorTimer = null;

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ObstacleDeathZone : MonoBehaviour, IObstacle
 {
-    private ChildrenCollision[] childrenCollision;
+    [SerializeField] private ChildrenCollision[] childrenCollision;
     private void Start ()
     {
         childrenCollision = GetComponentsInChildren<ChildrenCollision>();

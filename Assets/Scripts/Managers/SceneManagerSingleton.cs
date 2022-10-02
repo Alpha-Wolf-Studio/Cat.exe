@@ -12,7 +12,7 @@ public class SceneManagerSingleton : MonoBehaviourSingleton<SceneManagerSingleto
     private string FADE_ANIMATION_SPEED = "FadeSpeed";
     private string OVERLAY_ANIMATION_SPEED = "OverlaySpeed";
     private string FADE_OUT = "FadeOut";
-    private string ZOOM_OUT = "ZoomIn";
+    private string ZOOM_IN = "ZoomIn";
     
     public enum SceneIndex { MAIN_MENU, GAMEPLAY } 
 
@@ -23,12 +23,14 @@ public class SceneManagerSingleton : MonoBehaviourSingleton<SceneManagerSingleto
         animator.SetFloat(FADE_ANIMATION_SPEED, fadeAnimationSpeed);
         animator.SetFloat(OVERLAY_ANIMATION_SPEED, overlayAnimationSpeed);
         animator.SetBool(FADE_OUT, true);
-        animator.SetBool(ZOOM_OUT, zoomIn);
+        animator.SetBool(ZOOM_IN, zoomIn);
         
         sceneIndex = scene;
         FadeScreen();
     }
 
+    public void ChangeZoomState(bool zoomIn) => animator.SetBool(ZOOM_IN, zoomIn);
+    
     private void FadeScreen()
     {
         StartCoroutine(FadeInCoroutine());

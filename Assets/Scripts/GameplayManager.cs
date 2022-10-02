@@ -102,8 +102,9 @@ public class GameplayManager : MonoBehaviourSingleton<GameplayManager>
     
     private void OnPlayerWon()
     {
+        playerController.enabled = false;
         StopTime();
-        Debug.Log(globalTime);
+        uiGameplay.PlayerFinished(globalTime);
     }
     
 }

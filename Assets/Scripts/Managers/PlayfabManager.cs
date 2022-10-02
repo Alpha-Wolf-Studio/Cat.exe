@@ -11,6 +11,8 @@ using PlayFab.ClientModels;
 public class PlayfabManager : MonoBehaviourSingleton<PlayfabManager>
 {
 
+    public Action<bool> OnConnection;
+
     public Action<LeaderBoardUpdate> OnLeaderboardUpdated;
     public Action OnLeaderboardUpdatedFailed;
 
@@ -62,6 +64,7 @@ public class PlayfabManager : MonoBehaviourSingleton<PlayfabManager>
         Debug.Log("Log into playfab successful with ID: " + loginResult.PlayFabId);
 #endif
         Connected = true;
+        OnConnection?.Invoke(true);
         UpdateLeaderboard();
     }
 
@@ -71,6 +74,7 @@ public class PlayfabManager : MonoBehaviourSingleton<PlayfabManager>
         Debug.Log("Error while logging into playfab.");
         Debug.Log(error.GenerateErrorReport());
 #endif
+        OnConnection?.Invoke(false);
     }
 
     private string GetCustomGUI()
@@ -107,17 +111,17 @@ public class PlayfabManager : MonoBehaviourSingleton<PlayfabManager>
                 new StatisticUpdate()
                 {
                     StatisticName = TIME_SCORE_LEADERBOARD_ALLTIME,
-                    Value = -time
+                    Value = time
                 },
                 new StatisticUpdate()
                 {
                     StatisticName = TIME_SCORE_LEADERBOARD_WEEKLY,
-                    Value = -time
+                    Value = time
                 },
                 new StatisticUpdate()
                 {
                     StatisticName = TIME_SCORE_LEADERBOARD_DAILY,
-                    Value = -time
+                    Value = time
                 }   
                 
             }

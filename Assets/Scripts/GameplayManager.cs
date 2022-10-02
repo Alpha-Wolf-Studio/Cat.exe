@@ -3,36 +3,41 @@ using UnityEngine;
 
 public class GameplayManager : MonoBehaviourSingleton<GameplayManager>
 {
+    [Header("Gameplay")]
     public LayerMask layerPlayer;
     public PlayerController playerController;
     public CameraController cameraController;
     [SerializeField] private CheckPointManager checkPointManager;
+    [SerializeField] private EndPoint endPoint;
+    [Header("User Interface")]
     [SerializeField] private UIGameplay uiGameplay;
-
+    
     private readonly float timerDelay = 10f;
     private readonly float timeToRespawn = 2;
+    private bool isTimeStoped = false;
     private Timer timer;
-    
+    private float globalTime = 0;
     private void Start ()
     {
         playerController.OnDeath += KillPlayer;
-
+        endPoint.OnPlayerReachedTheEnd += OnPlayerWon;
+        checkPointManager.SetCheckPointCallbacks(EnterCheckPoint, StartTime);
+        
         timer = new Timer(timerDelay, Timer.MODE.ONCE, false, uiGameplay.UpdateTimerText, EndTimer);
-
-        timer.ToggleTimer(true); //Llamar esta funcion para empezar el timer
-
-        checkPointManager.SetCheckPointCallbacks(EnterCheckPoint, () => timer.ToggleTimer(true));
+        StartTime();
     }
 
-    private void Update ()
+    private void Update()
     {
+        if (isTimeStoped) return;
         timer.Update(Time.deltaTime);
+        globalTime += Time.deltaTime;
     }
 
     private void EnterCheckPoint ()
     {
-        //resetear el tiempo cuando llega al checkpoint o aumentarlo?
-        timer.SetTimer(timerDelay, false);
+        StopTime();
+        ResetTime();
         SetCameraRotation(); //Rotar camara
     }
 
@@ -49,8 +54,7 @@ public class GameplayManager : MonoBehaviourSingleton<GameplayManager>
 
     public void KillPlayer ()
     {
-        timer.ToggleTimer(false);
-        CheckPointManager.lastCheckPoint.ResetCheckPoint();
+        StopTime();
         StartCoroutine(ReSpawningPlayer());
     }
 
@@ -70,4 +74,29 @@ public class GameplayManager : MonoBehaviourSingleton<GameplayManager>
         timer.Reset();
         playerController.Respawn();
     }
+
+    private void StartTime()
+    {
+        timer.ToggleTimer(true);
+        isTimeStoped = false;
+    }
+
+    private void StopTime()
+    {
+        timer.ToggleTimer(false);
+        isTimeStoped = true;
+        CheckPointManager.lastCheckPoint.ResetCheckPoint();
+    }
+
+    private void ResetTime()
+    {
+        timer.SetTimer(timerDelay, false);
+    }
+    
+    private void OnPlayerWon()
+    {
+        StopTime();
+        Debug.Log(globalTime);
+    }
+    
 }

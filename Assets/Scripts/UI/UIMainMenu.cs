@@ -7,12 +7,12 @@ public class UIMainMenu : MonoBehaviour
     [SerializeField] private UiButtonEffect btnBackground;
     [SerializeField] private UiButtonEffect btnPlay;
     [SerializeField] private UiButtonEffect btnSettings;
-    private UiPanelOptions panelSettings;
     [SerializeField] private UiButtonEffect btnCredits;
     [SerializeField] private UiButtonEffect btnBackOfCredits;
     [SerializeField] private UiButtonEffect btnLeadBoard;
     [SerializeField] private UiButtonEffect btnBackOfLeadBoard;
     [SerializeField] private UiButtonEffect btnAlphaWolf;
+    private UiPanelOptions panelSettings;
 
     [SerializeField] private float transitionTime;
     [SerializeField] private CanvasGroup[] menues;
@@ -50,7 +50,7 @@ public class UIMainMenu : MonoBehaviour
     {
         btnBackground.AddBehaviours(OffSettings, OffPanelsSounds);
 
-        btnPlay.AddBehaviours(ButtonPlay);
+        btnPlay.AddBehaviours(ButtonPlay, null, null, OpenCrash);
         btnSettings.AddBehaviours(ButtonSetting);
         btnCredits.AddBehaviours(ButtonCredits);
         btnLeadBoard.AddBehaviours(ButtonLeadBoard);
@@ -70,6 +70,7 @@ public class UIMainMenu : MonoBehaviour
         SceneManagerSingleton.Get().LoadScene(SceneManagerSingleton.SceneIndex.GAMEPLAY, true);
         playableDirector.Play();
     }
+
     public void ButtonSetting () => StartCoroutine(SwitchPanel(transitionTime, (int) Menu.Settings, (int) Menu.Main));
     public void ButtonCredits () => StartCoroutine(SwitchPanel(transitionTime, (int) Menu.Credits, (int) Menu.Main));
     public void ButtonLeadBoard () => StartCoroutine(SwitchPanel(transitionTime, (int) Menu.LeadBoard, (int) Menu.Main));
@@ -79,11 +80,12 @@ public class UIMainMenu : MonoBehaviour
     public void ButtonBackCredits () => StartCoroutine(SwitchPanel(transitionTime, (int) Menu.Main, (int) Menu.Credits));
     public void ButtonBackLeadBoard () => StartCoroutine(SwitchPanel(transitionTime, (int) Menu.Main, (int) Menu.LeadBoard));
     public void OffSettings() => StartCoroutine(OffPanel(transitionTime, (int)Menu.Settings));
+    public void OpenCrash() => StartCoroutine(SwitchPanel(-1f, (int)Menu.Crash, (int)Menu.Main));
 
     public void OffPanelsSounds () => panelSettings.CloseBothSoundPanel();
     IEnumerator OffPanel (float maxTime, int offMenu)
     {
-        float onTime = 0;
+        float onTime = 0f;
         CanvasGroup off = menues[offMenu];
 
         off.blocksRaycasts = false;
@@ -93,7 +95,7 @@ public class UIMainMenu : MonoBehaviour
         {
             onTime += Time.deltaTime;
             float fade = onTime / maxTime;
-            off.alpha = 1 - fade;
+            off.alpha = 1f - fade;
             yield return null;
         }
 
@@ -120,9 +122,11 @@ public class UIMainMenu : MonoBehaviour
             yield return null;
         }
 
+        on.alpha = 1f;
+        off.alpha = 0f;
+
         on.blocksRaycasts = true;
         on.interactable = true;
-        onTime = 0;
 
         menu = (Menu) onMenu;
         
@@ -135,5 +139,6 @@ enum Menu
     Main,
     Settings,
     Credits,
-    LeadBoard
+    LeadBoard,
+    Crash
 }

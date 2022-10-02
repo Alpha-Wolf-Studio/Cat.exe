@@ -12,6 +12,7 @@ public class UiButtonEffect : MonoBehaviour,
     public event Action OnMouseEnter;
     public event Action OnMouseExit;
     public event Action OnMouseClick;
+    public event Action OnIconTrash;
 
     [Header("RayCast Collision:")]
     [Tooltip("Chequea Alphas en el raycast. Modificar el Read/Write Enabled en la imagen si éste es true.")]
@@ -106,14 +107,16 @@ public class UiButtonEffect : MonoBehaviour,
     {
         RemoveBehaviours();
     }
-    public void AddBehaviours(Action onClick = null, Action onEnter = null, Action onExit = null)
+    public void AddBehaviours(Action onClick = null, Action onEnter = null, Action onExit = null, Action onTrash = null)
     {
         if (onClick != null) 
             OnMouseClick += onClick;
         if (onEnter != null)
             OnMouseEnter += onEnter;
         if (onExit != null)
-            OnMouseExit += onExit; 
+            OnMouseExit += onExit;
+        if (onTrash != null)
+            OnIconTrash += onTrash;
     }
 
     private void RemoveBehaviours()
@@ -121,6 +124,42 @@ public class UiButtonEffect : MonoBehaviour,
         OnMouseClick = null;
         OnMouseEnter = null;
         OnMouseExit = null;
+    }
+
+    public void Trash()
+    {
+        gameObject.SetActive(false);
+        OnIconTrash?.Invoke();
+    }
+
+    private void ChangeScale()
+    {
+        float timeStep = scaleSpeed * Time.unscaledDeltaTime;
+        scale = transform.localScale;
+        if (increment)
+        {
+            if (transform.localScale.x < scaleLimit)
+            {
+                scale = new Vector3(scale.x + timeStep, scale.y + timeStep, scale.z + timeStep);
+                transform.localScale = scale;
+            }
+            else
+            {
+                transform.localScale = new Vector3(scaleLimit, scaleLimit, scaleLimit);
+            }
+        }
+        else
+        {
+            if (transform.localScale.x > initialScale.x)
+            {
+                scale = new Vector3(scale.x - timeStep, scale.y - timeStep, scale.z - timeStep);
+                transform.localScale = scale;
+            }
+            else
+            {
+                transform.localScale = new Vector3(initialScale.x, initialScale.y, initialScale.z);
+            }
+        }
     }
 
     public void OnMouseEnterButton()
@@ -152,35 +191,6 @@ public class UiButtonEffect : MonoBehaviour,
 
         if (textHighlight)
             textToHighlight.color = colorNormal;
-    }
-    private void ChangeScale()
-    {
-        float timeStep = scaleSpeed * Time.unscaledDeltaTime;
-        scale = transform.localScale;
-        if (increment)
-        {
-            if (transform.localScale.x < scaleLimit)
-            {
-                scale = new Vector3(scale.x + timeStep, scale.y + timeStep, scale.z + timeStep);
-                transform.localScale = scale;
-            }
-            else
-            {
-                transform.localScale = new Vector3(scaleLimit, scaleLimit, scaleLimit);
-            }
-        }
-        else
-        {
-            if (transform.localScale.x > initialScale.x)
-            {
-                scale = new Vector3(scale.x - timeStep, scale.y - timeStep, scale.z - timeStep);
-                transform.localScale = scale;
-            }
-            else
-            {
-                transform.localScale = new Vector3(initialScale.x, initialScale.y, initialScale.z);
-            }
-        }
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -258,7 +268,7 @@ public class UiButtonEffect : MonoBehaviour,
             if (uiButtonDrag != null && uiButtonDrag.isTrasheable)
             {
                 int index = uiButtonDrag.transform.GetSiblingIndex();
-                uiButtonDrag.gameObject.SetActive(false);
+                uiButtonDrag.Trash();
 
                 GameObject emptyGO = Instantiate(emptyPrefab, holder.parent);
                 emptyGO.transform.SetSiblingIndex(index);

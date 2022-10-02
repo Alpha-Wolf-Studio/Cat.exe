@@ -8,8 +8,11 @@ public class ObstacleDisappearPlatform : MonoBehaviour
     [SerializeField] private Material dissolve = null;
     [SerializeField] private float timeForEffect = 1;
 
-    private MeshRenderer meshRenderer = null;
-    private BoxCollider boxCollider = null;
+    [Header("Models")]
+    [SerializeField] private int totalModels = 0;
+    [SerializeField] private MeshRenderer[] meshRenderers = null;
+    [SerializeField] private Collider[] colliders = null;
+
     private FloatLerper disolveLerper = new FloatLerper();
     private bool shaking = false;
 
@@ -19,8 +22,6 @@ public class ObstacleDisappearPlatform : MonoBehaviour
     private void Awake()
     {
         dissolve.SetFloat("_Cutoff", 0);
-        meshRenderer = GetComponent<MeshRenderer>();
-        boxCollider = GetComponent<BoxCollider>();
         disolveLerper.SetLerperValues(0, 1, timeForEffect, Lerper<float>.LERPER_TYPE.STEP_SMOOTH);
     }
 
@@ -44,8 +45,11 @@ public class ObstacleDisappearPlatform : MonoBehaviour
         }
         if (disolveLerper.Reached)
         {
-            meshRenderer.enabled = false;
-            boxCollider.enabled = false;
+            for (int i = 0; i < totalModels; i++)
+            {
+                meshRenderers[i].enabled = false;
+                colliders[i].enabled = false;
+            }
         }
     }
 

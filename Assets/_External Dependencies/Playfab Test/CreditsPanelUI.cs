@@ -4,11 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayfabSceneUI : MonoBehaviour
+public class CreditsPanelUI : MonoBehaviour
 {
-    [SerializeField] private TMPro.TMP_InputField nicknameInputField = default;
-    [SerializeField] private TMPro.TMP_InputField inputField = default;
-    [SerializeField] private Button sendScoreButton = default;
 
     [Header("Leaderboard")] 
     [SerializeField] private float leaderboardUpdateTime = 5f;
@@ -18,30 +15,15 @@ public class PlayfabSceneUI : MonoBehaviour
 
     private void OnEnable()
     {
-        sendScoreButton.gameObject.SetActive(true);
         PlayfabManager.Get().Login();
         PlayfabManager.Get().OnLeaderboardUpdated += UpdateLeaderBoard;
         StartCoroutine(UpdateLeaderboardCoroutine());
-    }
-
-    private void Start()
-    {
-        sendScoreButton.onClick.AddListener(delegate
-        {
-            if (int.TryParse(inputField.text, out var score))
-            {
-                PlayfabManager.Get().SubmitTimeScore(score, nicknameInputField.text);
-                PlayfabManager.Get().UpdateLeaderboard();
-            }
-        });
-        
     }
 
     private void OnDisable()
     {
         StopCoroutine(UpdateLeaderboardCoroutine());
         PlayfabManager.Get().OnLeaderboardUpdated -= UpdateLeaderBoard;
-        sendScoreButton.gameObject.SetActive(false);
     }
 
     private IEnumerator UpdateLeaderboardCoroutine()

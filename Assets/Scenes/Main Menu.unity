@@ -272,6 +272,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27a3cc33f737e6040b5f88db34f92c21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &704472272
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 704472274}
+  - component: {fileID: 704472273}
+  m_Layer: 0
+  m_Name: Start Game Playable Director
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!320 &704472273
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704472272}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 43ceb353649eabb48ac0a39ccacedf5c, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 1216184950259382876, guid: 43ceb353649eabb48ac0a39ccacedf5c, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -9020702259358465368, guid: 43ceb353649eabb48ac0a39ccacedf5c, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 7309175666788068480, guid: 43ceb353649eabb48ac0a39ccacedf5c, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 9091973744661249485, guid: 43ceb353649eabb48ac0a39ccacedf5c, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 6358983227862025124, guid: 43ceb353649eabb48ac0a39ccacedf5c, type: 2}
+    value: {fileID: 0}
+  m_ExposedReferences:
+    m_References: []
+--- !u!4 &704472274
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704472272}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 643.42737, y: 51.814674, z: 1.633151}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,6 +663,7 @@ MonoBehaviour:
   - {fileID: 2022816336}
   - {fileID: 861748131}
   - {fileID: 2014608238}
+  playableDirector: {fileID: 704472273}
 --- !u!114 &1162843976 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7314676220773800071, guid: 0e64bf8dfb07ea44e963be8504706419, type: 3}

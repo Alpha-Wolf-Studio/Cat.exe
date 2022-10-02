@@ -226,9 +226,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 1
   animator: {fileID: 7741521429974129848}
-  fadeAnimationSpeed: 1
-  overlayAnimationSpeed: 1
-  minLoadTime: 2
+  fadeAnimationSpeed: 0
+  overlayAnimationSpeed: 0.3
+  minLoadTime: 2.8
 --- !u!95 &7741521429974129848
 Animator:
   serializedVersion: 4

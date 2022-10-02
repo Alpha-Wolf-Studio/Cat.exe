@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Playables;
 
 public class UIMainMenu : MonoBehaviour
 {
@@ -14,6 +14,7 @@ public class UIMainMenu : MonoBehaviour
 
     [SerializeField] private float transitionTime;
     [SerializeField] private CanvasGroup[] menues;
+    [SerializeField] private PlayableDirector playableDirector;
     private Menu menu = Menu.Main;
 
     private void Awake ()
@@ -57,7 +58,11 @@ public class UIMainMenu : MonoBehaviour
 
     }
 
-    public void ButtonPlay () => SceneManagerSingleton.Get().LoadScene(SceneManagerSingleton.SceneIndex.GAMEPLAY, true);
+    public void ButtonPlay()
+    {
+        SceneManagerSingleton.Get().LoadScene(SceneManagerSingleton.SceneIndex.GAMEPLAY, true);
+        playableDirector.Play();
+    }
     public void ButtonSetting () => StartCoroutine(SwitchPanel(transitionTime, (int) Menu.Settings, (int) Menu.Main));
     public void ButtonCredits () => StartCoroutine(SwitchPanel(transitionTime, (int) Menu.Credits, (int) Menu.Main));
     public void ButtonLeadBoard () => StartCoroutine(SwitchPanel(transitionTime, (int) Menu.LeadBoard, (int) Menu.Main));

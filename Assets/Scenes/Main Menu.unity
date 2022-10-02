@@ -223,6 +223,11 @@ PrefabInstance:
       objectReference: {fileID: 1676140191}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28f9069487c0b114883f0a10b8cc2dc4, type: 3}
+--- !u!320 &169617029 stripped
+PlayableDirector:
+  m_CorrespondingSourceObject: {fileID: 7239374519357473937, guid: 28f9069487c0b114883f0a10b8cc2dc4, type: 3}
+  m_PrefabInstance: {fileID: 169617028}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &173981811 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7314676220466059551, guid: 0e64bf8dfb07ea44e963be8504706419, type: 3}
@@ -2954,6 +2959,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1565930821}
     m_Modifications:
+    - target: {fileID: 364835744795230945, guid: 00c7a2e54ae412240acd81c487c14a52, type: 3}
+      propertyPath: restartPlayableDirector
+      value: 
+      objectReference: {fileID: 169617029}
     - target: {fileID: 8829932646736804968, guid: 00c7a2e54ae412240acd81c487c14a52, type: 3}
       propertyPath: m_Name
       value: Panel Options

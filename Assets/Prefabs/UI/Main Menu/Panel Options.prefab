@@ -1227,6 +1227,7 @@ MonoBehaviour:
   colorHighlight: {r: 0, g: 0, b: 0, a: 0}
   enableObject: 0
   objectToEnable: {fileID: 0}
+  isTrash: 0
   isTrasheable: 1
   dragIconPrefab: {fileID: 0}
 --- !u!1 &8829932647173887152
@@ -1514,6 +1515,7 @@ MonoBehaviour:
   colorHighlight: {r: 0, g: 0, b: 0, a: 0}
   enableObject: 0
   objectToEnable: {fileID: 0}
+  isTrash: 0
   isTrasheable: 1
   dragIconPrefab: {fileID: 0}
 --- !u!1 &8829932647239383293
@@ -1620,6 +1622,7 @@ MonoBehaviour:
   colorHighlight: {r: 0, g: 0, b: 0, a: 0}
   enableObject: 0
   objectToEnable: {fileID: 0}
+  isTrash: 0
   isTrasheable: 1
   dragIconPrefab: {fileID: 0}
 --- !u!1 &8829932647393157650
@@ -1991,6 +1994,7 @@ MonoBehaviour:
   colorHighlight: {r: 0, g: 0, b: 0, a: 0}
   enableObject: 0
   objectToEnable: {fileID: 0}
+  isTrash: 0
   isTrasheable: 1
   dragIconPrefab: {fileID: 0}
 --- !u!1 &8829932647819448075
@@ -2141,6 +2145,7 @@ MonoBehaviour:
   colorHighlight: {r: 0, g: 0, b: 0, a: 0}
   enableObject: 0
   objectToEnable: {fileID: 0}
+  isTrash: 0
   isTrasheable: 1
   dragIconPrefab: {fileID: 0}
 --- !u!1 &8829932647854437365
@@ -2706,5 +2711,6 @@ MonoBehaviour:
   colorHighlight: {r: 0, g: 0, b: 0, a: 0}
   enableObject: 0
   objectToEnable: {fileID: 0}
+  isTrash: 0
   isTrasheable: 1
   dragIconPrefab: {fileID: 0}

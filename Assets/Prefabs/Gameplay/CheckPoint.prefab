@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1161484049619107492}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.07, z: -2.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -133,9 +133,6 @@ MonoBehaviour:
   colliderTrigger: {fileID: 2068408093126626512}
   wall: {fileID: 7512783409292249592}
   spawnPoint: {fileID: 1282261108811338213}
-  playerMask:
-    serializedVersion: 2
-    m_Bits: 64
   wasActivated: 0
 --- !u!65 &2068408093126626512
 BoxCollider:

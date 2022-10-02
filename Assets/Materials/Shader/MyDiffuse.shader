@@ -2,7 +2,7 @@ Shader "Custom/MyDiffuse"
 {
     Properties
     {
-        _Color("Color", Color) = (1,1,1,1)
+        [HDR] _Color("Color", Color) = (1,1,1,1)
         _MainTex("Albedo (RGB)", 2D) = "white" {}
         _NoiseTex("Noise", 2D) = "white" {}
         _Cutoff("Cut off", Range(0, 1)) = 0.25

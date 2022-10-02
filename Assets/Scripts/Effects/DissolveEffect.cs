@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DissolveEffect : MonoBehaviour
 {
-    [SerializeField] private Material[] dissolve = null;
+    [SerializeField] private SkinnedMeshRenderer[] dissolveMeshRenderers = null;
     [SerializeField] private float timeForEffect = 1;
 
     private FloatLerper disolveLerper = null;
@@ -18,9 +18,9 @@ public class DissolveEffect : MonoBehaviour
         { 
             disolveLerper.UpdateLerper();
 
-            for (int i = 0; i < dissolve.Length; i++)
+            for (int i = 0; i < dissolveMeshRenderers.Length; i++)
             {
-                dissolve[i].SetFloat("_Cutoff", disolveLerper.GetValue());
+                dissolveMeshRenderers[i].material.SetFloat("_Cutoff", disolveLerper.GetValue());
             }
             
         }
@@ -28,6 +28,6 @@ public class DissolveEffect : MonoBehaviour
 
     public void SetDissolve(float amountEffect)
     {
-        disolveLerper.SetLerperValues(dissolve[0].GetFloat("_Cutoff"), amountEffect, timeForEffect, Lerper<float>.LERPER_TYPE.STEP_SMOOTHER, true);
+        disolveLerper.SetLerperValues(dissolveMeshRenderers[0].material.GetFloat("_Cutoff"), amountEffect, timeForEffect, Lerper<float>.LERPER_TYPE.STEP_SMOOTHER, true);
     }
 }

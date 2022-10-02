@@ -42,6 +42,7 @@ public class UiButtonEffect : MonoBehaviour,
     [SerializeField] private GameObject objectToEnable;
 
     [Header("Effect Drag Icon:")]
+    [SerializeField] private bool isDraggeable = false;
     [SerializeField] private bool isTrash = false;
     [SerializeField] private bool isTrasheable = true;
     [SerializeField] private GameObject dragIconPrefab = null;
@@ -55,6 +56,8 @@ public class UiButtonEffect : MonoBehaviour,
     private bool isTimeCheckAllowed = true;
     private float firstClickTime;
     private int totalClicks;
+
+    public bool IsDraggeable => isDraggeable;
 
     private void Awake()
     {
@@ -223,7 +226,7 @@ public class UiButtonEffect : MonoBehaviour,
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (dragIconPrefab != null)
+        if (dragIconPrefab != null && isDraggeable)
         {
             iconDraggeable = Instantiate(dragIconPrefab, holder).GetComponent<UIDragIcon>();
             iconDraggeable.rectTransform.anchoredPosition = eventData.delta;

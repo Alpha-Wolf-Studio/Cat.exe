@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Playables;
 
 public class UiPanelOptions : MonoBehaviour
 {
@@ -12,10 +13,11 @@ public class UiPanelOptions : MonoBehaviour
 
     [SerializeField] private Slider sliderSoundMusic;
     [SerializeField] private Slider sliderSoundSfx;
+    [SerializeField] private PlayableDirector restartPlayableDirector;
 
     private void Start ()
     {
-        btnReset.AddBehaviours();
+        btnReset.AddBehaviours(Restart);
         btnShutDown.AddBehaviours();
         btnSoundMusic.AddBehaviours(null, OpenPanelSoundMusic);
         btnSoundSfx.AddBehaviours(null, OpenPanelSoundSfx);
@@ -35,6 +37,7 @@ public class UiPanelOptions : MonoBehaviour
         sliderSoundSfx.onValueChanged.RemoveAllListeners();
     }
 
+    private void Restart() => restartPlayableDirector.Play();
     private void ChangeVolumeEffect (float newValue) => AudioManager.Get().SetSFXVolume(newValue);
     private void ChangeVolumeMusic (float newValue) => AudioManager.Get().SetMusicVolume(newValue);
 

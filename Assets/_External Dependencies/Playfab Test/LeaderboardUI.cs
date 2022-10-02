@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CreditsPanelUI : MonoBehaviour
+public class LeaderboardUI : MonoBehaviour
 {
 
     [Header("Leaderboard")] 

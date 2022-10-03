@@ -25,6 +25,8 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     [Header("SFX UI")]
     [SerializeField] private AudioClip sfxDefault;
     [SerializeField] private AudioClip sfxOpenAntivirus;
+    [SerializeField] private AudioClip sfxCrash;
+    [SerializeField] private AudioClip sfxShutdown;
     
     
     private AudioSource SfxSource => audioSources[(int)MixerType.Sfx];
@@ -117,4 +119,6 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     public void PlayMusicGameplay () => PlayMusic(musicGameplay);
     public void PlaySoundSfxDefault () => PlaySfx(sfxDefault);
     public void PlaySoundOpenAntivirus() => PlaySfx(sfxOpenAntivirus);
+    public void PlaySoundCrash() => PlaySfx(sfxCrash);
+    public void PlaySoundShutDown() => PlaySfx(sfxShutdown);
 }

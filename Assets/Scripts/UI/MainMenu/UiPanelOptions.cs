@@ -63,6 +63,7 @@ public class UiPanelOptions : MonoBehaviour
 
     private void Restart()
     {
+        AudioManager.Get().PlaySoundShutDown();
         AudioManager.Get().StopMusic();
         restartPlayableDirector.Play();
     }
@@ -90,7 +91,7 @@ public class UiPanelOptions : MonoBehaviour
 
     private IEnumerator ShutDownCoroutine()
     {
-        
+        AudioManager.Get().PlaySoundShutDown();
         AudioManager.Get().StopMusic();
         
         float t = 0;

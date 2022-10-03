@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
@@ -14,6 +15,7 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     private const float MaxLinearValue = 1f;
 
     [SerializeField] private AudioClip sfxDefault;
+    [SerializeField] private AudioClip musicMainMenuIntro;
     [SerializeField] private AudioClip musicMainMenu;
     [SerializeField] private AudioClip musicGameplay;
 
@@ -67,6 +69,25 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         float desiredMixerDecibels = LinearToDecibel(volumeLevel);
 
         audioMixers[(int)mixerType].SetFloat(VolumeKeyName, desiredMixerDecibels);
+    }
+
+    private IEnumerator FirstTimeMainMenuMusicIenumerator()
+    {
+        MusicSource.loop = false;
+        PlayMusic(musicMainMenuIntro);
+        
+        while (MusicSource.isPlaying)
+        {
+            yield return null;
+        }
+
+        MusicSource.loop = true;
+        PlayMusic(musicMainMenu);
+    }
+    
+    public void PlayMusicMainMenuFirstTime()
+    {
+        StartCoroutine(FirstTimeMainMenuMusicIenumerator());
     }
 
     public void PlayMusicMainMenu () => PlayMusic(musicMainMenu);

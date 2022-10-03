@@ -19,6 +19,8 @@ public class UIMainMenu : MonoBehaviour
     [SerializeField] private PlayableDirector playableDirector;
     private Menu menu = Menu.Main;
 
+    private static bool firstTime = true;
+    
     private void Awake ()
     {
         panelSettings = menues[(int) Menu.Settings].GetComponent<UiPanelOptions>();
@@ -36,7 +38,17 @@ public class UIMainMenu : MonoBehaviour
 
     private void Start()
     {
-        AudioManager.Get().PlayMusicMainMenu();
+
+        if (firstTime)
+        {
+            firstTime = false;
+            AudioManager.Get().PlayMusicMainMenuFirstTime();
+        }
+        else
+        {
+            AudioManager.Get().PlayMusicMainMenu();
+        }
+        
         Time.timeScale = 1;
         AddAllListeners();
     }

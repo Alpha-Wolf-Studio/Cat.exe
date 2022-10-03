@@ -18,12 +18,11 @@ public class SceneManagerSingleton : MonoBehaviourSingleton<SceneManagerSingleto
 
     private SceneIndex sceneIndex;
 
-    public void LoadScene(SceneIndex scene, bool zoomIn = true)
+    public void LoadScene(SceneIndex scene)
     {
         animator.SetFloat(FADE_ANIMATION_SPEED, fadeAnimationSpeed);
         animator.SetFloat(OVERLAY_ANIMATION_SPEED, overlayAnimationSpeed);
         animator.SetBool(FADE_OUT, true);
-        animator.SetBool(ZOOM_IN, zoomIn);
         
         sceneIndex = scene;
         FadeScreen();

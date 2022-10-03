@@ -40,7 +40,7 @@ public class UIMainMenu : MonoBehaviour
 
     private void Start()
     {
-
+        SceneManagerSingleton.Get().ChangeZoomState(false);
         if (firstTime)
         {
             firstTime = false;
@@ -89,7 +89,7 @@ public class UIMainMenu : MonoBehaviour
 
     public void ButtonPlay()
     {
-        SceneManagerSingleton.Get().LoadScene(SceneManagerSingleton.SceneIndex.GAMEPLAY, true);
+        SceneManagerSingleton.Get().LoadScene(SceneManagerSingleton.SceneIndex.GAMEPLAY);
         playableDirector.Play();
     }
 

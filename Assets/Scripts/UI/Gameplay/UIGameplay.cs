@@ -37,7 +37,7 @@ public class UIGameplay : MonoBehaviour
     public void ExitGame()
     {
         uiPanelEndGame.OnPanelExit -= ExitGame;
-        SceneManagerSingleton.Get().LoadScene(SceneManagerSingleton.SceneIndex.MAIN_MENU, false);
+        SceneManagerSingleton.Get().LoadScene(SceneManagerSingleton.SceneIndex.MAIN_MENU);
     }
     
 }

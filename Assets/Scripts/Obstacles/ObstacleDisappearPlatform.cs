@@ -9,7 +9,8 @@ public class ObstacleDisappearPlatform : MonoBehaviour
     [SerializeField] private UnityEvent OnStartShake = null;
     
     [Header("Platform material")]
-    [SerializeField] private Material dissolve = null;
+    [SerializeField] private Material obstacleBaseMaterial = null;
+    [SerializeField] private Material obstacleEmissiveMaterial = null;
     [SerializeField] private float timeForEffect = 1;
 
     [Header("Models")]
@@ -25,7 +26,8 @@ public class ObstacleDisappearPlatform : MonoBehaviour
 
     private void Awake()
     {
-        dissolve.SetFloat("_Cutoff", 0);
+        obstacleBaseMaterial.SetFloat("_Cutoff", 0);
+        obstacleEmissiveMaterial.SetFloat("_Cutoff", 0);
         disolveLerper.SetLerperValues(0, 1, timeForEffect, Lerper<float>.LERPER_TYPE.STEP_SMOOTH);
     }
 
@@ -45,7 +47,8 @@ public class ObstacleDisappearPlatform : MonoBehaviour
         if (disolveLerper.Active)
         {
             disolveLerper.UpdateLerper();
-            dissolve.SetFloat("_Cutoff", disolveLerper.GetValue());
+            obstacleBaseMaterial.SetFloat("_Cutoff", disolveLerper.GetValue());
+            obstacleEmissiveMaterial.SetFloat("_Cutoff", disolveLerper.GetValue());
         }
         if (disolveLerper.Reached)
         {

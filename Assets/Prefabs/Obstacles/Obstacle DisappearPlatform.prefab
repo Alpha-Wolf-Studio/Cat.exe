@@ -62,7 +62,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  dissolve: {fileID: 2100000, guid: 824a520561e901746a7e4705c59c40ca, type: 2}
+  obstacleBaseMaterial: {fileID: 2100000, guid: 3a012ca2a610ac647b39851cdbf98e8a, type: 2}
+  obstacleEmissiveMaterial: {fileID: 2100000, guid: 824a520561e901746a7e4705c59c40ca, type: 2}
   timeForEffect: 2
   totalModels: 2
   meshRenderers:
@@ -269,11 +270,11 @@ PrefabInstance:
     - target: {fileID: 4552266590746149632, guid: f9993c9afe45846429158de48f6caa50, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 363b76323e7ea5a41b547bbb882e7bc9, type: 2}
+      objectReference: {fileID: 2100000, guid: 3a012ca2a610ac647b39851cdbf98e8a, type: 2}
     - target: {fileID: 7114000193851509461, guid: f9993c9afe45846429158de48f6caa50, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e473cc9d2d46011469cbcf6170876701, type: 2}
+      objectReference: {fileID: 2100000, guid: 824a520561e901746a7e4705c59c40ca, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9993c9afe45846429158de48f6caa50, type: 3}
 --- !u!1 &2474236759610814649 stripped

@@ -5,13 +5,9 @@ public class ShadowUnderPlayer : MonoBehaviour
     private Transform target;
     private Vector3 startPosition;
 
-    private void Awake ()
-    {
-        target = GameplayManager.Get().playerController.transform;
-    }
-
     void Start ()
     {
+        target = GameplayManager.Get().playerController.transform;
         startPosition = transform.position;
     }
 

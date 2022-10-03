@@ -167,6 +167,9 @@ public class UIMainMenu : MonoBehaviour
         
         off.gameObject.SetActive(false);
     }
+    
+    public void RestartMusic() => AudioManager.Get().PlayMusicMainMenuFirstTime();
+    
 }
 
 enum Menu

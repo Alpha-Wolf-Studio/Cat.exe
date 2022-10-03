@@ -60,7 +60,11 @@ public class UiPanelOptions : MonoBehaviour
         sliderSoundSfx.onValueChanged.RemoveAllListeners();
     }
 
-    private void Restart() => restartPlayableDirector.Play();
+    private void Restart()
+    {
+        AudioManager.Get().StopMusic();
+        restartPlayableDirector.Play();
+    }
 
     private void ChangeVolumeEffect (float newValue)
     {
@@ -75,7 +79,6 @@ public class UiPanelOptions : MonoBehaviour
 
     private void ClosePanelSoundMusic() => panelSoundMusic.gameObject.SetActive(false);
     private void ClosePanelSoundSfx() => panelSoundSfx.gameObject.SetActive(false);
-
     public void CloseBothSoundPanel ()
     {
         ClosePanelSoundMusic();

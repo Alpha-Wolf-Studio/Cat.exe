@@ -195,7 +195,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7239374519357473937, guid: 28f9069487c0b114883f0a10b8cc2dc4, type: 3}
       propertyPath: m_SceneBindings.Array.size
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7239374519357473937, guid: 28f9069487c0b114883f0a10b8cc2dc4, type: 3}
       propertyPath: m_SceneBindings.Array.data[5].key
@@ -210,6 +210,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -3411483598797192749, guid: 24644570dcb0c8a4a8ba94c5be5a81ed, type: 2}
     - target: {fileID: 7239374519357473937, guid: 28f9069487c0b114883f0a10b8cc2dc4, type: 3}
+      propertyPath: m_SceneBindings.Array.data[8].key
+      value: 
+      objectReference: {fileID: 8889163584687143427, guid: 24644570dcb0c8a4a8ba94c5be5a81ed, type: 2}
+    - target: {fileID: 7239374519357473937, guid: 28f9069487c0b114883f0a10b8cc2dc4, type: 3}
       propertyPath: m_SceneBindings.Array.data[5].value
       value: 
       objectReference: {fileID: 102927801}
@@ -221,6 +225,10 @@ PrefabInstance:
       propertyPath: m_SceneBindings.Array.data[7].value
       value: 
       objectReference: {fileID: 1676140191}
+    - target: {fileID: 7239374519357473937, guid: 28f9069487c0b114883f0a10b8cc2dc4, type: 3}
+      propertyPath: m_SceneBindings.Array.data[8].value
+      value: 
+      objectReference: {fileID: 1041683159}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28f9069487c0b114883f0a10b8cc2dc4, type: 3}
 --- !u!320 &169617029 stripped
@@ -884,6 +892,7 @@ GameObject:
   - component: {fileID: 1041683153}
   - component: {fileID: 1041683157}
   - component: {fileID: 1041683158}
+  - component: {fileID: 1041683159}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1021,6 +1030,36 @@ MonoBehaviour:
   messageText: {fileID: 1822947328}
   kittySpawnTime: 25
   kittySpawnMessage: 7
+--- !u!114 &1041683159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1041683152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: c8ae1d54bf94e794aa49864695e7a536, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1041683157}
+          m_TargetAssemblyTypeName: UIMainMenu, Assembly-CSharp
+          m_MethodName: RestartMusic
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &1162843976 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7314676220773800071, guid: 0e64bf8dfb07ea44e963be8504706419, type: 3}

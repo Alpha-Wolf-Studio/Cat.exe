@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -17,6 +18,7 @@ public class UIMainMenu : MonoBehaviour
     [SerializeField] private float transitionTime;
     [SerializeField] private CanvasGroup[] menues;
     [SerializeField] private PlayableDirector playableDirector;
+    [SerializeField] private TMPro.TextMeshProUGUI currentTimeText = default;
     private Menu menu = Menu.Main;
 
     private static bool firstTime = true;
@@ -51,6 +53,14 @@ public class UIMainMenu : MonoBehaviour
         
         Time.timeScale = 1;
         AddAllListeners();
+    }
+
+    private void Update()
+    {
+        var date = System.DateTime.Now;
+        string hour = date.Hour > 9 ? date.Hour.ToString() : "0" + date.Hour;  
+        string minute = date.Minute > 9 ? date.Minute.ToString() : "0" + date.Minute;  
+        currentTimeText.text = hour + ":" + minute;
     }
 
     private void OnDestroy()

@@ -25,7 +25,6 @@ public class UIMainMenu : MonoBehaviour
     
     private void Awake ()
     {
-        panelSettings = menues[(int) Menu.Settings].GetComponent<UiPanelOptions>();
         foreach (CanvasGroup menu in menues)
         {
             menu.blocksRaycasts = false;
@@ -36,6 +35,12 @@ public class UIMainMenu : MonoBehaviour
         menues[(int) Menu.Main].interactable = true;
         menues[(int) Menu.Main].blocksRaycasts = true;
         menues[(int) Menu.Main].alpha = 1;
+        
+        panelSettings = menues[(int) Menu.Settings].GetComponent<UiPanelOptions>();
+        panelSettings.OnPanelClose += delegate
+        {
+            StartCoroutine(SwitchPanel(transitionTime, (int)Menu.Main, (int)Menu.Settings));
+        };
     }
 
     private void Start()

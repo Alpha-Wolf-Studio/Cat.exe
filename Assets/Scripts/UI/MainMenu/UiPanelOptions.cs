@@ -5,6 +5,9 @@ using UnityEngine.Playables;
 
 public class UiPanelOptions : MonoBehaviour
 {
+
+    public System.Action OnPanelClose;
+
     [SerializeField] private UiButtonEffect btnReset;
     [SerializeField] private UiButtonEffect btnShutDown;
     [SerializeField] private UiButtonEffect btnSoundMusic;
@@ -63,6 +66,7 @@ public class UiPanelOptions : MonoBehaviour
 
     private void Restart()
     {
+        OnPanelClose?.Invoke();
         AudioManager.Get().PlaySoundShutDown();
         AudioManager.Get().StopMusic();
         restartPlayableDirector.Play();
@@ -91,6 +95,7 @@ public class UiPanelOptions : MonoBehaviour
 
     private IEnumerator ShutDownCoroutine()
     {
+        OnPanelClose?.Invoke();
         AudioManager.Get().PlaySoundShutDown();
         AudioManager.Get().StopMusic();
         

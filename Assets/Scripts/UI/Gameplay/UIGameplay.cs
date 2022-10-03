@@ -37,6 +37,7 @@ public class UIGameplay : MonoBehaviour
     public void ExitGame()
     {
         uiPanelEndGame.OnPanelExit -= ExitGame;
+        SceneManagerSingleton.Get().ChangeZoomState(false);
         SceneManagerSingleton.Get().LoadScene(SceneManagerSingleton.SceneIndex.MAIN_MENU);
     }
     

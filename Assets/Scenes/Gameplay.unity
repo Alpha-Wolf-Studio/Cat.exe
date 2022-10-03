@@ -550,10 +550,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 208409454, guid: a662bf3d032ba234a84d6a1076b4728b, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4211273985294851289, guid: a662bf3d032ba234a84d6a1076b4728b, type: 3}
       propertyPath: m_Name
       value: CameraPosition
@@ -3258,30 +3254,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6899960430445445882, guid: 22aa0a676da5123419576b4718659a24, type: 3}
   m_PrefabInstance: {fileID: 1639326535}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1639326537}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1cc4b86140ef88c49b1264cf805a1da1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1639326537 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6767625367836042023, guid: 22aa0a676da5123419576b4718659a24, type: 3}
-  m_PrefabInstance: {fileID: 1639326535}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &1639326538
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1639326537}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 8.77, y: 2.41, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1657317581
 PrefabInstance:
   m_ObjectHideFlags: 0

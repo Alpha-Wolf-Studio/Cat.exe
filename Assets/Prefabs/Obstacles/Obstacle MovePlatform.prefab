@@ -61,6 +61,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  model: {fileID: 8140216881731653697}
   rightDirection: 1
   speed: 1
   rightBound: 2
@@ -213,6 +214,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 97072524f3247b04b8f220cec320d08d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1543177392862188614, guid: 97072524f3247b04b8f220cec320d08d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -265,6 +270,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7458346104062095445, guid: 97072524f3247b04b8f220cec320d08d, type: 3}
+--- !u!1 &8140216881731653697 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 97072524f3247b04b8f220cec320d08d, type: 3}
+  m_PrefabInstance: {fileID: 8950541360068160784}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8916015160220486395 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 97072524f3247b04b8f220cec320d08d, type: 3}

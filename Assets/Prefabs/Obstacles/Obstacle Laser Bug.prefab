@@ -54,7 +54,7 @@ MonoBehaviour:
   OnTwinkle:
     m_PersistentCalls:
       m_Calls: []
-  laser: {fileID: 0}
+  laser: {fileID: 9219650651712407921}
   timePerLaser: 5
   firstLaserWithoutTimer: 1
   maximumSize: 500

@@ -128,5 +128,6 @@ public class GameplayManager : MonoBehaviourSingleton<GameplayManager>
         uiGameplay.PlayerFinished(globalTime);
         OnPlayerWon?.Invoke();
     }
-    
+
+    public float GlobalTime => globalTime;
 }

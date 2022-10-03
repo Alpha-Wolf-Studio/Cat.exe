@@ -71,7 +71,7 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         audioMixers[(int)mixerType].SetFloat(VolumeKeyName, desiredMixerDecibels);
     }
 
-    private IEnumerator FirstTimeMainMenuMusicIenumerator()
+    private IEnumerator FirstTimeMainMenuMusicIEnumerator()
     {
         MusicSource.loop = false;
         PlayMusic(musicMainMenuIntro);
@@ -87,7 +87,7 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     
     public void PlayMusicMainMenuFirstTime()
     {
-        StartCoroutine(FirstTimeMainMenuMusicIenumerator());
+        StartCoroutine(FirstTimeMainMenuMusicIEnumerator());
     }
 
     public void PlayMusicMainMenu () => PlayMusic(musicMainMenu);

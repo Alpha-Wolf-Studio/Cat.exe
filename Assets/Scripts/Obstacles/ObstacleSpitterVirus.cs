@@ -10,8 +10,10 @@ public class ObstacleSpitterVirus : MonoBehaviour
     [SerializeField] private float timePerBall = 0f;
     [SerializeField] private bool firstBallWithoutTimer = default;
     [SerializeField] private Transform ballSpawn = default;
-    [SerializeField] private Vector3 forceBallSpawn = Vector3.zero;
+    [SerializeField] private float forceBallSpeed = 500f;
+    [SerializeField] private ObstacleSpike obstacleSpike = default;
 
+    private ObstacleSpike lastSpike = default;
     private ObjectPooler objectPooler = default;
     private Timer ballTimer = default;
 
@@ -29,9 +31,10 @@ public class ObstacleSpitterVirus : MonoBehaviour
 
     private void Instanciate2DBall()
     {
-        GameObject ball = objectPooler.SpawnFromPool("Spike", ballSpawn.position, Quaternion.identity);
-        Rigidbody ballRigidbody = ball.GetComponent<Rigidbody>();
-        ballRigidbody.AddForce(forceBallSpawn);
+        if(lastSpike) Destroy(lastSpike.gameObject);
+        lastSpike = Instantiate(obstacleSpike, ballSpawn.position, Quaternion.identity, ballSpawn);
+        Rigidbody ballRigidbody = lastSpike.gameObject.GetComponent<Rigidbody>();
+        ballRigidbody.AddForce(-transform.right * forceBallSpeed);
 
         ballTimer.Reset();
         ballTimer.ToggleTimer(true);

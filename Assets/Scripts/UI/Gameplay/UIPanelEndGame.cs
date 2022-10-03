@@ -20,7 +20,7 @@ public class UIPanelEndGame : MonoBehaviour
     [Header("Error Panel")]
     [SerializeField] private GameObject errorPanel = default;
 
-    [SerializeField] private Button continueButton = default;
+    [SerializeField] private Button[] continueButtons = default;
 
     private float timeOnEnd = 0;
 
@@ -36,6 +36,15 @@ public class UIPanelEndGame : MonoBehaviour
         PlayfabManager.Get().OnConnection += OnConnection;
         
         waitPanel.SetActive(true);
+        
+        foreach (var buttons in continueButtons)
+        {
+            buttons.onClick.AddListener(delegate
+            {
+                OnPanelExit?.Invoke();
+            });
+        }
+        
     }
     
     private void OnDisable()
@@ -61,10 +70,6 @@ public class UIPanelEndGame : MonoBehaviour
         else
         {
             errorPanel.SetActive(true);
-            continueButton.onClick.AddListener(delegate
-            {
-                OnPanelExit?.Invoke();
-            });
         }
     }
     

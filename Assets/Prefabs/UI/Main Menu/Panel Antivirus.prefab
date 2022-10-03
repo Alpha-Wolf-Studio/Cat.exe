@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: A variant of Kittenwave was detected, what will you do?
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bfcdf8039ea681148892d01894969df8, type: 2}
+  m_sharedMaterial: {fileID: 5891465045219243102, guid: bfcdf8039ea681148892d01894969df8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -275,6 +275,7 @@ MonoBehaviour:
   scaleSpeed: 3
   scaleLimit: 1.2
   modifyImage: 0
+  currentImage: {fileID: 0}
   imageDefault: {fileID: 0}
   imageHighlighted: {fileID: 0}
   textHighlight: 0
@@ -282,6 +283,11 @@ MonoBehaviour:
   colorHighlight: {r: 0, g: 0, b: 0, a: 0}
   enableObject: 0
   objectToEnable: {fileID: 0}
+  isDraggeable: 0
+  isTrash: 0
+  isTrasheable: 1
+  dragIconPrefab: {fileID: 0}
+  emptyPrefab: {fileID: 0}
 --- !u!1 &8779528295976163426
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,8 +356,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: PROTECT NOW
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bfcdf8039ea681148892d01894969df8, type: 2}
+  m_sharedMaterial: {fileID: 5891465045219243102, guid: bfcdf8039ea681148892d01894969df8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -692,6 +698,7 @@ MonoBehaviour:
   scaleSpeed: 3
   scaleLimit: 1.2
   modifyImage: 0
+  currentImage: {fileID: 0}
   imageDefault: {fileID: 0}
   imageHighlighted: {fileID: 0}
   textHighlight: 0
@@ -699,6 +706,11 @@ MonoBehaviour:
   colorHighlight: {r: 0, g: 0, b: 0, a: 0}
   enableObject: 0
   objectToEnable: {fileID: 0}
+  isDraggeable: 0
+  isTrash: 0
+  isTrasheable: 1
+  dragIconPrefab: {fileID: 0}
+  emptyPrefab: {fileID: 0}
 --- !u!1 &8779528297467425290
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,7 +730,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8779528297467425293
 RectTransform:
   m_ObjectHideFlags: 0

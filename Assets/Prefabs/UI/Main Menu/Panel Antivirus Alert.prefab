@@ -352,6 +352,7 @@ MonoBehaviour:
   scaleSpeed: 3
   scaleLimit: 1.2
   modifyImage: 0
+  currentImage: {fileID: 0}
   imageDefault: {fileID: 0}
   imageHighlighted: {fileID: 0}
   textHighlight: 0
@@ -359,6 +360,11 @@ MonoBehaviour:
   colorHighlight: {r: 0, g: 0, b: 0, a: 0}
   enableObject: 0
   objectToEnable: {fileID: 0}
+  isDraggeable: 0
+  isTrash: 0
+  isTrasheable: 1
+  dragIconPrefab: {fileID: 0}
+  emptyPrefab: {fileID: 0}
 --- !u!1 &1790163108195502662
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,7 +431,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sayonyara - Antivirus
+  m_text: Cat.exe - Antivirus
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

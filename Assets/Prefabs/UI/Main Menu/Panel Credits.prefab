@@ -139,6 +139,7 @@ MonoBehaviour:
   scaleSpeed: 3
   scaleLimit: 1.2
   modifyImage: 0
+  currentImage: {fileID: 0}
   imageDefault: {fileID: 0}
   imageHighlighted: {fileID: 0}
   textHighlight: 0
@@ -146,6 +147,11 @@ MonoBehaviour:
   colorHighlight: {r: 0, g: 0, b: 0, a: 0}
   enableObject: 0
   objectToEnable: {fileID: 0}
+  isDraggeable: 0
+  isTrash: 0
+  isTrasheable: 1
+  dragIconPrefab: {fileID: 0}
+  emptyPrefab: {fileID: 0}
 --- !u!1 &7086929325129057407
 GameObject:
   m_ObjectHideFlags: 0

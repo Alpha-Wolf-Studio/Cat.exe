@@ -19,6 +19,7 @@ public class ObstacleDisappearPlatform : MonoBehaviour
     [SerializeField] private Collider[] colliders = null;
 
     private FloatLerper disolveLerper = new FloatLerper();
+    private ChildrenCollision[] childrenCollision;
     private bool shaking = false;
 
     /// Properties
@@ -29,12 +30,17 @@ public class ObstacleDisappearPlatform : MonoBehaviour
         obstacleBaseMaterial.SetFloat("_Cutoff", 0);
         obstacleEmissiveMaterial.SetFloat("_Cutoff", 0);
         disolveLerper.SetLerperValues(0, 1, timeForEffect, Lerper<float>.LERPER_TYPE.STEP_SMOOTH);
+
+        childrenCollision = GetComponentsInChildren<ChildrenCollision>();
+        for (int i = 0; i < childrenCollision.Length; i++)
+        {
+            childrenCollision[i].OnHit += CheckIsPlayer;
+        }
     }
 
     private void Update()
     {
         UpdateDisappearPlatform();
-        //if (Input.GetKeyDown(KeyCode.M)) shaking = true;
     }
 
     public void ActiveDisappearPlatform()
@@ -49,14 +55,17 @@ public class ObstacleDisappearPlatform : MonoBehaviour
             disolveLerper.UpdateLerper();
             obstacleBaseMaterial.SetFloat("_Cutoff", disolveLerper.GetValue());
             obstacleEmissiveMaterial.SetFloat("_Cutoff", disolveLerper.GetValue());
+
+            if (disolveLerper.GetValue() > 0.5f)
+            {
+                for (int i = 0; i < totalModels; i++)
+                    colliders[i].enabled = false;
+            }
         }
         if (disolveLerper.Reached)
         {
             for (int i = 0; i < totalModels; i++)
-            {
                 meshRenderers[i].enabled = false;
-                colliders[i].enabled = false;
-            }
         }
     }
 

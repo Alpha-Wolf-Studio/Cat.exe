@@ -5,12 +5,7 @@ public class DissolveEffect : MonoBehaviour
     [SerializeField] private SkinnedMeshRenderer[] dissolveMeshRenderers = null;
     [SerializeField] private float timeForEffect = 1;
 
-    private FloatLerper disolveLerper = null;
-
-    private void Start()
-    {
-        disolveLerper = new FloatLerper();
-    }
+    private FloatLerper disolveLerper = new FloatLerper();
 
     private void Update()
     {

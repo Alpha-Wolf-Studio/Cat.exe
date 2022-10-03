@@ -7,14 +7,14 @@ public class ObstacleDisappearPlatform : MonoBehaviour
 {
 
     [SerializeField] private UnityEvent OnStartShake = null;
-    
-    [Header("Platform material")]
-    [SerializeField] private Material obstacleBaseMaterial = null;
+
+    [Header("Platform material")] [SerializeField]
+    private Material obstacleBaseMaterial = null;
+
     [SerializeField] private Material obstacleEmissiveMaterial = null;
     [SerializeField] private float timeForEffect = 1;
 
-    [Header("Models")]
-    [SerializeField] private int totalModels = 0;
+    [Header("Models")] [SerializeField] private int totalModels = 0;
     [SerializeField] private MeshRenderer[] meshRenderers = null;
     [SerializeField] private Collider[] colliders = null;
 
@@ -23,9 +23,13 @@ public class ObstacleDisappearPlatform : MonoBehaviour
     private bool shaking = false;
 
     /// Properties
-    public bool Shaking { get => shaking; set => shaking = value; }
+    public bool Shaking
+    {
+        get => shaking;
+        set => shaking = value;
+    }
 
-    private void Awake()
+    private void Awake ()
     {
         obstacleBaseMaterial.SetFloat("_Cutoff", 0);
         obstacleEmissiveMaterial.SetFloat("_Cutoff", 0);
@@ -38,17 +42,17 @@ public class ObstacleDisappearPlatform : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void Update ()
     {
         UpdateDisappearPlatform();
     }
 
-    public void ActiveDisappearPlatform()
+    public void ActiveDisappearPlatform ()
     {
         disolveLerper.ActiveLerper();
     }
 
-    public void UpdateDisappearPlatform()
+    public void UpdateDisappearPlatform ()
     {
         if (disolveLerper.Active)
         {
@@ -62,6 +66,7 @@ public class ObstacleDisappearPlatform : MonoBehaviour
                     colliders[i].enabled = false;
             }
         }
+
         if (disolveLerper.Reached)
         {
             for (int i = 0; i < totalModels; i++)
@@ -70,17 +75,26 @@ public class ObstacleDisappearPlatform : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter (Collision other)
     {
         CheckIsPlayer(other.transform);
     }
 
-    public void CheckIsPlayer(Transform other)
+    public void CheckIsPlayer (Transform other)
     {
         if (Utils.CheckLayerInMask(GameplayManager.Get().layerPlayer, other.gameObject.layer))
         {
             shaking = true;
             OnStartShake?.Invoke();
         }
+
+        Invoke(nameof(RestartPlatform), 3f);
+    }
+
+    void RestartPlatform ()
+    {
+        obstacleBaseMaterial.SetFloat("_Cutoff", 0);
+        obstacleEmissiveMaterial.SetFloat("_Cutoff", 0);
+        disolveLerper.SetLerperValues(0, 1, timeForEffect, Lerper<float>.LERPER_TYPE.STEP_SMOOTH);
     }
 }

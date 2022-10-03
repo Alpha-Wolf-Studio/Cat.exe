@@ -5,22 +5,22 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
-public class UiButtonEffect : MonoBehaviour, 
-    IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler,
-    IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
+public class UiButtonEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler,
+                                             IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
     public event Action OnMouseEnter;
     public event Action OnMouseExit;
     public event Action OnMouseClick;
+    public event Action OnMouseDoubleClick;
     public event Action OnIconTrash;
 
-    [Header("RayCast Collision:")]
-    [Tooltip("Chequea Alphas en el raycast. Modificar el Read/Write Enabled en la imagen si éste es true.")]
+    [Header("RayCast Collision:")] 
+    [Tooltip("Chequea Alphas en el raycast. Modificar el Read/Write Enabled en la imagen si éste es true.")] 
     [SerializeField] private bool modifyHitBox;
     [SerializeField] private float alphaRayCast = 0.1f;
-    
-    [Header("Effect Scale:")]
-    [SerializeField] private float scaleSpeed= 3;
+
+    [Header("Effect Scale:")] 
+    [SerializeField] private float scaleSpeed = 3;
     [SerializeField] private float scaleLimit = 1.2f;
     private bool increment = false;
     private Vector3 initialScale;
@@ -38,29 +38,31 @@ public class UiButtonEffect : MonoBehaviour,
     [SerializeField] private Color colorHighlight;
     private Color colorNormal;
 
-    [Header("Other:")]
+    [Header("Other:")] 
     [SerializeField] private bool enableObject;
     [SerializeField] private GameObject objectToEnable;
 
-    [Header("Effect Drag Icon:")]
-    [SerializeField] private bool isDraggeable = false;
-    [SerializeField] private bool isTrash = false;
+    [Header("Effect Drag Icon:")] 
+    [SerializeField] private bool isDraggeable;
+
+    [SerializeField] private bool isTrash;
     [SerializeField] private bool isTrasheable = true;
-    [SerializeField] private GameObject dragIconPrefab = null;
-    [SerializeField] private GameObject emptyPrefab = null;
-    private Canvas canvas = null;
-    private RectTransform holder = null;
-    private UIDragIcon iconDraggeable = null;
+    [SerializeField] private GameObject dragIconPrefab;
+    [SerializeField] private GameObject emptyPrefab;
+
+    private Canvas canvas;
+    private RectTransform holder;
+    private UIDragIcon iconDraggeable;
 
     /// Double click
-    private const float timeBetweenClick = 0.5f;
+    private float timeBetweenClick = 0.5f;
     private bool isTimeCheckAllowed = true;
     private float firstClickTime;
     private int totalClicks;
 
     public bool IsDraggeable => isDraggeable;
 
-    private void Awake()
+    private void Awake ()
     {
         increment = false;
         initialScale = transform.localScale;
@@ -94,22 +96,26 @@ public class UiButtonEffect : MonoBehaviour,
         canvas = FindObjectOfType<Canvas>();
         holder = GetComponent<RectTransform>();
     }
-    private void OnEnable()
+
+    private void OnEnable ()
     {
         transform.localScale = initialScale;
         increment = false;
     }
-    private void Update()
+
+    private void Update ()
     {
         ChangeScale();
     }
-    private void OnDestroy()
+
+    private void OnDestroy ()
     {
         RemoveBehaviours();
     }
-    public void AddBehaviours(Action onClick = null, Action onEnter = null, Action onExit = null, Action onTrash = null)
+
+    public void AddBehaviours (Action onClick = null, Action onEnter = null, Action onExit = null, Action onTrash = null)
     {
-        if (onClick != null) 
+        if (onClick != null)
             OnMouseClick += onClick;
         if (onEnter != null)
             OnMouseEnter += onEnter;
@@ -119,20 +125,25 @@ public class UiButtonEffect : MonoBehaviour,
             OnIconTrash += onTrash;
     }
 
-    private void RemoveBehaviours()
+    public void AddDoubleClick (Action onDoubleClick)
+    {
+        OnMouseDoubleClick += onDoubleClick;
+    }
+
+    private void RemoveBehaviours ()
     {
         OnMouseClick = null;
         OnMouseEnter = null;
         OnMouseExit = null;
     }
 
-    public void Trash()
+    public void Trash ()
     {
         gameObject.SetActive(false);
         OnIconTrash?.Invoke();
     }
 
-    private void ChangeScale()
+    private void ChangeScale ()
     {
         float timeStep = scaleSpeed * Time.unscaledDeltaTime;
         scale = transform.localScale;
@@ -162,11 +173,10 @@ public class UiButtonEffect : MonoBehaviour,
         }
     }
 
-    public void OnMouseEnterButton()
+    public void OnMouseEnterButton ()
     {
         OnMouseEnter?.Invoke();
         increment = true;
-        //AkSoundEngine.PostEvent(AK.EVENTS.UIBUTTONENTER, gameObject);
 
         if (modifyImage)
             currentImage.sprite = imageHighlighted;
@@ -177,11 +187,11 @@ public class UiButtonEffect : MonoBehaviour,
         if (textHighlight)
             textToHighlight.color = colorHighlight;
     }
-    public void OnMouseExitButton()
+
+    public void OnMouseExitButton ()
     {
         OnMouseExit?.Invoke();
         increment = false;
-        //AkSoundEngine.PostEvent(AK.EVENTS.UIBUTTONEXIT, gameObject);
 
         if (modifyImage)
             currentImage.sprite = imageDefault;
@@ -192,49 +202,72 @@ public class UiButtonEffect : MonoBehaviour,
         if (textHighlight)
             textToHighlight.color = colorNormal;
     }
-    public void OnPointerEnter(PointerEventData eventData)
+
+    public void OnPointerEnter (PointerEventData eventData)
     {
         OnMouseEnterButton();
     }
-    public void OnPointerExit(PointerEventData eventData)
+
+    public void OnPointerExit (PointerEventData eventData)
     {
         OnMouseExitButton();
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnPointerClick (PointerEventData eventData)
     {
-        //AkSoundEngine.PostEvent(AK.EVENTS.UICLICKBUTTON, gameObject);
+        if (OnMouseDoubleClick == null)
+        {
+            OnMouseClick?.Invoke();
+            return;
+        }
 
         if (totalClicks == 0)
         {
             totalClicks++;
+            StartCoroutine(CheckDoubleClick());
         }
-        else if (totalClicks == 1 && isTimeCheckAllowed)
+        else if (totalClicks >0)
         {
             totalClicks++;
             firstClickTime = Time.time;
-            StartCoroutine(CheckDoubleClick());
         }
     }
 
-    IEnumerator CheckDoubleClick()
+    IEnumerator CheckDoubleClick ()
     {
         isTimeCheckAllowed = false;
-        while (Time.time < firstClickTime + timeBetweenClick)
+        bool isDoubleClick = false;
+        float timing = 0;
+
+        while (timing < timeBetweenClick)
         {
+            timing += Time.deltaTime;
             if (totalClicks == 2)
             {
-                /// Double click
-                OnMouseClick?.Invoke();
+                OnMouseDoubleClick?.Invoke();
+                isDoubleClick = true;
                 break;
             }
-            yield return new WaitForEndOfFrame();
+
+            yield return null;
         }
+
+        if (isDoubleClick)
+        {
+            Debug.Log("DobleClick.");
+            OnMouseDoubleClick?.Invoke();
+        }
+        else
+        {
+            Debug.Log("UnClick.");
+            OnMouseClick?.Invoke();
+        }
+
         totalClicks = 0;
         isTimeCheckAllowed = true;
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
+    public void OnBeginDrag (PointerEventData eventData)
     {
         if (dragIconPrefab != null && isDraggeable)
         {
@@ -244,21 +277,24 @@ public class UiButtonEffect : MonoBehaviour,
             iconDraggeable.Init(gameObject, currentImage?.sprite, textToHighlight?.text);
         }
     }
-    public void OnDrag(PointerEventData eventData)
+
+    public void OnDrag (PointerEventData eventData)
     {
         if (iconDraggeable != null)
         {
             iconDraggeable.rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
         }
     }
-    public void OnEndDrag(PointerEventData eventData)
+
+    public void OnEndDrag (PointerEventData eventData)
     {
         if (iconDraggeable != null)
         {
             Destroy(iconDraggeable.gameObject);
         }
     }
-    public void OnDrop(PointerEventData eventData)
+
+    public void OnDrop (PointerEventData eventData)
     {
         if (!isTrash) return;
 
@@ -274,5 +310,5 @@ public class UiButtonEffect : MonoBehaviour,
                 emptyGO.transform.SetSiblingIndex(index);
             }
         }
-    }   
+    }
 }

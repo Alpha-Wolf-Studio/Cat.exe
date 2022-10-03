@@ -6,13 +6,13 @@ using UnityEngine.Playables;
 public class UIMainMenu : MonoBehaviour
 {
     [SerializeField] private UiButtonEffect btnBackground;
-    [SerializeField] private UiButtonEffect btnPlay;
+    [SerializeField] private UiButtonEffect btnIconPlay;
     [SerializeField] private UiButtonEffect btnSettings;
-    [SerializeField] private UiButtonEffect btnCredits;
+    [SerializeField] private UiButtonEffect btnIconCredits;
     [SerializeField] private UiButtonEffect btnBackOfCredits;
-    [SerializeField] private UiButtonEffect btnLeadBoard;
-    [SerializeField] private UiButtonEffect btnBackOfLeadBoard;
-    [SerializeField] private UiButtonEffect btnAlphaWolf;
+    [SerializeField] private UiButtonEffect btnIconLeadBoard;
+    [SerializeField] private UiButtonEffect btnIconBackOfLeadBoard;
+    [SerializeField] private UiButtonEffect btnIconAlphaWolf;
     private UiPanelOptions panelSettings;
 
     [SerializeField] private float transitionTime;
@@ -72,14 +72,15 @@ public class UIMainMenu : MonoBehaviour
     {
         btnBackground.AddBehaviours(OffSettings, OffPanelsSounds);
 
-        btnPlay.AddBehaviours(ButtonPlay, null, null, OpenCrash);
-        btnSettings.AddBehaviours(ButtonSetting);
-        btnCredits.AddBehaviours(ButtonCredits);
-        btnLeadBoard.AddBehaviours(ButtonLeadBoard);
-        btnAlphaWolf.AddBehaviours(ButtonAlphaWolf);
+        btnIconPlay.AddBehaviours(null, null, null, OpenCrash);
+        btnIconPlay.AddDoubleClick(ButtonPlay);
+        btnIconCredits.AddDoubleClick(ButtonCredits);
+        btnIconLeadBoard.AddDoubleClick(ButtonLeadBoard);
+        btnIconAlphaWolf.AddDoubleClick(ButtonAlphaWolf);
+        btnIconBackOfLeadBoard.AddBehaviours(ButtonBackLeadBoard);
 
+        btnSettings.AddBehaviours(ButtonSetting);
         btnBackOfCredits.AddBehaviours(ButtonBackCredits);
-        btnBackOfLeadBoard.AddBehaviours(ButtonBackLeadBoard);
     }
 
     void RemoveAllListeners ()

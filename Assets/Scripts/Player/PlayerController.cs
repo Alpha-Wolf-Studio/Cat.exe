@@ -29,7 +29,12 @@ public class PlayerController : MonoBehaviour, IDamageable
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            movementController.Jump();
+            movementController.JumpStart();
+        }
+        
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            movementController.JumpEnd();
         }
 
         if (Input.GetKeyDown(KeyCode.E))

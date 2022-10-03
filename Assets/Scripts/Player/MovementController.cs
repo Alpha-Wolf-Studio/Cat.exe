@@ -5,7 +5,8 @@ using UnityEngine;
 public class MovementController : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField] private float speed = 0f;
+    [SerializeField] private float groundSpeed = 1000f;
+    [SerializeField] private float airSpeed = 200f;
     [SerializeField] private float rotationSpeed = 0f;
     [Header("Jump")] 
     [SerializeField] private float maxJumpTime = .25f;
@@ -17,6 +18,8 @@ public class MovementController : MonoBehaviour
     [Space(10)]
     [SerializeField] private Animator animator = null;
 
+    private bool grounded = true;
+    
     private Rigidbody rigid = null;
     private bool canDash = true;
     private float halfHeight = 0f;
@@ -33,6 +36,8 @@ public class MovementController : MonoBehaviour
 
     private void Update()
     {
+        grounded = Physics.Raycast(transform.position, Vector3.down, halfHeight, jumpeableMask);
+        
         if (!jumping) return;
         
         jumpDelta += Time.deltaTime;
@@ -45,7 +50,9 @@ public class MovementController : MonoBehaviour
     {
         animator.SetBool("run", true);
 
-        rigid.AddForce(direction * speed * Time.fixedDeltaTime, ForceMode.Acceleration);
+        float movementSpeed = grounded ? groundSpeed : airSpeed;
+        
+        rigid.AddForce(direction * (movementSpeed * Time.fixedDeltaTime), ForceMode.Acceleration);
 
         ProcessRotation(direction);
     }
@@ -83,7 +90,7 @@ public class MovementController : MonoBehaviour
     
     public void JumpStart()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, halfHeight, jumpeableMask))
+        if (grounded)
         {
             animator.SetTrigger("jump");
             jumping = true;

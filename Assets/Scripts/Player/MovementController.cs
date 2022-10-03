@@ -41,7 +41,7 @@ public class MovementController : MonoBehaviour
         if (!jumping) return;
         
         jumpDelta += Time.deltaTime;
-        rigid.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        rigid.AddForce(Vector3.up * jumpForce * Time.deltaTime, ForceMode.Impulse);
         if (jumpDelta > maxJumpTime)
             JumpEnd();
     }

@@ -4115,7 +4115,7 @@ MonoBehaviour:
   airSpeed: 500
   rotationSpeed: 300
   maxJumpTime: 0.2
-  jumpForce: 0.6
+  jumpForce: 120
   jumpeableMask:
     serializedVersion: 2
     m_Bits: 768

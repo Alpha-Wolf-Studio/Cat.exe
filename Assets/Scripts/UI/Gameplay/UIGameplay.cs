@@ -1,20 +1,48 @@
-using System;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIGameplay : MonoBehaviour
 {
     [Header("Gameplay")]
-    [SerializeField] private GameObject panelGameplay = default;
-    [SerializeField] private TMP_Text timerText = null;
-
+    [SerializeField] private GameObject panelGameplay;
+    [SerializeField] private TMP_Text textTimer;
+    [SerializeField] private TMP_Text textTimerTotal;
+    [SerializeField] private Button btnExit;
+    
     [Header("End Game Panel")] 
-    [SerializeField] private UIPanelEndGame uiPanelEndGame = default;
+    [SerializeField] private UIPanelEndGame uiPanelEndGame;
+    [SerializeField] private Slider sliderSoundMusic;
+    [SerializeField] private Slider sliderSoundSfx;
 
     private void Start()
     {
         SceneManagerSingleton.Get().ChangeZoomState(true);
+        sliderSoundMusic.onValueChanged.AddListener(ChangeMusicVolume);
+        sliderSoundSfx.onValueChanged.AddListener(ChangeSfxVolume);
+        btnExit.onClick.AddListener(ButtonExit);
     }
+
+    private void ButtonExit () => ExitGame();
+
+    private void Update ()
+    {
+        UpdateTimerText();
+    }
+
+    public void UpdateTimerText ()
+    {
+        int seconds = (int) GameplayManager.Get().GlobalTime % 60;
+        int minutes = (int)GameplayManager.Get().GlobalTime / 60;
+
+        string secondsTxt = seconds < 10 ? "0" + seconds : seconds.ToString();
+        string minutesTxt = minutes < 10 ? "0" + minutes : minutes.ToString();
+
+        textTimerTotal.text = minutesTxt + ":" + secondsTxt;
+    }
+
+    private void ChangeSfxVolume (float newValue) => AudioManager.Get().SetMusicVolume(newValue);
+    private void ChangeMusicVolume (float newValue) => AudioManager.Get().SetMusicVolume(newValue);
 
     public void UpdateTimerText(float timerValue)
     {
@@ -24,7 +52,7 @@ public class UIGameplay : MonoBehaviour
         string secondsTxt = seconds < 10 ? "0" + seconds : seconds.ToString();
         string minutesTxt = minutes < 10 ? "0" + minutes : minutes.ToString();
 
-        timerText.text = minutesTxt + ":" + secondsTxt;
+        textTimer.text = minutesTxt + ":" + secondsTxt;
     }
 
     public void PlayerFinished(float time)
@@ -40,5 +68,4 @@ public class UIGameplay : MonoBehaviour
         SceneManagerSingleton.Get().ChangeZoomState(false);
         SceneManagerSingleton.Get().LoadScene(SceneManagerSingleton.SceneIndex.MAIN_MENU);
     }
-    
 }

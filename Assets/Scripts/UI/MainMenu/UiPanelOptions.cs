@@ -27,6 +27,18 @@ public class UiPanelOptions : MonoBehaviour
         btnSoundSfx.AddBehaviours(null, OpenPanelSoundSfx);
         btnSoundSfx.AddBehaviours(null, ClosePanelSoundMusic);
 
+        var sfxString = AudioManager.Get().VOLUME_SFX_KEYNAME;
+        if (PlayerPrefs.HasKey(sfxString))
+        {
+            sliderSoundSfx.value = PlayerPrefs.GetFloat(sfxString);
+        }
+        
+        var volumeString = AudioManager.Get().VOLUME_MUSIC_KEYNAME;
+        if (PlayerPrefs.HasKey(volumeString))
+        {
+            sliderSoundMusic.value = PlayerPrefs.GetFloat(volumeString);
+        }
+        
         sliderSoundMusic.onValueChanged.AddListener(ChangeVolumeMusic);
         sliderSoundSfx.onValueChanged.AddListener(ChangeVolumeEffect);
     }

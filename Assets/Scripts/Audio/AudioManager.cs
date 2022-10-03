@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +10,9 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     [SerializeField] private AudioSource[] audioSources;
     [SerializeField] private AudioMixer[] audioMixers;
 
-    private const string VolumeKeyName = "Volume";
+    //private const string VolumeKeyName = "Volume";
+    public readonly string VOLUME_SFX_KEYNAME = "Volume_SFX";
+    public readonly string VOLUME_MUSIC_KEYNAME = "Volume_Music";
     private const float LinearToDecibelCoefficient = 20f;
     private const float MinLinearValue = 0.00001f;
     private const float MaxLinearValue = 1f;
@@ -22,6 +25,18 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     private AudioSource SfxSource => audioSources[(int)MixerType.Sfx];
     private AudioSource MusicSource => audioSources[(int)MixerType.Music];
 
+    private void Start()
+    {
+        if (PlayerPrefs.HasKey(VOLUME_SFX_KEYNAME))
+        {
+            SetSFXVolume(PlayerPrefs.GetFloat(VOLUME_SFX_KEYNAME));
+        }
+        
+        if (PlayerPrefs.HasKey(VOLUME_MUSIC_KEYNAME))
+        {
+            SetMusicVolume(PlayerPrefs.GetFloat(VOLUME_MUSIC_KEYNAME));
+        }
+    }
 
     private float LinearToDecibel(float linearValue) => LinearToDecibelCoefficient * Mathf.Log10(linearValue);
 
@@ -54,21 +69,23 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
 
     public void SetSFXVolume(float volumeLevel)
     {
-        SetVolume(MixerType.Sfx, volumeLevel);
+        SetVolume(volumeLevel, audioMixers[(int)MixerType.Sfx], VOLUME_SFX_KEYNAME);
+        PlayerPrefs.SetFloat(VOLUME_SFX_KEYNAME, volumeLevel);
     }
 
     public void SetMusicVolume(float volumeLevel)
     {
-        SetVolume(MixerType.Music, volumeLevel);
+        SetVolume(volumeLevel, audioMixers[(int)MixerType.Music], VOLUME_MUSIC_KEYNAME);
+        PlayerPrefs.SetFloat(VOLUME_MUSIC_KEYNAME, volumeLevel);
     }
 
-    private void SetVolume(MixerType mixerType, float volumeLevel)
+    private void SetVolume(float volumeLevel, AudioMixer mixer, string mixerKey)
     {
         volumeLevel = Mathf.Clamp(volumeLevel, MinLinearValue, MaxLinearValue);
 
         float desiredMixerDecibels = LinearToDecibel(volumeLevel);
 
-        audioMixers[(int)mixerType].SetFloat(VolumeKeyName, desiredMixerDecibels);
+        mixer.SetFloat(mixerKey, desiredMixerDecibels);
     }
 
     private IEnumerator FirstTimeMainMenuMusicIEnumerator()

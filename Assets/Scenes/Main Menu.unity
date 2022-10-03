@@ -1301,13 +1301,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btnBackground: {fileID: 581224472}
-  btnPlay: {fileID: 173981811}
+  btnIconPlay: {fileID: 173981811}
   btnSettings: {fileID: 1554398775}
-  btnCredits: {fileID: 1162843976}
+  btnIconCredits: {fileID: 1162843976}
   btnBackOfCredits: {fileID: 1990789326}
-  btnLeadBoard: {fileID: 961405211}
-  btnBackOfLeadBoard: {fileID: 691001034}
-  btnAlphaWolf: {fileID: 7314676221935587280}
+  btnIconLeadBoard: {fileID: 961405211}
+  btnIconBackOfLeadBoard: {fileID: 691001034}
+  btnIconAlphaWolf: {fileID: 7314676221935587280}
   transitionTime: 1
   menues:
   - {fileID: 1586854669}

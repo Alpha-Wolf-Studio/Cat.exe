@@ -30,8 +30,10 @@ public class ObstacleDisappearPlatform : MonoBehaviour
 
     private void Awake ()
     {
-        obstacleBaseMaterial.SetFloat("_Cutoff", 0);
-        obstacleEmissiveMaterial.SetFloat("_Cutoff", 0);
+        foreach (var renderer in meshRenderers)
+        {
+            renderer.material.SetFloat("_Cutoff", 0);
+        }
         disolveLerper.SetLerperValues(0, 1, timeForEffect, Lerper<float>.LERPER_TYPE.STEP_SMOOTH);
 
         childrenCollision = GetComponentsInChildren<ChildrenCollision>();
@@ -56,8 +58,10 @@ public class ObstacleDisappearPlatform : MonoBehaviour
         if (disolveLerper.Active)
         {
             disolveLerper.UpdateLerper();
-            obstacleBaseMaterial.SetFloat("_Cutoff", disolveLerper.GetValue());
-            obstacleEmissiveMaterial.SetFloat("_Cutoff", disolveLerper.GetValue());
+            foreach (var renderer in meshRenderers)
+            {
+                renderer.material.SetFloat("_Cutoff", disolveLerper.GetValue());
+            }
 
             if (disolveLerper.GetValue() > 0.5f)
             {
@@ -91,8 +95,10 @@ public class ObstacleDisappearPlatform : MonoBehaviour
 
     void RestartPlatform ()
     {
-        obstacleBaseMaterial.SetFloat("_Cutoff", 0);
-        obstacleEmissiveMaterial.SetFloat("_Cutoff", 0);
+        foreach (var renderer in meshRenderers)
+        {
+            renderer.material.SetFloat("_Cutoff", 0);
+        }
         disolveLerper.SetLerperValues(0, 1, timeForEffect, Lerper<float>.LERPER_TYPE.STEP_SMOOTH);
 
         for (int i = 0; i < totalModels; i++)

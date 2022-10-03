@@ -23,6 +23,11 @@ public class ObstacleDeathZone : MonoBehaviour, IObstacle
         CheckIsPlayer(other.transform);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        CheckIsPlayer(other.transform);
+    }
+
     public void CheckIsPlayer (Transform other)
     {
         if (Utils.CheckLayerInMask(GameplayManager.Get().layerPlayer, other.gameObject.layer))

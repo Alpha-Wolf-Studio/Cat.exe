@@ -5,7 +5,6 @@ using UnityEngine.Events;
 
 public class ObstacleDisappearPlatform : MonoBehaviour
 {
-
     [SerializeField] private UnityEvent OnStartShake = null;
 
     [Header("Platform material")] [SerializeField]
@@ -86,9 +85,8 @@ public class ObstacleDisappearPlatform : MonoBehaviour
         {
             shaking = true;
             OnStartShake?.Invoke();
+            Invoke(nameof(RestartPlatform), 3f);
         }
-
-        Invoke(nameof(RestartPlatform), 3f);
     }
 
     void RestartPlatform ()
@@ -96,5 +94,11 @@ public class ObstacleDisappearPlatform : MonoBehaviour
         obstacleBaseMaterial.SetFloat("_Cutoff", 0);
         obstacleEmissiveMaterial.SetFloat("_Cutoff", 0);
         disolveLerper.SetLerperValues(0, 1, timeForEffect, Lerper<float>.LERPER_TYPE.STEP_SMOOTH);
+
+        for (int i = 0; i < totalModels; i++)
+            colliders[i].enabled = true;
+
+        for (int i = 0; i < totalModels; i++)
+            meshRenderers[i].enabled = true;
     }
 }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6478855326719920087}
   - component: {fileID: 8851411475597752906}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacle MovePlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,9 +116,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3744146151943413771, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4510233590481939665, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
       propertyPath: m_Name
       value: Obstacle Audio
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510233590481939665, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
@@ -189,9 +197,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2454168965811349617, guid: 97072524f3247b04b8f220cec320d08d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -540358131517578259, guid: 97072524f3247b04b8f220cec320d08d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 97072524f3247b04b8f220cec320d08d, type: 3}
       propertyPath: m_Name
       value: Asset_PlataformaMovible
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 97072524f3247b04b8f220cec320d08d, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1543177392862188614, guid: 97072524f3247b04b8f220cec320d08d, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -201,6 +221,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e473cc9d2d46011469cbcf6170876701, type: 2}
+    - target: {fileID: 4167190399133198058, guid: 97072524f3247b04b8f220cec320d08d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97072524f3247b04b8f220cec320d08d, type: 3}
 --- !u!1 &2434124842837686943 stripped

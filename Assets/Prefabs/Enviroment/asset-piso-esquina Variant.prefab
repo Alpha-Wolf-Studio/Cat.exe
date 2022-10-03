@@ -59,9 +59,21 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: d34dd146d9de7e04bb1b9bb0253e2321, type: 2}
+    - target: {fileID: -5094767574649010514, guid: 6655d873700749140a2110426710cdd4, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -2901924942304178958, guid: 6655d873700749140a2110426710cdd4, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6655d873700749140a2110426710cdd4, type: 3}
       propertyPath: m_Name
       value: asset-piso-esquina Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6655d873700749140a2110426710cdd4, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3400775729739174444, guid: 6655d873700749140a2110426710cdd4, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -79,6 +91,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: d34dd146d9de7e04bb1b9bb0253e2321, type: 2}
+    - target: {fileID: 4242758546855077751, guid: 6655d873700749140a2110426710cdd4, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6655d873700749140a2110426710cdd4, type: 3}
 --- !u!1 &578069473641539847 stripped

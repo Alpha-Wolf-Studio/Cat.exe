@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8863457418292108471}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pisoTrampaDer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2144918030418574384}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pisoTrampaIzq
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 8020241625862906491}
   - component: {fileID: 8245732420953470560}
   - component: {fileID: 2732839664467471606}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: plataforma1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 1358050837781056443}
   - component: {fileID: 1973342080431017967}
   - component: {fileID: 146364092636453502}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Death Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 3706336868764992529}
   - component: {fileID: 4682852903752178840}
   - component: {fileID: 764698657668611859}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: warnig_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -318,7 +318,7 @@ GameObject:
   - component: {fileID: 8432834220162542222}
   - component: {fileID: 8608722165342360358}
   - component: {fileID: 5687196582097065312}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacle Hack Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 6391720830040665108}
   - component: {fileID: 8345505938913560336}
   - component: {fileID: 7877520831345779180}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: warnig_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 3870068466536058007}
   - component: {fileID: 411411863172875468}
   - component: {fileID: 1648718376530836341}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: assete_pisotrampa_emissive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -587,7 +587,7 @@ GameObject:
   - component: {fileID: 6724414430785054867}
   - component: {fileID: 3610716076939108027}
   - component: {fileID: 246807371785141542}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: plataforma2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -683,7 +683,7 @@ GameObject:
   - component: {fileID: 6378084185741467472}
   - component: {fileID: 3739533263840014703}
   - component: {fileID: 3338728778716649837}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: assete_pisotrampa_emissive1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -806,9 +806,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3744146151943413771, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4510233590481939665, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
       propertyPath: m_Name
       value: Obstacle Audio
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510233590481939665, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20403ff97754daf40a62223d43d1077f, type: 3}

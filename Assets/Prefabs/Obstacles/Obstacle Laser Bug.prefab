@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9182700095456045392}
   - component: {fileID: 8417870685144377815}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacle Laser Bug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,13 +114,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6897673302033808508, guid: 8f0e3c33ce5a33d41b453e3adfbf8f2b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -977880744089894576, guid: 8f0e3c33ce5a33d41b453e3adfbf8f2b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -799726093807078257, guid: 8f0e3c33ce5a33d41b453e3adfbf8f2b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8c8f2ffb5a72e514885f988a961fd4db, type: 2}
+    - target: {fileID: 693768140632462417, guid: 8f0e3c33ce5a33d41b453e3adfbf8f2b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 906630007543302670, guid: 8f0e3c33ce5a33d41b453e3adfbf8f2b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8f0e3c33ce5a33d41b453e3adfbf8f2b, type: 3}
       propertyPath: m_Name
       value: asset-canonLaser (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8f0e3c33ce5a33d41b453e3adfbf8f2b, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1757730963506533551, guid: 8f0e3c33ce5a33d41b453e3adfbf8f2b, type: 3}
       propertyPath: m_Materials.Array.data[0]

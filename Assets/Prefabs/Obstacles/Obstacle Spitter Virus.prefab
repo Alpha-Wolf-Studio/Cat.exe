@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8692491236995384791}
   - component: {fileID: 2320509131618171577}
   - component: {fileID: 5730090700922280952}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ball-spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 8596137611153568080}
   - component: {fileID: 6674150567046998107}
   - component: {fileID: 3275705908013224190}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Obstacle Spitter Virus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,6 +226,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: asset-canonBolaPincho (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4d86b1a59105ec54898795b7e2f87582, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d86b1a59105ec54898795b7e2f87582, type: 3}
 --- !u!1 &356500983971672597 stripped
@@ -302,9 +306,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3744146151943413771, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4510233590481939665, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
       propertyPath: m_Name
       value: Obstacle Audio
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510233590481939665, guid: 20403ff97754daf40a62223d43d1077f, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20403ff97754daf40a62223d43d1077f, type: 3}

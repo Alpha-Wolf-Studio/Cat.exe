@@ -14,10 +14,19 @@ public class ObstacleHackDoor : MonoBehaviour
     private Animator animator = null;
     private Timer timePerOpenDoorTimer = null;
     private Timer openDoorTimer = null;
+    
+    private ChildrenCollision[] childrenCollision = default;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        
+        childrenCollision = GetComponentsInChildren<ChildrenCollision>();
+        for (int i = 0; i < childrenCollision.Length; i++)
+        {
+            childrenCollision[i].OnHit += CheckIsPlayer;
+        }
+        
         timePerOpenDoorTimer = new Timer(timePerOpenDoor, default, true, null, OpenDoor);
         openDoorTimer = new Timer(openDoorDuration, default, false, null, CloseDoor);
         if (startOpen) OpenDoor();
@@ -44,4 +53,20 @@ public class ObstacleHackDoor : MonoBehaviour
         timePerOpenDoorTimer.ToggleTimer(true);
         OnCloseDoor?.Invoke();
     }
+    
+    public void CheckIsPlayer (Transform other)
+    {
+        if (Utils.CheckLayerInMask(GameplayManager.Get().layerPlayer, other.gameObject.layer))
+        {
+            IDamageable damageable = other.transform.GetComponent<IDamageable>();
+            if (damageable != null)
+                Kill(damageable);
+        }
+    }
+
+    public void Kill (IDamageable damageable)
+    {
+        damageable.Kill();
+    }
+    
 }

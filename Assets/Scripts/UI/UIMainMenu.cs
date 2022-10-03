@@ -94,7 +94,18 @@ public class UIMainMenu : MonoBehaviour
         playableDirector.Play();
     }
 
-    public void ButtonSetting () => StartCoroutine(SwitchPanel(transitionTime, (int) Menu.Settings, (int) Menu.Main));
+    public void ButtonSetting()
+    {
+        if (menu == Menu.Settings)
+        {
+            StartCoroutine(SwitchPanel(transitionTime, (int)Menu.Main, (int)Menu.Settings));
+        }
+        else
+        {
+            StartCoroutine(SwitchPanel(transitionTime, (int)Menu.Settings, (int)Menu.Main));
+        }
+    }
+
     public void ButtonCredits () => StartCoroutine(SwitchPanel(transitionTime, (int) Menu.Credits, (int) Menu.Main));
     public void ButtonLeadBoard () => StartCoroutine(SwitchPanel(transitionTime, (int) Menu.LeadBoard, (int) Menu.Main));
     public void ButtonAlphaWolf() => Application.OpenURL("https://alphawolfstudiogam.wixsite.com/home");

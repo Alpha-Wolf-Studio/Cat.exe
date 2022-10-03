@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour, IDamageable
             movementController.JumpEnd();
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.LeftShift))
         {
             movementController.Dash();
         }

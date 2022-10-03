@@ -48,32 +48,37 @@ public class PlayerController : MonoBehaviour, IDamageable
     private void InputMovement()
     {
         bool moving = false;
+        Vector3 direction = Vector3.zero;
 
         if (Input.GetKey(KeyCode.W))
         {
-            movementController.AddMovement(cameraTransform.forward);
+            direction += cameraTransform.forward;
             moving = true;
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            movementController.AddMovement(-cameraTransform.forward);
+            direction += -cameraTransform.forward;
             moving = true;
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            movementController.AddMovement(cameraTransform.right);
+            direction += cameraTransform.right;
             moving = true;
         }
         else if (Input.GetKey(KeyCode.A))
         {
-            movementController.AddMovement(-cameraTransform.right);
+            direction += -cameraTransform.right;
             moving = true;
         }
 
         if (!moving)
-        { 
+        {
             movementController.StopRunningAnimation(); 
+        }
+        else
+        {
+            movementController.AddMovement(direction);
         }
     }
 

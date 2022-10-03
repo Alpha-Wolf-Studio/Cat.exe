@@ -115,7 +115,13 @@ public class UIMainMenu : MonoBehaviour
     public void ButtonBackCredits () => StartCoroutine(SwitchPanel(transitionTime, (int) Menu.Main, (int) Menu.Credits));
     public void ButtonBackLeadBoard () => StartCoroutine(SwitchPanel(transitionTime, (int) Menu.Main, (int) Menu.LeadBoard));
     public void OffSettings() => StartCoroutine(OffPanel(transitionTime, (int)Menu.Settings));
-    public void OpenCrash() => StartCoroutine(SwitchPanel(-1f, (int)Menu.Crash, (int)Menu.Main));
+
+    public void OpenCrash()
+    {
+        AudioManager.Get().StopMusic();
+        AudioManager.Get().PlaySoundCrash();
+        StartCoroutine(SwitchPanel(-1f, (int)Menu.Crash, (int)Menu.Main));
+    }
 
     public void OffPanelsSounds () => panelSettings.CloseBothSoundPanel();
     IEnumerator OffPanel (float maxTime, int offMenu)

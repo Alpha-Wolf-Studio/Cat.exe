@@ -148,7 +148,6 @@ GameObject:
   - component: {fileID: 5975827931315398634}
   - component: {fileID: 5975827931315398633}
   - component: {fileID: 5975827931315398637}
-  - component: {fileID: 5975827931315398630}
   m_Layer: 5
   m_Name: Button Options
   m_TagString: Untagged
@@ -289,36 +288,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5975827931315398630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5975827931315398636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27a3cc33f737e6040b5f88db34f92c21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  modifyHitBox: 0
-  alphaRayCast: 0.1
-  scaleSpeed: 3
-  scaleLimit: 1.2
-  modifyImage: 0
-  currentImage: {fileID: 0}
-  imageDefault: {fileID: 0}
-  imageHighlighted: {fileID: 0}
-  textHighlight: 0
-  textToHighlight: {fileID: 0}
-  colorHighlight: {r: 0, g: 0, b: 0, a: 0}
-  enableObject: 0
-  objectToEnable: {fileID: 0}
-  isDraggeable: 0
-  isTrash: 0
-  isTrasheable: 1
-  dragIconPrefab: {fileID: 0}
-  emptyPrefab: {fileID: 0}
 --- !u!1 &5975827932124446404
 GameObject:
   m_ObjectHideFlags: 0

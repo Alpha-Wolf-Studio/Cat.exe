@@ -29,7 +29,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: asset-pisotrampa/grupoGenral_pisoTrampa/pisoTrampaIzq
+    path: pisoTrampaIzq
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -45,7 +45,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: asset-pisotrampa/grupoGenral_pisoTrampa/pisoTrampaDer
+    path: pisoTrampaDer
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves: []
@@ -58,14 +58,14 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 3648349436
+      path: 3907439842
       attribute: 4
       script: {fileID: 0}
       typeID: 4
       customType: 4
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 2248059019
+      path: 3027042453
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -109,7 +109,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: asset-pisotrampa/grupoGenral_pisoTrampa/pisoTrampaIzq
+    path: pisoTrampaIzq
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -128,7 +128,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: asset-pisotrampa/grupoGenral_pisoTrampa/pisoTrampaIzq
+    path: pisoTrampaIzq
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -147,7 +147,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: asset-pisotrampa/grupoGenral_pisoTrampa/pisoTrampaIzq
+    path: pisoTrampaIzq
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -166,7 +166,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: asset-pisotrampa/grupoGenral_pisoTrampa/pisoTrampaDer
+    path: pisoTrampaDer
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -185,7 +185,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: asset-pisotrampa/grupoGenral_pisoTrampa/pisoTrampaDer
+    path: pisoTrampaDer
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -204,7 +204,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: asset-pisotrampa/grupoGenral_pisoTrampa/pisoTrampaDer
+    path: pisoTrampaDer
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves:
@@ -214,8 +214,8 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: asset-pisotrampa/grupoGenral_pisoTrampa/pisoTrampaIzq
+    attribute: m_LocalEulerAngles.z
+    path: pisoTrampaIzq
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -225,17 +225,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: asset-pisotrampa/grupoGenral_pisoTrampa/pisoTrampaIzq
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: asset-pisotrampa/grupoGenral_pisoTrampa/pisoTrampaIzq
+    path: pisoTrampaIzq
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -245,17 +235,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: asset-pisotrampa/grupoGenral_pisoTrampa/pisoTrampaDer
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: asset-pisotrampa/grupoGenral_pisoTrampa/pisoTrampaDer
+    path: pisoTrampaIzq
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -265,7 +245,27 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: asset-pisotrampa/grupoGenral_pisoTrampa/pisoTrampaDer
+    path: pisoTrampaDer
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: pisoTrampaDer
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: pisoTrampaDer
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0

@@ -135,7 +135,7 @@ MonoBehaviour:
   - tag: Spike
     prefab: {fileID: 4976256534981455531, guid: f3025b949fe2eed40b454d9145e62e04, type: 3}
     size: 5
-  parent: {fileID: 0}
+  parent: {fileID: 8692491236995384791}
 --- !u!114 &3275705908013224190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,7 +165,7 @@ MonoBehaviour:
         m_CallState: 2
   timePerBall: 3
   firstBallWithoutTimer: 0
-  ballSpawn: {fileID: 0}
+  ballSpawn: {fileID: 8692491236995384791}
   forceBallSpawn: {x: -500, y: 250, z: 0}
 --- !u!1001 &591064536270262084
 PrefabInstance:

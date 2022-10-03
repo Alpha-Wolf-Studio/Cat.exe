@@ -309,7 +309,8 @@ MonoBehaviour:
   audioMixers:
   - {fileID: 24100000, guid: 84f20d96fcb6abd4eaaebd4aa87af7f4, type: 2}
   - {fileID: 24100000, guid: 862ec9393091b044581f895cb0061deb, type: 2}
-  sfxDefault: {fileID: 8300000, guid: 8150da622d4ba8747aad081abee3e50c, type: 3}
   musicMainMenuIntro: {fileID: 8300000, guid: a8c0818218b58af4094438231e21c432, type: 3}
   musicMainMenu: {fileID: 8300000, guid: 77406ae8f062eba44b0b22d7a0aa320f, type: 3}
   musicGameplay: {fileID: 8300000, guid: 77406ae8f062eba44b0b22d7a0aa320f, type: 3}
+  sfxDefault: {fileID: 8300000, guid: 8150da622d4ba8747aad081abee3e50c, type: 3}
+  sfxOpenAntivirus: {fileID: 8300000, guid: dc07beacc0aa92c4587e565a376e46d9, type: 3}

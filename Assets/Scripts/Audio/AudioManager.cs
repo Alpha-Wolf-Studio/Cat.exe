@@ -17,11 +17,16 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     private const float MinLinearValue = 0.00001f;
     private const float MaxLinearValue = 1f;
 
-    [SerializeField] private AudioClip sfxDefault;
+    [Header("Music")]
     [SerializeField] private AudioClip musicMainMenuIntro;
     [SerializeField] private AudioClip musicMainMenu;
     [SerializeField] private AudioClip musicGameplay;
 
+    [Header("SFX UI")]
+    [SerializeField] private AudioClip sfxDefault;
+    [SerializeField] private AudioClip sfxOpenAntivirus;
+    
+    
     private AudioSource SfxSource => audioSources[(int)MixerType.Sfx];
     private AudioSource MusicSource => audioSources[(int)MixerType.Music];
 
@@ -110,4 +115,5 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     public void PlayMusicMainMenu () => PlayMusic(musicMainMenu);
     public void PlayMusicGameplay () => PlayMusic(musicGameplay);
     public void PlaySoundSfxDefault () => PlaySfx(sfxDefault);
+    public void PlaySoundOpenAntivirus() => PlaySfx(sfxOpenAntivirus);
 }

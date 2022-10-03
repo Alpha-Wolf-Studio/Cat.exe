@@ -91,6 +91,7 @@ public class UIMainMenu : MonoBehaviour
     public void ButtonPlay()
     {
         SceneManagerSingleton.Get().LoadScene(SceneManagerSingleton.SceneIndex.GAMEPLAY);
+        AudioManager.Get().PlaySoundOpenAntivirus();
         playableDirector.Play();
     }
 

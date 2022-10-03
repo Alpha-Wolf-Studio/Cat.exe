@@ -70,6 +70,7 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
     {
         if (MusicSource.isPlaying)
             MusicSource.Stop();
+        StopAllCoroutines();
     }
 
     public void SetSFXVolume(float volumeLevel)

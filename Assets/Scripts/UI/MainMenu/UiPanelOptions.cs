@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Playables;
@@ -15,11 +15,12 @@ public class UiPanelOptions : MonoBehaviour
     [SerializeField] private Slider sliderSoundMusic;
     [SerializeField] private Slider sliderSoundSfx;
     [SerializeField] private PlayableDirector restartPlayableDirector;
+    [SerializeField] private CanvasGroup shutDownPanel = default;
 
     private void Start ()
     {
         btnReset.AddBehaviours(Restart, CloseBothSoundPanel);
-        btnShutDown.AddBehaviours(null, CloseBothSoundPanel);
+        btnShutDown.AddBehaviours(ShutDown, CloseBothSoundPanel);
 
         btnSoundMusic.AddBehaviours(null, OpenPanelSoundMusic);
         btnSoundMusic.AddBehaviours(null, ClosePanelSoundSfx);
@@ -84,5 +85,25 @@ public class UiPanelOptions : MonoBehaviour
         ClosePanelSoundMusic();
         ClosePanelSoundSfx();
     }
+    
+    private void ShutDown() => StartCoroutine(ShutDownCoroutine());
+
+    private IEnumerator ShutDownCoroutine()
+    {
+        
+        AudioManager.Get().StopMusic();
+        
+        float t = 0;
+        shutDownPanel.interactable = true;
+        shutDownPanel.blocksRaycasts = true;
+        while (t < 1)
+        {
+            t += Time.deltaTime;
+            shutDownPanel.alpha = t;
+            yield return null;
+        }
+        shutDownPanel.alpha = 1;
+    }
+
 
 }

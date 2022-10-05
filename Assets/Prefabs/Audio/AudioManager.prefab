@@ -310,8 +310,8 @@ MonoBehaviour:
   - {fileID: 24100000, guid: 84f20d96fcb6abd4eaaebd4aa87af7f4, type: 2}
   - {fileID: 24100000, guid: 862ec9393091b044581f895cb0061deb, type: 2}
   musicMainMenuIntro: {fileID: 8300000, guid: a8c0818218b58af4094438231e21c432, type: 3}
-  musicMainMenu: {fileID: 8300000, guid: 77406ae8f062eba44b0b22d7a0aa320f, type: 3}
-  musicGameplay: {fileID: 8300000, guid: 77406ae8f062eba44b0b22d7a0aa320f, type: 3}
+  musicMainMenu: {fileID: 8300000, guid: ca0ad83e66eb9234183e987d9c34bc68, type: 3}
+  musicGameplay: {fileID: 8300000, guid: 559593ff5f3a0c94da2f46eb578704d8, type: 3}
   sfxDefault: {fileID: 8300000, guid: 8150da622d4ba8747aad081abee3e50c, type: 3}
   sfxOpenAntivirus: {fileID: 8300000, guid: dc07beacc0aa92c4587e565a376e46d9, type: 3}
   sfxCrash: {fileID: 8300000, guid: acb298a8ad5ed37458a199f1ef2e6fce, type: 3}

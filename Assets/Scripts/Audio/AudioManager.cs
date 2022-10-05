@@ -38,10 +38,18 @@ public class AudioManager : MonoBehaviourSingleton<AudioManager>
         {
             SetSFXVolume(PlayerPrefs.GetFloat(VOLUME_SFX_KEYNAME));
         }
+        else
+        {
+            SetSFXVolume(0.1f);
+        }
         
         if (PlayerPrefs.HasKey(VOLUME_MUSIC_KEYNAME))
         {
             SetMusicVolume(PlayerPrefs.GetFloat(VOLUME_MUSIC_KEYNAME));
+        }
+        else
+        {
+            SetMusicVolume(0.1f);
         }
     }
 
